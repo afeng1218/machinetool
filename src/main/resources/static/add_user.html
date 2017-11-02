@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;height: 100%;background-color: #FFFFFF;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>用户添加</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+</head>
+<body style="overflow-x: hidden;">
+
+<div class="frame-block bg-fff" style="margin-top: 0;">
+    <form>
+        <!--页面name-->
+        <input style="display: none;" id="pageName" value="addUser"/>
+        <div id="tittle" class="account-nav-title bg-449dd7">
+            <span>刀具管理-账号配置-添加用户</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="content" class="row account-company-auth margin-top-20">
+                    <div class="row">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>用户名</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="name"/>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>密码</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="password" class="form-control" id="password"/>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>确认密码</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="password" class="form-control" id="rePassword"/>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>默认库房</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="storageNo"/>
+                            <input type="text" id="hiddenStorageId" value="" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>是否限制库房</span>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="cus-select" id="limitStorageRoom">
+                                <div class="cus-select-btn"></div>
+                                <input type="text" placeholder="--请选择--" readonly value="是">
+                                <ul style="text-align: center; display: none;">
+                                    <li>是</li>
+                                    <li>否</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>是否需要密码</span>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="cus-select" id="needPassWord">
+                                <div class="cus-select-btn"></div>
+                                <input type="text" placeholder="--请选择--" readonly value="是">
+                                <ul style="text-align: center; display: none;">
+                                    <li>是</li>
+                                    <li>否</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>负责人</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="redirect"/>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>订单审批权</span>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="cus-select" id="orderApprovalAuthority">
+                                <div class="cus-select-btn"></div>
+                                <input type="text" placeholder="--请选择--" readonly value="否">
+                                <ul style="text-align: center; display: none;">
+                                    <li>是</li>
+                                    <li>否</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>分类</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="class"/>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-3 text-right" style="padding-left:0 ;padding-right: 0;padding-top: 5px;">
+                            <span>组织</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" value="沈阳工学院" id="organization"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-1 col-md-offset-4">
+                <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查看</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="ResetBtn">重置</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">删除</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">保存</div>
+            </div>
+        </div>
+        <input type="reset" style="display: none;" id="reset"/>
+    </form>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

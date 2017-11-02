@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+    name : 郭峰
+    date : 2016/5/26
+    title: 类别设置
+-->
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>类别设置</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top: 0;min-height: 10px;">
+    <!--页面name-->
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-基础数据-类别设置</span>
+    </div>
+    <!-- 表单 -->
+    <form id="picture_form" name="picture_form" class="picture_form" enctype="multipart/form-data">
+        <div class="row margin-top-20">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="account-company-auth frame-block" style="">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <!-- 文本框 -->
+                            <div class="row account-info-list" >
+                                <div class="col-md-1 text-right col-nopadding">
+                                    <span><span style="color: red;">*</span>&nbsp;编码</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" placeholder="--请填写--" class="form-control" id="code">
+                                </div>
+                                <div class="col-md-1 text-right col-nopadding">
+                                    <span><span style="color: red;">*</span>&nbsp;描述</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" placeholder="--请填写--" class="form-control" id="category">
+                                </div>
+                                <div class="col-md-1 text-right col-nopadding">
+                                    <span><span style="color: red;">*</span>&nbsp;类型</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="cus-select" id="purchaseState">
+                                        <div class="cus-select-btn"></div>
+                                        <input id="type_" type="text" placeholder="--请选择--" readonly class="form-control">
+                                        <input id="type_id" type="hidden">
+                                        <ul style="text-align: center; display: none;">
+                                            <li><span>功能</span><span style="display: none;">0</span></li>
+                                            <li><span>物料类别</span><span style="display: none;">1</span></li>
+                                            <li><span>刀具类别</span><span style="display: none;">2</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-1"></div>
+                        <div id="images_" class="col-md-5 account-info-list margin-top-1"
+                             style="background-color:#F4F4F4;margin-left: 30px;float: left;
+                                    padding: 0px 0px 5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+                            <fieldset>
+                                <legend style="margin-bottom: 10px;">
+                                    <div style="font-size:17px ">
+                                        <span>图片上传</span>
+                                    </div>
+                                </legend>
+                                <div id="materialParDiv" class="col-md-12 col-nopadding">
+                                    <div class="col-md-12 col-nopadding ">
+                                        <input id="picture" name="picture"  class="file" type="file" data-show-caption="false">
+                                        <input id="id" name="id" type="hidden"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-5">
+                            <!-- 标题 -->
+                            <div style="padding-right:17px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center" style="width:8%;" bgcolor="#f8f8ff">
+                                            <a id="purchaseTable_add" style="cursor: pointer;">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </a>
+                                        </th>
+                                        <th class="text-center" style="width:30%" bgcolor="#f8f8ff">
+                                            参数名
+                                        </th>
+                                        <th class="text-center" style="width:30%" bgcolor="#f8f8ff">
+                                            默认值
+                                        </th>
+                                        <th class="text-center" style="width:30%" bgcolor="#f8f8ff">
+                                            描述
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!-- 标题 end -->
+                            <!-- 内容 -->
+                            <div class="table-body">
+                                <table class="table table-bordered text-center table-hover" id="purchaseTable">
+                                    <tbody style="background:#FFFFFF">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 内容 end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- 表单 end -->
+
+    <!-- 按钮 -->
+    <div class="row" style="margin-top:40px;align: center;">
+        <div class="col-md-2 col-md-offset-3">
+            <div class="sesol-btn txt-fff bg-449dd7" id="reset">
+                重置
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">
+                保存
+            </div>
+        </div>
+        <!--<div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="removeBtn">
+                删除
+            </div>
+        </div>-->
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="selectBtn">
+                查看
+            </div>
+        </div>
+    </div>
+    <!-- 按钮 end-->
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

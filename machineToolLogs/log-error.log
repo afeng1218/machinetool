@@ -1,0 +1,2 @@
+===2016-11-24 13:31:53.828 ERROR org.hibernate.tool.hbm2ddl.SchemaUpdate Line:261 - HHH000388: Unsuccessful: create table testdruid.name (id integer not null, name varchar(255), primary key (id))
+===2016-11-24 13:31:53.836 ERROR org.hibernate.tool.hbm2ddl.SchemaUpdate Line:262 - Unknown database 'testdruid'

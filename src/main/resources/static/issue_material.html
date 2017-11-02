@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>发料</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+<div class="generalfont bg-fff">
+    <input style="display: none;" id="pageName" value="issueMaterial"/>
+
+    <div class="page_title bg-449dd7">
+        <span style="margin-left: 5px;color:#ffffff;font-size: 16px">发料</span>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1">
+            <span>发料号</span>
+        </div>
+        <div class="col-md-2">
+            <input id="issue_no" type="text" class="form-control" readonly>
+        </div>
+        <div class="col-md-1" style="width: 9%">
+            <span>发到刀具</span>
+        </div>
+        <div class="col-md-2" style="width: 1%">
+            <input id="issueCuttool" type="checkbox" checked>
+        </div>
+        <div class="col-md-2" style="width: 14%">
+            <input id="cuttoolNo" type="text" class="form-control">
+        </div>
+        <div class="col-md-1">
+            <span>领料人</span>
+        </div>
+        <div class="col-md-2">
+            <input id="picker" type="text" class="form-control">
+        </div>
+        <div class="col-md-1" style="width: 9%">
+            <span>使用设备</span>
+        </div>
+        <div class="col-md-2" style="width: 14.7%">
+            <input id="usrEquipment" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1">
+            <span>库房</span>
+        </div>
+        <div class="col-md-2">
+            <input id="storeRoom" type="text" class="form-control" value="0001" readonly>
+        </div>
+        <div class="col-md-1">
+            <span>备注</span>
+        </div>
+        <div class="col-md-8">
+            <input id="borrower" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1 col-md-offset-10 ">
+            <div id="saveBtn" class="sesol-btn txt-fff bg-449dd7">保存</div>
+            <input style="display: none;" id="enableBeSave" />
+        </div>
+        <div class="col-md-1">
+            <div id="deleteBtn" class="sesol-btn txt-fff bg-449dd7">删除</div>
+        </div>
+    </div>
+
+    <div class="row margin-top-20" style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-12 col-nopadding">
+            <!-- 标题 -->
+            <div style="padding-right:17px;">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr style="height: 40px">
+                        <td class="text-center" style="width: 6%;padding: 0 0;vertical-align: inherit;">
+                            <div style="float: left;padding-left: 8px">
+                                <a id="issue_addTr" style="cursor: pointer;">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                            行
+                        </td>
+                        <td class="text-center" style="width: 14%;padding: 0 0;vertical-align: inherit">物料</td>
+                        <td class="text-center" style="width: 16%;padding: 0 0;vertical-align: inherit">描述</td>
+                        </td>
+                        <td class="text-center" style="width: 5%;padding: 0 0;vertical-align: inherit">单位</td>
+                        <td class="text-center" style="width: 12%;padding: 0 0;vertical-align: inherit">物品新旧</td>
+                        <td class="text-center" style="width: 12%;padding: 0 0;vertical-align: inherit">可用数量</td>
+                        <td class="text-center" style="width: 12%;padding: 0 0;vertical-align: inherit">货位</td>
+                        <td class="text-center" style="width: 8%;padding: 0 0;vertical-align: inherit">品牌</td>
+                        <td class="text-center" style="width: 15%;padding: 0 0;vertical-align: inherit">发放数量</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- 标题 end-->
+            <!-- 内容 -->
+            <div class="table-body" >
+                <table class="table table-bordered text-center " id="issueTable">
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容 end-->
+        </div>
+    </div>
+
+</div>
+
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

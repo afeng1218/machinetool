@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具面板</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+</head>
+<body>
+<div class="generalfont bg-fff">
+    <input style="display: none;" id="pageName" value="cuttoolPanel"/>
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-库房-刀具面板</span>
+    </div>
+    <div class="row margin-top-20 col-nopadding" style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1" style="width: 100px">
+            <div id="btnAddcuttool" class="sesol-btn txt-fff bg-449dd7">增加刀具</div>
+        </div>
+        <div class="col-md-1">
+            <div id="panelBorrowBtn" class="sesol-btn txt-fff bg-449dd7">借用</div>
+            <input style="display: none;" id="borrowCNo" value=""/>
+        </div>
+        <div class="col-md-2">
+            <div id="fasongximenziBtn" style="display: none;" class="sesol-btn txt-fff bg-449dd7">发送西门子</div>
+        </div>
+
+        <!--<div class="col-md-1">
+            <div id="panelScrapBtn" class="sesol-btn txt-fff bg-449dd7">报废</div>
+        </div>-->
+        <!--<div class="col-md-1" style="width: 130px">
+            <div class="sesol-btn txt-fff bg-449dd7">刀具寿命提醒</div>
+        </div>-->
+    </div>
+    <div class="row margin-top-20" style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-12 col-nopadding">
+            <!-- 标题 -->
+            <div style="padding-right:17px;">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr >
+                        <td style="width: 8%">刀具编码</td>
+                        <td style="width: 6%">货位号</td>
+                        <td style="width: 6%">现在位置</td>
+                        <td style="width: 12%">描述</td>
+                        <td style="width: 8%">编程直径小</td>
+                        <td style="width: 7%">编程直径大</td>
+                        <td style="width: 7%">编程长度</td>
+                        <td style="width: 4%">刃数</td>
+                        <td style="width: 5%">功能</td>
+                        <td style="width: 5%">类别</td>
+                        <td style="width: 5%">特性</td>
+                        <td style="width: 5%">刀具现状</td>
+                        <td style="width: 5%">寿命</td>
+                        <td style="width: 5%">残余寿命</td>
+                        <td style="width: 5%">库房</td>
+                        <td style="width: 5%">发送状态</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- 标题 end-->
+            <!-- 内容 -->
+            <div class="table-body">
+                <table class="table table-bordered text-center " id="cuttoolAddResTable">
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容 end-->
+        </div>
+    </div>
+
+    <div class="row" style="margin-left: 5px;margin-right: 5px;margin-top: 0px">
+        <table id="panelMtable" class="table table-bordered  table-hover col-md-12">
+            <thead>
+            <tr>
+                <th style="width: 5%;text-align: center;">序号</th>
+                <th style="width: 15%;text-align: center">物料</th>
+                <th style="width: 20%;text-align: center">描述</th>
+                <th style="width: 7%;text-align: center;">数量</th>
+                <th style="width: 7%;text-align: center">单位</th>
+                <th style="width: 7%;text-align: center">易消耗</th>
+                <th style="width: 8%;text-align: center">切削主体</th>
+                <th style="width: 7%;text-align: center;">品牌</th>
+                <th style="width: 10%;text-align: center">可用数量</th>
+                <th style="width: 14%;text-align: center">日期</th>
+            </tr>
+            </thead>
+            <tbody id="panelMtable_tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

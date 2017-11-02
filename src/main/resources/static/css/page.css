@@ -1,0 +1,67 @@
+/*分页*/
+.sesol-page {
+    position: relative;
+    padding-top: 28px;
+    border-top: solid 1px #d3d3d3;
+}
+
+.sesol-page-label {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.sesol-page-detail {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0;
+    color: #333;
+}
+
+.sesol-page-detail > div {
+    display: inline-block;
+}
+
+.page-prev, .page-next {
+    margin: 0 10px;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.page-prev > span, .page-next > span {
+    font-size: 13px;
+}
+
+.page-num {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 26px;
+    background-color: #fff;
+    border: solid 1px #c9c9c9;
+}
+
+.page-num.cur {
+    background-color: #449dd7;
+    color: #fff;
+}
+
+/*分页打印*/
+.A4 {
+    page-break-before: auto;
+    page-break-after: always;
+}
+
+.tableCss {
+    text-align: center;
+    border: 1px solid black;
+    font-size: 12px;
+    height: 25px;
+}
+
+.noprint {
+    visibility: hidden;
+}

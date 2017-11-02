@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>采购订单</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+    <!-- endbuild:commonCss -->
+
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+
+<div class="frame-block bg-fff" style="margin-top: 0;min-height: 10px;">
+    <form>
+        <!--表单重置按钮-->
+        <input type="reset" style="display:none;"/>
+        <!--页面name-->
+        <div class="account-nav-title bg-449dd7 ">
+            <span>刀具管理-采购-采购订单</span>
+            <!--订单状态-->
+            <input id="orderState" style="display: none;" value="add"/>
+            <!--订单是否已保存-->
+            <input id="isSaved" style="display: none;" value="0"/>
+        </div>
+        <!-- 文本框 -->
+        <div class="row account-info-list margin-top-10">
+            <div class="col-md-12">
+                <div class="col-nopadding col-md-1 text-right">
+                    <span>订单号</span>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-4" style="padding: 0;">
+                        <input id="orderNo" type="text" class="form-control" style="width: 98%;padding: 0;" readonly>
+                    </div>
+                    <div class="col-md-2" style="padding: 0;">
+                        <input id="orderVersion" type="text" value="0" class="form-control" style="width: 90%;" readonly>
+                    </div>
+                    <div class="col-md-6" style="padding: 0;">
+                        <div class="col-md-6 text-center" style="padding: 0;">
+                            <span>采购员</span>
+                        </div>
+                        <div class="col-md-5" style="padding: 0;">
+                            <input type="text" id="buyer" class="form-control" style="padding: 0;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center" style="padding:0;width:30px;">
+                    <span>类型</span>
+                </div>
+                <div class="col-md-2">
+                    <input id="type" type="text" class="form-control" readonly value="采购订单">
+                </div>
+                <div class="col-nopadding col-md-1 text-right" style="width:50px;">
+                    <span>收单方</span>
+                </div>
+                <div class="col-md-2">
+                    <input id="accept" type="text" class="form-control" readonly value="沈阳工学院">
+                </div>
+                <div class="col-md-1 text-right" style="padding: 0;width: 30px;">
+                    <span>库房</span>
+                </div>
+                <div class="col-md-1" style="width: 100px;padding-right: 0;">
+                    <input id="storage" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row account-info-list margin-top-10">
+            <div class="col-md-12">
+                <div class="col-nopadding col-md-1 text-right">
+                    <span>供应商</span>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-9" style="padding: 0;">
+                        <input id="supplier_describe" type="text" class="form-control" style="width: 99%;">
+                    </div>
+                    <div class="col-md-3 col-nopadding" style="padding: 0;">
+                        <input id="supplier_no" type="text" class="form-control" style="width: 83%;" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-1 text-right">
+                    <span>状态</span>
+                </div>
+                <div class="col-md-2">
+                    <input id="state" type="text" class="form-control" readonly value="未审批">
+                </div>
+                <div class="col-nopadding col-md-1 text-right">
+                    <span>创建时间</span>
+                </div>
+                <div class="col-md-3" style="width: 200px;">
+                    <div style="padding: 0;">
+                        <input type="text" class="form-control" id="createDate" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 按钮 -->
+        <div class="row" style="margin-top: 20px;align: center;">
+            <div class="col-md-1 col-md-offset-6">
+                <div class="sesol-btn txt-fff bg-449dd7" id="addTr">
+                    新增
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">
+                    删除
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="resetBtn">
+                    重置
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">
+                    保存
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="approveBtn">
+                    审批
+                </div>
+            </div>
+        </div>
+
+        <!-- tab-->
+        <div id="basedata_tab" class="account-info-container">
+            <div class="row">
+                <div class="col-md-12 padding-left-30">
+                    <div class="row orders-search" style="margin-top:0;">
+                        <div class="col-md-10" id="mainStatusBar">
+                            <div class="sesol-btn mainOrder select">主要</div>
+                            <div class="sesol-btn grantOrder">发放</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="class-split"></div>
+        </div>
+
+        <div class="stock row" style="min-height: 10px;">
+            <!-- 主要 -->
+            <div id="stock1" class="cuttool_tab">
+                <div class="col-md-11" style="margin-left: 20px;">
+                    <!-- 标题 -->
+                    <div style="padding-right:17px;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-center" bgcolor="#EFEFEF" style="width: 8%; padding-top:5px;padding-left: 6px;">
+                                    <label class="col-nopadding radio-inline">
+                                        <input type="checkbox" id="checkAl1"/>
+                                        <span>行</span>
+                                    </label>
+                                </th>
+                                <th class="text-center" style="width: 12%;" bgcolor="#EFEFEF">物料</th>
+                                <th class="text-center" style="width: 15%;" bgcolor="#EFEFEF">描述</th>
+                                <th class="text-center" style="width: 10%;" bgcolor="#EFEFEF">类别</th>
+                                <th class="text-center" style="width: 10%;" bgcolor="#EFEFEF">单位</th>
+                                <th class="text-center" style="width: 10%;" bgcolor="#EFEFEF">数量</th>
+                                <th class="text-center" style="width: 10%;" bgcolor="#EFEFEF">单价</th>
+                                <th class="text-center" style="width: 15%;" bgcolor="#EFEFEF">需求时间</th>
+                                <th class="text-center" style="width: 10%;" bgcolor="#EFEFEF">品牌</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!-- 标题 end -->
+                    <!-- 内容 -->
+                    <div class="table-body">
+                        <table class="table table-bordered text-center table-hover" id="purchaseTable1">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 内容 end -->
+                </div>
+            </div>
+
+            <!-- 发放 -->
+            <div id="stock2" class="cuttool_tab" style="display: none;">
+                <div class="col-md-11" style="margin-left: 20px;">
+                    <!-- 标题 -->
+                    <div style="padding-right:17px;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="width: 8%; padding-top:5px;padding-left: 5px;" bgcolor="#EFEFEF">
+                                    <label class="col-nopadding radio-inline">
+                                        <span>行</span>
+                                    </label>
+                                </th>
+                                <th class="text-center" style="width: 17%;" bgcolor="#EFEFEF">物料</th>
+                                <th class="text-center" style="width: 25%;" bgcolor="#EFEFEF">描述</th>
+                                <th class="text-center" style="width: 18%;" bgcolor="#EFEFEF">接受数量</th>
+                                <th class="text-center" style="width: 18%;" bgcolor="#EFEFEF">取消数量</th>
+                                <th class="text-center" style="width: 14%;" bgcolor="#EFEFEF">库房</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!-- 标题 end -->
+                    <!-- 内容 -->
+                    <div class="table-body">
+                        <table class="table table-bordered text-center table-hover" id="purchaseTable2">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 内容 end -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

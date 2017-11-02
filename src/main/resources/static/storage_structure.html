@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>库房结构</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+</head>
+<body>
+<div class="account-nav-title bg-449dd7">
+    <span>库房-库房结构</span>
+</div>
+<div class="modal-body">
+
+</div>
+<div class="orders-search">
+    <div class="col-md-12 padding-left-70" id="statusBar">
+        <div class="sesol-btn order select" data="1">物料存量</div>
+        <div class="sesol-btn order" data="2">存量明细</div>
+    </div>
+</div>
+<div class="inventoryDetail">
+    <div id="inventoryDetail1" style="padding-left: 0;padding-right: 0;">
+        <div class="col-md-11" style="margin-left: 20px;">
+            <table class="table table-bordered table-hover bg-fff" id="materialInventoryTable">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>物料编码</td>
+                    <td>物料说明</td>
+                    <td>库房</td>
+                    <td>库存总量</td>
+                    <td>钝品数量</td>
+                    <td>在借量</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="height: 30px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="inventoryDetail2" style="padding-left: 0;padding-right: 0;display: none;">
+        <div class="col-md-11" style="margin-left: 20px;">
+            <table class="table table-bordered bg-fff" id="inventoryDetailTable">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>物料编码</td>
+                    <td>物料说明</td>
+                    <td>品牌</td>
+                    <td>库房</td>
+                    <td>库位</td>
+                    <td>单位</td>
+                    <td>库存量</td>
+                    <td>批次</td>
+                    <td>序列</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="height: 30px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 30px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

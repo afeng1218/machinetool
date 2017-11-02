@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机床设备</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+</head>
+<body style="background-color: #FFFFFF;">
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-库房-机床设备</span>
+        <input type="hidden" id="mechanical_id" />
+    </div>
+    <div class="row account-company-auth margin-top-20" style="width:90%;margin-left: 5%;margin-right: 5%">
+        <div class="row">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span><span style="color: red;">*</span>设备资产编号</span>
+            </div>
+            <div class="col-md-3">
+                <input id="equipment_assets_no" type="text"  class="form-control"/>
+            </div>
+            <div class="col-md-2  text-right " style="padding: 5px 0 0 0;">
+                <span><span style="color: red;">*</span>设备名称</span>
+            </div>
+            <div class="col-md-3">
+                <input id="equipment_name" type="text" class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>设备类型</span>
+            </div>
+            <div class="col-md-3">
+                <input id="equipment_type" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-2  text-right " style="padding: 5px 0 0 0;">
+                <span>设备组</span>
+            </div>
+            <div class="col-md-3">
+                <input id="device_group" type="text" class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>主轴类型</span>
+            </div>
+            <div class="col-md-3">
+                <input id="main_shaft_type" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-2  text-right " style="padding: 5px 0 0 0;">
+                <span>主轴行程</span>
+            </div>
+            <div class="col-md-3">
+                <input id="main_shaft_trip" type="number" min="0" value="0" class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>距离工作台（MAX)</span>
+            </div>
+            <div class="col-md-3">
+                <input id="distance_table_max" type="number" min="0" value="0" class="form-control"/>
+            </div>
+            <div class="col-md-2  text-right " style="padding: 5px 0 0 0;">
+                <span>最大转速</span>
+            </div>
+            <div class="col-md-3">
+                <input id="max_speed" type="number" min="0" value="0" class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>最大功率</span>
+            </div>
+            <div class="col-md-3">
+                <input id="max_power" type="number" min="0" value="0" class="form-control"/>
+            </div>
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>负责人</span>
+            </div>
+            <div class="col-md-3">
+                <input id="director" type="text"  class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-2 text-right " style="padding: 5px 0 0 0;">
+                <span>车间</span>
+            </div>
+            <div class="col-md-8">
+                <input id="workshop" type="text"  class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20" style="width: 90%;margin-left: 5%;margin-right: 5%">
+        <div class="col-md-2 col-md-offset-6">
+            <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">重置</div>
+        </div>
+        <div class="col-md-2 ">
+            <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查询</div>
+        </div>
+        <div class="col-md-2" style="padding-left: 30px;padding-right: 0px">
+            <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">保存</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

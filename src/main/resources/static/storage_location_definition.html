@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具管理</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x: hidden;background-color: #FFFFFF;">
+
+<div class="frame-block bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span>刀具管理-基础数据-库位设置</span>
+    </div>
+
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 text-right" style="padding-right: 0;">
+            <span>库房编号</span>
+        </div>
+        <div class="col-md-4">
+            <div class="cus-select" id="storage">
+                <div class="cus-select-btn"></div>
+                <input type="text" placeholder="--请选择--" readonly id="storageDescription"/>
+                <ul style="text-align: center">
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-1 text-right" style="padding-left: 0;">
+            <span>库位编号</span>
+        </div>
+        <div class="col-md-4">
+            <div class="cus-select" id="storageLocationNo">
+                <div class="cus-select-btn"></div>
+                <input type="text" placeholder="--请选择--" readonly="">
+                <ul style="text-align: center; display: none;">
+                </ul>
+            </div>
+            <!--<input class="form-control" type="text" id="storageLocationNo"/>-->
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 text-right" style="padding-right: 0;">
+            <span>库位说明</span>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control" type="text" id="storageLocationDescription"/>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;align: center center;">
+        <div class="col-md-1" style="margin-left: 55px;margin-top: 10px;">
+            <a href="javascript:void(0)">
+                <span id="addtr" class="glyphicon glyphicon-plus"/>
+            </a>
+        </div>
+        <div class="col-md-1 col-md-offset-7">
+            <div class="sesol-btn txt-fff bg-449dd7" id="search">
+                查询
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">
+                保存
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;margin-left: 10px;">
+        <div class="col-md-12" style="padding-right: 30px;">
+            <table class="table table-bordered table-hover" id="storageTable" style="margin-bottom: 200px;">
+                <thead>
+                <td style="width: 9%;text-align:center;">库位编号</td>
+                <td style="width: 9%;text-align:center;">库位说明</td>
+                <td style="width: 14%;text-align:center;">库房</td>
+                <td style="width: 6%;text-align:center;">状态</td>
+                <td style="width: 6%;text-align:center;">能力-数量</td>
+                <td style="width: 6%;text-align:center;">数量单位</td>
+                <td style="width: 6%;text-align:center;">能力-体积</td>
+                <td style="width: 6%;text-align:center;">体积单位</td>
+                <td style="width: 6%;text-align:center;">能力-重量</td>
+                <td style="width: 6%;text-align:center;">重量单位</td>
+                <td style="width: 6%;text-align:center;">维度</td>
+                <td style="width: 6%;text-align:center;">维度单位</td>
+                <td style="width: 6%;text-align:center;">坐标</td>
+                <td style="width: 4%;text-align:center;"></td>
+                <td style="width: 4%;text-align:center;"></td>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div style="height: 19px;"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="height: 19px;"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

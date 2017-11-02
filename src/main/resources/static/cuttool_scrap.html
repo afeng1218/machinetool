@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>刀具报废</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span style="font-size: 18px">报废</span>
+        <input style="display: none;" id="pageName" value="cuttoolScrap"/>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding: 5px 0 0 0;">
+            <span>物料</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scrap_Mno" type="text" readonly="readonly" class="form-control"/>
+        </div>
+        <div class="col-md-1 col-md-offset-1  text-center" style="padding: 5px 0 0 0;">
+            <span>设备</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scrap_Equno" type="text" readonly="readonly" class="form-control"/>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding: 5px 0 0 0;">
+            <span>描述</span>
+        </div>
+        <div class="col-md-8">
+            <input id="scrap_MDes" readonly="readonly" type="text" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding:5px 0 0 0;">
+            <span>刀具号</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scrap_CNo" type="text" readonly="readonly" class="form-control"/>
+        </div>
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding:5px 0 0 0;">
+            <span>工单号</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scarp_OrderNo" readonly="readonly" type="text" class="form-control"/>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding: 5px 0 0 0;">
+            <span>刀具任务号</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scrap_taskNo" type="text" readonly="readonly" class="form-control"/>
+        </div>
+        <div class="col-md-1 col-md-offset-1 text-center" style="padding: 5px 0 0 0;">
+            <span>行</span>
+        </div>
+        <div class="col-md-3">
+            <input id="scrap_rowNo" type="text" readonly="readonly" class="form-control"/>
+        </div>
+    </div>
+    <input style="display: none;" id="borrowNum"/>
+    <input style="display: none;" id="haveReturnNum"/>
+    <input style="display: none;" id="haveScrapNum"/>
+    <input style="display: none;" id="scrapPerson"/>
+    <input style="display: none;" id="scrapRoomNo"/>
+    <input style="display:none;" id="isStereoLibrary">
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-1  text-center" style="padding: 5px 0 0 0;">
+            <span>报废数量</span>
+        </div>
+        <div class="col-md-2">
+            <input id="scrapNum" type="number" min="1" class="form-control"/>
+        </div>
+        <div class="col-md-1  text-right" style="padding: 5px 0 0 0;">
+            <span>换取数量</span>
+        </div>
+        <div class="col-md-2">
+            <input id="scrapChangeNum" type="number" min="1" class="form-control"/>
+        </div>
+        <div class="col-md-1  text-right" style="padding: 5px 0 0 0;">
+            <span>货位</span>
+        </div>
+        <div class="col-md-2">
+            <input id="scrap_goodAllocation" type="text" class="form-control"/>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class=" col-md-offset-1 col-md-9">
+            <legend>
+                <div style="font-size:24px ">
+                    <span>原因</span>
+                </div>
+            </legend>
+        </div>
+
+        <div class="col-md-9 col-md-offset-1">
+            <textarea id="scrapReason" class="sesol-textarea" style="height: 100px"></textarea>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-2 col-md-offset-8">
+            <div id="saveBtn" class="sesol-btn txt-fff bg-449dd7">保存</div>
+            <input style="display: none;" id="enableBeSave"  />
+            <input style="display: none;" id="sendCheck"  />
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

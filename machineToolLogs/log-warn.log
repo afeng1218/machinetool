@@ -1,0 +1,2 @@
+===2016-11-24 13:31:56.252 WARN  org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration Line:90  - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+===2016-11-24 13:31:57.546 WARN  org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration Line:86  - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)

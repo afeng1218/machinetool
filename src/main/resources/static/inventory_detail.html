@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具管理</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+
+<div class="account-nav-title bg-449dd7">
+    <input style="display: none;" id="pageName" value="inventoryDetail"/>
+    <span>库存物料管理-物料存量查询</span>
+</div>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-2 padding-left-70" style="text-align: center;padding-right: 0;padding-top: 5px;">
+        <span>库房/库位</span>
+    </div>
+    <div class="col-md-3" style="padding-left: 0;">
+        <div class="cus-select" id="stock">
+            <div class="cus-select-btn"></div>
+            <input type="text" placeholder="--请选择--" readonly="">
+            <input type="hidden" value=""/>
+            <ul style="text-align: center"></ul>
+        </div>
+    </div>
+    <div class="col-md-3" style="margin-left: 50px;">
+        <div class="cus-select" id="stockLocation">
+            <div class="cus-select-btn"></div>
+            <input type="text" placeholder="--请选择--" readonly="">
+            <input type="hidden" value=""/>
+            <ul style="text-align: center"></ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="tab" class="account-info-container tab_content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row orders-search">
+                <div class="col-md-10 padding-left-70" id="mainStatusBar">
+                    <div class="sesol-btn mainOrder select" data="1">物料</div>
+                    <div class="sesol-btn mainOrder" data="2">批次</div>
+                    <div class="sesol-btn mainOrder" data="3">序列</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="class-split"></div>
+
+<div class="stock" style="min-height: 10px;">
+    <!-- -------------------物料    div----------------------->
+    <div id="stock1" class="row operation-content">
+        <fieldset>
+            <legend>
+                <span style="font-size: 17px;">物料</span>
+            </legend>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-2" style="text-align: right;padding-top: 3px;">
+                <span>物料编码/版本</span>
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" id="materialNo"/>
+            </div>
+            <div class="col-md-1" style="padding-top: 6px;padding-right: 0;width: 30px;padding-left: 0;">
+                <a href="javascript:void(0)" id="searchMaterial">
+                    <span class="glyphicon glyphicon-search"/>
+                </a>
+            </div>
+            <div class="col-md-1" style="padding-left: 0;">
+                <input class="form-control" type="text" id="materialVersion"/>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-2" style="text-align: right;">
+                <span>物料描述</span>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control" type="text" id="materialExplain"/>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;margin-bottom: 30px;">
+            <div class="col-md-2" style="text-align: right;">
+                <span>状态</span>
+            </div>
+            <div class="col-md-5">
+                <div class="cus-select" id="state">
+                    <div class="cus-select-btn"></div>
+                    <input type="text" placeholder="--请选择--" readonly/>
+                    <ul style="text-align: center">
+                        <li></li>
+                        <li>开启</li>
+                        <li>关闭</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- -------------------批次    div----------------------->
+    <div id="stock2" class="row operation-content" style="display: none;">
+        <fieldset>
+            <legend>
+                <span style="font-size: 17px;">批次</span>
+            </legend>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-2" style="text-align: right;">
+                <span>批次自</span>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control batchSearch1" type="text" id="batchBegin"/>
+            </div>
+            <div class="col-md-1" style="padding-top: 6px;padding-right: 0;width: 30px;padding-left: 0;">
+                <a href="javascript:void(0)" id="batchBeginSearch" class="batchSearch">
+                    <span class="glyphicon glyphicon-search"/>
+                </a>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;margin-bottom: 30px;">
+            <div class="col-md-2" style="text-align: right">
+                <span>批次至</span>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control batchSearch2" type="text" id="batchEnd"/>
+            </div>
+            <div class="col-md-1" style="padding-top: 6px;padding-right: 0;width: 30px;padding-left: 0;">
+                <a href="javascript:void(0)" id="batchEndSearch" class="batchSearch">
+                    <span class="glyphicon glyphicon-search"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------序列    div----------------------->
+    <div id="stock3" class="row operation-content" style="display: none;">
+        <fieldset>
+            <legend>
+                <span style="font-size: 18px;">序列</span>
+            </legend>
+        </fieldset>
+        <div class="row">
+            <div class="col-md-2" style="text-align: right;">
+                <span>序列自</span>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control sequence1" type="text" id="sequenceBegin"/>
+            </div>
+            <div class="col-md-1" style="padding-top: 6px;padding-right: 0;width: 30px;padding-left: 0;">
+                <a href="javascript:void(0)" id="sequenceBeginSearch" class="sequenceSearch">
+                    <span class="glyphicon glyphicon-search"/>
+                </a>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px;margin-bottom: 30px;">
+            <div class="col-md-2" style="text-align: right">
+                <span>序列至</span>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control sequence2" type="text" id="sequenceEnd"/>
+            </div>
+            <div class="col-md-1" style="padding-top: 6px;padding-right: 0;width: 30px;padding-left: 0;">
+                <a href="javascript:void(0)" id="sequenceEndSearch" class="sequenceSearch">
+                    <span class="glyphicon glyphicon-search"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row account-info-list margin-top-10" style="margin-bottom: 20px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+        <div class="sesol-btn txt-fff bg-449dd7" id="delete">
+            清除
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">
+            查询
+        </div>
+    </div>
+</div>
+
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

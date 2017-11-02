@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用者</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+</head>
+<body style="background-color: #FFFFFF;">
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-库房-借用者</span>
+        <input style="display: none;" id="pageName" value="borrower"/>
+    </div>
+    <div class="row account-company-auth margin-top-20" style="width:90%;margin-left: 5%;margin-right: 5%">
+        <div class="row">
+            <div class="col-md-1 col-md-offset-1 " style="padding: 5px 0 0 0;">
+                <span>员工号</span>
+            </div>
+            <div class="col-md-3">
+                <input id="employee_no" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-1  col-md-offset-2 " style="padding: 5px 0 0 0;">
+                <span>车间</span>
+            </div>
+            <div class="col-md-3">
+                <div class="cus-select" id="workshop_select">
+                    <div class="cus-select-btn"></div>
+                    <input id="workshop" type="text" placeholder="--请选择--" readonly="" value="">
+                    <ul style="text-align: center; display: none;">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-1 col-md-offset-1 " style="padding: 5px 0 0 0;">
+                <span>姓名</span>
+            </div>
+            <div class="col-md-3">
+                <input id="person_name" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-1  col-md-offset-2 " style="padding: 5px 0 0 0;">
+                <span>工段</span>
+            </div>
+            <div class="col-md-3">
+                <div class="cus-select" id="work_section_select">
+                    <div class="cus-select-btn"></div>
+                    <input id="work_section" type="text" placeholder="--请选择--" readonly="" value="">
+                    <ul style="text-align: center; display: none;">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-1 col-md-offset-1 " style="padding: 5px 0 0 0;">
+                <span>班组</span>
+            </div>
+            <div class="col-md-3">
+                <input id="team" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-1  col-md-offset-2 " style="padding: 5px 0 0 0;">
+                <span>生产线</span>
+            </div>
+            <div class="col-md-3">
+                <div class="cus-select" id="production_line_select">
+                    <div class="cus-select-btn"></div>
+                    <input id="production_line" type="text" placeholder="--请选择--" readonly="" value="">
+                    <ul style="text-align: center; display: none;">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-1 col-md-offset-1 " style="padding: 5px 0 0 0;">
+                <span>设备</span>
+            </div>
+            <div class="col-md-3">
+                <input id="equipment" type="text" class="form-control"/>
+            </div>
+            <div class="col-md-1  col-md-offset-2 " style="padding: 5px 0 0 0;">
+                <span>分类</span>
+            </div>
+            <div class="col-md-3">
+                <input id="borrower_class" type="text" class="form-control"/>
+            </div>
+        </div>
+        <div class="row margin-top-30">
+            <div class="col-md-1 col-md-offset-1 " style="padding: 5px 0 0 0;">
+                <span>组织</span>
+            </div>
+            <div class="col-md-9">
+                <input id="organization" type="text" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20" style="width: 90%;margin-left: 5%;margin-right: 5%">
+        <div class="col-md-2 col-md-offset-6">
+            <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">清空</div>
+        </div>
+        <div class="col-md-2 ">
+            <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查询</div>
+        </div>
+        <div class="col-md-2" style="padding-left: 30px;padding-right: 0px">
+            <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">保存</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

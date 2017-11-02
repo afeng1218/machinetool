@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html style="background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>消耗报表结果</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+</head>
+<body style="background-color: #FFFFFF;overflow-x: hidden;">
+
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span>消耗报表汇总</span>
+        <input id="pageName" style="display: none;" value="consumptionResult"/>
+    </div>
+    <div class="row" style="padding-left: 20px;padding-right: 20px;">
+        <div style="overflow-x: scroll;">
+            <div style="width: 2170px;padding-right: 17px;">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr style="height: 34px">
+                        <td style="padding: 0;width: 100px;">来源</td>
+                        <td style="padding: 0;width: 80px;">来源行</td>
+                        <td style="padding: 0;width: 100px;">物料编码</td>
+                        <td style="padding: 0;width: 150px;">物料描述</td>
+                        <td style="padding: 0;width: 100px;">用户物料类型</td>
+                        <td style="padding: 0;width: 80px;">数量</td>
+                        <td style="padding: 0;width: 80px;">单价</td>
+                        <td style="padding: 0;width: 80px;">合计</td>
+                        <td style="padding: 0;width: 100px;">库房</td>
+                        <td style="padding: 0;width: 80px;">人员</td>
+                        <td style="padding: 0;width: 120px;">事务时间</td>
+                        <td style="padding: 0;width: 80px;">类别</td>
+                        <td style="padding: 0;width: 80px;">当时设备</td>
+                        <td style="padding: 0;width: 80px;">当时工段</td>
+                        <td style="padding: 0;width: 80px;">当时班组</td>
+                        <td style="padding: 0;width: 80px;">默认设备</td>
+                        <td style="padding: 0;width: 80px;">默认车间</td>
+                        <td style="padding: 0;width: 80px;">默认工段</td>
+                        <td style="padding: 0;width: 80px;">默认班组</td>
+                        <td style="padding: 0;width: 80px;">产品线</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table-body" style="width: 2170px;overflow-x: hidden;">
+                <table class="table table-bordered text-center" id="consumptionTable">
+                    <thead style="display: none;">
+                    <tr style="height: 34px">
+                        <td style="padding: 0;width: 100px;">来源</td>
+                        <td style="padding: 0;width: 80px;">来源行</td>
+                        <td style="padding: 0;width: 100px;">物料编码</td>
+                        <td style="padding: 0;width: 150px;">物料描述</td>
+                        <td style="padding: 0;width: 100px;">用户物料类型</td>
+                        <td style="padding: 0;width: 80px;">数量</td>
+                        <td style="padding: 0;width: 80px;">单价</td>
+                        <td style="padding: 0;width: 80px;">合计</td>
+                        <td style="padding: 0;width: 100px;">库房</td>
+                        <td style="padding: 0;width: 80px;">人员</td>
+                        <td style="padding: 0;width: 120px;">事务时间</td>
+                        <td style="padding: 0;width: 80px;">类别</td>
+                        <td style="padding: 0;width: 80px;">当时设备</td>
+                        <td style="padding: 0;width: 80px;">当时工段</td>
+                        <td style="padding: 0;width: 80px;">当时班组</td>
+                        <td style="padding: 0;width: 80px;">默认设备</td>
+                        <td style="padding: 0;width: 80px;">默认车间</td>
+                        <td style="padding: 0;width: 80px;">默认工段</td>
+                        <td style="padding: 0;width: 80px;">默认班组</td>
+                        <td style="padding: 0;width: 80px;">产品线</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                   <!-- <tr style="height: 34px">
+                        <td style="padding: 0;width: 100px;">来源</td>
+                        <td style="padding: 0;width: 80px;">来源行</td>
+                        <td style="padding: 0;width: 100px;">物料编码</td>
+                        <td style="padding: 0;width: 150px;">物料描述</td>
+                        <td style="padding: 0;width: 100px;">用户物料类型</td>
+                        <td style="padding: 0;width: 80px;">数量</td>
+                        <td style="padding: 0;width: 80px;">单价</td>
+                        <td style="padding: 0;width: 80px;">合计</td>
+                        <td style="padding: 0;width: 100px;">库房</td>
+                        <td style="padding: 0;width: 80px;">人员</td>
+                        <td style="padding: 0;width: 120px;">事务时间</td>
+                        <td style="padding: 0;width: 80px;">类别</td>
+                        <td style="padding: 0;width: 80px;">当时设备</td>
+                        <td style="padding: 0;width: 80px;">当时工段</td>
+                        <td style="padding: 0;width: 80px;">当时班组</td>
+                        <td style="padding: 0;width: 80px;">默认设备</td>
+                        <td style="padding: 0;width: 80px;">默认车间</td>
+                        <td style="padding: 0;width: 80px;">默认工段</td>
+                        <td style="padding: 0;width: 80px;">默认班组</td>
+                        <td style="padding: 0;width: 80px;">产品线</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-2 col-md-offset-9">
+            <div class="sesol-btn txt-fff bg-449dd7" id="output">导出</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

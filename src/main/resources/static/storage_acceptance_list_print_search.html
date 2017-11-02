@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>云机刀具管理系统-浏览器</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+
+<div class="frame-block bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span>刀具管理-库房-入库验收单打印</span>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-1 text-right" style="padding-top: 5px;padding-right: 0;">
+            <span>订单号</span>
+        </div>
+        <div class="col-md-4">
+            <input id="orderNo" type="text" class="form-control" placeholder="输入订单号"/>
+        </div>
+        <div class="col-md-1 text-right" style="padding-left: 0;padding-top: 5px;">
+            <span>采购员</span>
+        </div>
+        <div class="col-md-4" style="padding-left: 0;">
+            <input id="buyer" type="text" class="form-control" placeholder="输入采购员"/>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-right" style="padding-right: 0;">
+            <span>PR号</span>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="PRNo" placeholder="输入PR编号"/>
+        </div>
+        <div class="col-md-1 text-right">
+            <span>库房</span>
+        </div>
+        <div class="col-md-4" style="padding-left: 0;">
+            <input type="text" class="form-control" id="storageNo" placeholder="输入库房"/>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-right" style="padding-right: 0;">
+            <span>供应商</span>
+        </div>
+        <div class="col-md-9">
+            <input class="form-control" type="text" id="supplier" placeholder="输入供应商"/>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-2 text-right" style="padding-right: 0;">
+            <span>是否打印过</span>
+        </div>
+        <div class="col-md-9">
+            <div class="cus-select" id="isPrint">
+                <div class="cus-select-btn"></div>
+                <input class="form-control" type="text" readonly placeholder="请选择"/>
+                <ul style="text-align: center">
+                    <li></li>
+                    <li>是</li>
+                    <li>否</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="account-company-auth" style="padding: 10px 10px;min-height: 10px;">
+                <fieldset>
+                    <legend>接受入库时间</legend>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-1 text-right" style="padding-top: 5px;">
+                        <span>起始</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" readonly id="createDateBegin"/>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 5px;padding: 0;width: 40px;">
+                        <div class="col-md-1" style="padding-left: 1px;">
+                            <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;" data-link-field="createDateBegin"
+                                  id="startDate"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-17" style="margin-bottom: 20px;">
+                    <div class="col-md-2 col-md-offset-1 text-right" style="padding-top: 5px;">
+                        <span>结束</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" readonly id="createDateEnd"/>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 5px;padding: 0;width: 40px;">
+                        <div class="col-md-1" style="padding-left: 1px;">
+                            <span class="glyphicon glyphicon-calendar dateRange" style="cursor: pointer;" data-link-field="createDateEnd"
+                                  id="endDate"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-2 col-md-offset-8">
+            <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查询</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head style="overflow-x: hidden;">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>采购申请</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="background-color: #FFFFFF;overflow-x: hidden;">
+
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <form>
+        <!--重置按钮-->
+        <input type="reset" style="display: none;">
+
+        <div class="account-nav-title bg-449dd7">
+            <span>刀具管理-采购-采购申请</span>
+            <!--隐藏页面name-->
+            <input style="display: none;" id="pageName" value="purchaseRequisition"/>
+            <!--采购申请状态 默认是采购申请add（添加）-->
+            <input type="hidden" id="purchaseState" value="add"/>
+        </div>
+
+        <div class="row account-info-list margin-top-10">
+            <div class="col-md-1 text-right" style="margin-left: 20px;">
+                <span>编号</span>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" readonly id="no"/>
+            </div>
+            <div class="col-md-1 text-right">
+                <span>类型</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" readonly id="type" value="采购申请"/>
+            </div>
+            <div class="col-md-1 text-right">
+                <span>编制人</span>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" readonly id="editPerson"/>
+            </div>
+        </div>
+
+        <div class="row account-info-list margin-top-10">
+            <div class="col-md-1 text-right" style="margin-left: 20px;">
+                <span>说明</span>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="explain"/>
+            </div>
+            <div class="col-md-1 text-right">
+                <span>状态</span>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" readonly value="需要审批" id="state"/>
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-md-1 col-md-offset-6">
+                <div class="sesol-btn txt-fff bg-449dd7" id="addTr">新增</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">删除</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="resetBtn">重置</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">保存</div>
+            </div>
+            <div class="col-md-1">
+                <div class="sesol-btn txt-fff bg-449dd7" id="approveBtn">审批</div>
+            </div>
+        </div>
+
+        <div class="row margin-top-10">
+            <div class="col-md-11" style="margin-left: 20px;">
+                <!-- 标题 -->
+                <div style="padding-right:17px;">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                        <tr>
+                            <td style="width: 7%;" bgcolor="#EFEFEF">
+                                <label class="radio-inline" style="padding-left: 0;">
+                                    <input type="checkbox" id="checkAll"/>行
+                                </label>
+                            </td>
+                            <td style="width: 10%;" bgcolor="#EFEFEF">物料</td>
+                            <td style="width: 10%;" bgcolor="#EFEFEF">品牌</td>
+                            <td style="width: 15%;" bgcolor="#EFEFEF">描述</td>
+                            <td style="width: 5%;" bgcolor="#EFEFEF">单位</td>
+                            <td style="width: 8%;" bgcolor="#EFEFEF">数量</td>
+                            <td style="width: 9%;" bgcolor="#EFEFEF">库房</td>
+                            <td style="width: 15%;" bgcolor="#EFEFEF">需求时间</td>
+                            <td style="width: 7%;" bgcolor="#EFEFEF">上月消耗</td>
+                            <td style="width: 7%;" bgcolor="#EFEFEF">当前库存</td>
+                            <td style="width: 7%;" bgcolor="#EFEFEF">全部库存</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 标题 end-->
+                <!-- 内容 -->
+                <div class="table-body">
+                    <table class="table table-bordered text-center table-hover" id="purchaseTable">
+                        <tbody>
+                        <!--<tr class="tr" style="cursor: pointer;height: 35px;">
+                            <td style="width: 7%;padding: 0;">
+                                <label class="radio-inline" style="padding-top: 5px;padding-left:0px;padding-right: 3px;">
+                                    <input class="trCheck" type="checkbox"/>
+                                    <span>1</span>
+                                    <span style="display: none">1</span>
+                                </label>
+                            </td>
+                            <td class="viewSearchBtn" style="padding: 0;width: 10%;">
+                                <span class="glyphicon glyphicon-search materialSearch" style="cursor: pointer;display: none;"/>
+                            </td>
+                            <td style="padding: 0;width: 10%;"></td>
+                            <td style="padding: 0;width: 15%;"></td>
+                            <td style="padding: 0;width: 5%;"></td>
+                            <td style="padding: 0;width: 8%;"></td>
+                            <td style="padding: 0;width: 9%;"></td>
+                            <td style="padding: 0;width: 15%;">
+                                <div class="col-md-9" style="padding: 0;">
+                                    <input class="form-control" style="padding: 0;" id="1" readonly/>
+                                </div>
+                                <div class="col-lg-3" style="padding: 0;">
+                                    <span style="margin-top: 8px;margin-left: 5px;cursor: pointer;" class="glyphicon glyphicon-calendar calendarBtn"
+                                          data-link-field="1"></span>
+                                </div>
+                            </td>
+                            <td style="padding: 0;width: 7%;"></td>
+                            <td style="padding: 0;width: 7%;"></td>
+                            <td style="padding: 0;width: 7%;"></td>
+                            &lt;!&ndash;供应商&ndash;&gt;
+                            <td style="display: none;"></td>
+                            &lt;!&ndash;目的地&ndash;&gt;
+                            <td style="display: none;"></td>
+                            &lt;!&ndash;申请人&ndash;&gt;
+                            <td style="display: none;"></td>
+                            &lt;!&ndash;行状态&ndash;&gt;
+                            <td style="display: none;"></td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 内容 end-->
+            </div>
+        </div>
+        <div class="row margin-top-10">
+            <div class="col-md-1 text-right" style="margin-left: 20px;padding-top: 5px;">
+                <span>目的地</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="destination"/>
+            </div>
+            <div class="col-md-1 col-md-offset-5 text-right" style="padding-top: 5px;">
+                <span>来源</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="source" value="供应商"/>
+            </div>
+        </div>
+        <div class="row margin-top-10" style="margin-bottom: 10px;">
+            <div class="col-md-1 text-right" style="margin-left: 20px;padding-top: 5px;">
+                <span>申请人</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="applicant"/>
+            </div>
+            <div class="col-md-1 col-md-offset-5 text-right" style="padding-top: 5px;">
+                <span>供应商</span>
+            </div>
+            <div class="col-md-2">
+                <input id="supplier" type="text" class="form-control"/>
+            </div>
+        </div>
+    </form>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

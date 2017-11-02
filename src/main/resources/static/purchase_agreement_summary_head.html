@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+    name : 郭峰
+    date : 2016/5/12
+    title: 采购协议汇总-题头
+-->
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>采购协议汇总题头</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;background-color: #FFFFFF;">
+
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span>汇总题头</span>
+        <input id="pageName" style="display: none;" value="purchaseAgreementSummaryHead"/>
+    </div>
+    <div class="row" style="padding-left: 20px;padding-right: 20px;padding-top: 10px;">
+        <div class="col-md-12">
+            <div style="padding-right: 17px;">
+                <table class="table table-bordered">
+                    <thead class="text-center">
+                    <tr bgcolor="#EFEFEF">
+                        <td style="width: 10%">订单号</td>
+                        <td style="width: 10%;">供应商</td>
+                        <td style="width: 10%;">采购员</td>
+                        <td style="width: 15%;">新建时间</td>
+                        <td style="width: 10%;">新建者</td>
+                        <td style="width: 10%;">类别</td>
+                        <td style="width: 10%;">状态</td>
+                        <td style="width: 5%;">版本</td>
+                        <td style="width: 10%;">收单方</td>
+                        <td style="width: 10%;">接受库房</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered" id="applyHeadTable">
+                    <thead class="text-center" style="display: none;">
+                    <tr bgcolor="#EFEFEF">
+                        <td style="width: 10%">订单号</td>
+                        <td style="width: 10%;">供应商</td>
+                        <td style="width: 10%;">采购员</td>
+                        <td style="width: 15%;">新建时间</td>
+                        <td style="width: 10%;">新建者</td>
+                        <td style="width: 10%;">类别</td>
+                        <td style="width: 10%;">状态</td>
+                        <td style="width: 5%;">版本</td>
+                        <td style="width: 10%;">收单方</td>
+                        <td style="width: 10%;">接受库房</td>
+                    </tr>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <div class="sesol-btn txt-fff bg-449dd7" id="row">行</div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="open">打开</div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="output">导出</div>
+        </div>
+    </div>
+
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

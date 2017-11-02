@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html style="background-color: #FFFFFF;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具管理</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <!-- endbuild:commonCss -->
+</head>
+<body style="overflow-x: hidden">
+
+<div class=" col-nopadding bg-fff  generalfont">
+    <!--页面name-->
+    <input style="display: none;" id="pageName" value="cuttoolDefinition"/>
+    <div class="fixed-div account-nav-title bg-449dd7 ">
+        <span>刀具管理-基础数据-刀具管理</span>
+    </div>
+    <div id=" basedata_tab" class="row margin-top-30">
+        <div class="col-md-12 padding-left-30">
+            <div class="row orders-search">
+                <div class="col-md-10" id="cuttool-status-bar">
+                    <input type="hidden" id="cuttool-status-bar-value" value=""/>
+                    <div class="sesol-btn order select" data="1">基础数据</div>
+                    <div class="sesol-btn order" data="2">刀具参数</div>
+                    <div class="sesol-btn order" data="3">切削参数</div>
+                    <div class="sesol-btn order" data="4">刀具位置</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------刀具定义 tab(基础数据)   div-------------------- -->
+    <div class="cuttool_tab" id="cuttool_tab1">
+        <div class="row" style="background-color:#F4F4F4;margin-left: 15px;width: 98%;float: left;
+        padding: 0px 0px 5px 8px;border:
+             1px
+             solid
+             #ccc;border-radius: 3px;">
+            <fieldset>
+                <legend style="margin-bottom: 10px;">
+                    <div style="font-size:17px ">
+                        <span>刀具基础数据</span>
+                    </div>
+                </legend>
+                <div class="col-md-12">
+                    <div class="col-nopadding col-md-1 ">
+                        <span>刀具编号</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="cuttool_id" type="text" style="display: none;"/>
+                        <input id="cuttool_no" type="text" class=" form-control">
+                    </div>
+                    <div class="col-md-1 col-nomargin-nopadding" style="width: 6%">
+                        <span>姐妹刀</span>
+                    </div>
+                    <div class="col-md-1 col-nomargin-nopadding" style="width: 8.9%;margin-right: 15px">
+                        <input type="number" min="1" id="sister_cuttool" class=" form-control control_int">
+                    </div>
+                    <div class="col-md-1">
+                        <span>条形码</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="bar_code" type="text" class="sesol-input form-control">
+                    </div>
+                    <div class="col-nopadding col-md-1">
+                        <span>特性说明</span>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="cus-select" id="characteristic_description_div">
+                            <div class="cus-select-btn"></div>
+                            <input id="characteristic_description" type="text" readonly class="form-control"/>
+                            <ul>
+                                <!--<li>粗加工</li>
+                                <li>半精加工</li>
+                                <li>精加工</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 margin-top-10">
+                    <div class="col-md-1">
+                        <span>描述</span>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="cuttool_description" type="text" class="sesol-input form-control">
+                    </div>
+                    <div class="col-md-1 col-nopadding">
+                        <span>写入时间</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="RFD_write_time" type="text" class="form-control " readonly="readonly">
+                    </div>
+                    <div class="col-nopadding col-md-1">
+                        <span>刀柄类型</span>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="cus-select" id="hand_type">
+                            <div class="cus-select-btn"></div>
+                            <input id="cuttool_handle_type" type="text" readonly class="form-control"/>
+                            <ul>
+                                <!-- <li>刀柄一</li>
+                                 <li>刀柄二</li>
+                                 <li>刀柄三</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 margin-top-10">
+                    <div class="col-nopadding col-md-1">
+                        <span> 编程直径</span>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="programming_diameter_small" type="number" min="0" step="0.000001"
+                               class="sesol-input control_int"
+                               style="width: 23%;margin: 0;"> ~ <input
+                            type="number" min="0" step="0.000001"
+                            id="programming_diameter_large" class="sesol-input control_int"
+                            style="width: 23%">
+                        <span> 编程长度</span>
+                        <input id="programming_diameter_length" type="number" min="0" step="0.000001"
+                               class="sesol-input control_int"
+                               style="width: 23%">
+                    </div>
+                    <div class="col-nopadding col-md-1">
+                        <span>寿命跟踪</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="lifetime_tracking" type="hidden" value="0"/>
+                        <input id="set_lifetime_tracking" type="checkbox"/>
+                    </div>
+                    <div class="col-nopadding col-md-1">
+                        <span>优先等级</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="priority_level" type="number" class="sesol-input control_int" value="0">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="row ">
+            <div class="row"
+                 style="background-color:#F4F4F4;margin-top:10px;margin-left: 30px;margin-bottom: 30px;;min-height:520px;width: 37%;float: left;
+                 padding: 0px 0px 5px
+                 8px;border: 1px solid #ccc;border-radius: 3px;">
+                <fieldset>
+                    <legend style="margin-bottom: 10px;">
+                        <div style="font-size:17px ">
+                            <span>几何图形</span>
+                        </div>
+                    </legend>
+                    <div class="col-md-12 col-nopadding">
+                        <div class="col-md-12 col-nopadding ">
+                            <!--查询时图片展示-->
+                            <div id="cuttool_img_div" style="width:100%;height:100%;display:none">
+                                <!--<img id="Cimg" style="height:230px;width:auto;" src="">-->
+                            </div>
+
+                            <form id="cuttool-img-upload" class="cuttool-img-upload" enctype="multipart/form-data"
+                                  method="POST"
+                                  action="/cuttool/upload">
+                                <input id="cuttoolpic" name="cuttoolpic" class="file" type="file" multiple
+                                       data-min-file-count="1">
+                                <!-- Name: <input id="cuttoolpicname" name="name" type="text">
+                                在fileinput.js 264行加入一个隐藏文本域记录图片名称  去除269{upload}-->
+                                <div id="delete_img_div" class="col-md-4" style=" display: none">
+                                    <div class="sesol-btn txt-fff " id="deleteImg"
+                                         style="width:92px;height:34px; background-color: #337ab7;">删除
+                                    </div>
+                                </div>
+                            </form>
+                            <!--<div id="delete_img_div" class="col-md-2 col-nomargin-nopadding margin-top-5"  style="width:92px; display: none">
+                                <div class="sesol-btn txt-fff " id="deleteImg" style="background-color: #428bca;">图片删除</div>
+                            </div>-->
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row"
+                 style="background-color:#F4F4F4;margin-top:10px;margin-left: 30px;min-height:520px;width: 30%;float: left;
+                 padding: 0px 0px 5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+                <fieldset>
+                    <legend style="margin-bottom: 10px;">
+                        <div style="font-size:17px ">
+                            <span>分类</span>
+                        </div>
+                    </legend>
+                    <div class="col-md-12">
+                        <div class="col-md-2 col-nomargin-nopadding">
+                            <span>功能</span>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="cus-select" id="cuttool_function">
+                                <div class="cus-select-btn"></div>
+                                <input id="function" type="text" readonly/>
+                                <ul>
+                                    <!--<li>功能一</li>
+                                    <li>功能二</li>
+                                    <li>功能三</li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="funtion_pic" class="col-md-12 margin-top-10 ">
+                        <img src="img/icon/blank_tip.jpg" alt="" class="img-thumbnail"
+                             style="width:290px;max-height: 160px">
+                    </div>
+                    <div class="col-md-12 margin-top-10">
+                        <div class="col-md-2 col-nomargin-nopadding">
+                            <span>类型</span>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="cus-select" id="cuttool_type">
+                                <div class="cus-select-btn"></div>
+                                <input id="type" type="text" readonly/>
+                                <input id="typeId" type="text" style="display:none;"/>
+                                <ul>
+                                    <!-- <li>类型一</li>
+                                     <li>类型二</li>
+                                     <li>类型三</li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="type_pic" class="col-md-12 margin-top-10">
+                        <img src="img/icon/blank_tip.jpg" alt="" class="img-thumbnail"
+                             style="width:290px;max-height: 160px">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row"
+                 style="background-color:#F4F4F4;margin-top:10px;margin-left: 30px;min-height:520px;width: 25%;float: left;
+                 padding: 0px 0px 5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+                <fieldset>
+                    <legend style="margin-bottom: 10px;">
+                        <div style="font-size:17px ">
+                            <span>状态/寿命</span>
+                        </div>
+                    </legend>
+                    <div class="col-md-12">
+
+                        <div id="status_select" class="col-md-8 col-nomargin-nopadding">
+                            <input id="using_status" type="hidden" value="0"/>
+                            <div class="col-md-4">
+                                <span>新</span>
+                            </div>
+                            <div id="new-check" class="col-md-1 col-nomargin-nopadding">
+                                <input checked type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            </div>
+                            <div class="col-md-4 ">
+                                <span>旧</span>
+                            </div>
+                            <div id="old-check" class="col-md-1 col-nomargin-nopadding">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 margin-center col-nopadding  ">
+                            <span>报废</span>
+                        </div>
+                        <div id="scrap_status" class="col-md-1 col-nomargin-nopadding ">
+                            <input id="isScrap" type="hidden" value="0"/>
+                            <input id="set_isScrap" disabled type="checkbox"/>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 margin-top-5">
+                        <legend>
+                            <div style="font-size:13px ">
+                                <span>状态描述</span>
+                            </div>
+                        </legend>
+                        <div class="col-md-12 margin--top-5">
+                            <textarea id="status_description" class="sesol-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 margin-top-5">
+                        <legend>
+                            <div style="font-size:13px ">
+                                <span>初始寿命(min)</span>
+                            </div>
+                        </legend>
+                        <div class="col-md-12 margin--top-5">
+                            <input id="initial_lifetime" min="0" type="number" class="sesol-input control_int">
+                        </div>
+                    </div>
+                    <div class="col-md-12 margin-top-5">
+                        <legend>
+                            <div style="font-size:13px ">
+                                <span>报警值(min)</span>
+                            </div>
+                        </legend>
+                        <div class="col-md-12 margin--top-5">
+                            <input id="lifeAlarm" min="0" type="number" class="sesol-input control_int">
+                        </div>
+                    </div>
+                    <div class="col-md-12 margin-top-20">
+                        <div class="col-md-4 col-nomargin-nopadding">累计换刃</div>
+                        <div class="col-md-8 ">
+                            <div class="progress">
+                                <div id="amount_change_edge" class="progress-bar progress-bar-info progress-bar-striped"
+                                     role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    <!--<span class="sr-only">20% Complete</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 margin-top-5">
+                        <legend>
+                            <div style="font-size:13px ">
+                                <span>累计加工时间(min)</span>
+                            </div>
+                        </legend>
+                        <div class="col-md-12 margin--top-5">
+                            <div class="col-md-12  col-nomargin-nopadding">
+                                <div class="progress">
+                                    <div id="amount_processing_time"
+                                         class="progress-bar progress-bar-danger progress-bar-striped"
+                                         role="progressbar"
+                                         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        <span class="sr-only">80</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 margin-top-5">
+                        <legend>
+                            <div style="font-size:13px ">
+                                <span>残余寿命</span>
+                            </div>
+                        </legend>
+                        <div class="col-md-12 margin--top-5">
+                            <input id="surplus_lifetime" min="0" type="number" class="sesol-input control_int">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------刀具定义 tab(刀具装配/寿命)   div-------------------- -->
+    <div class="cuttool_tab" id="cuttool_tab2" style="display:none;">
+        <div class="row padding-top-10">
+            <div class="col-md-1"></div>
+            <div class="col-md-1 col-nopadding" style="padding-top: 7px;">
+                <span>刀具编码</span>
+            </div>
+            <div class="col-md-2">
+                <input id="tab2_cuttool_no" class="form-control" readonly="readonly"/>
+            </div>
+            <div class="col-md-1 col-nopadding" style="padding-top: 7px;">
+                <span>刀具描述</span>
+            </div>
+            <div class="col-md-2">
+                <input id="tab2_cuttool_description" class="form-control" readonly="readonly"/>
+            </div>
+            <div class="col-md-2 text-right" style="padding-top: 7px;">
+                <span>初次装配时间</span><span class="glyphicon glyphicon-calendar dateRange"
+                                         style="cursor:pointer;margin-left: 7px"
+                                         data-link-field="first_assemble_time"
+                                         id="first_assemble_time_span"/>
+            </div>
+            <div class="col-md-2">
+
+                <input id="first_assemble_time" class="form-control" style="width: 95%"/>
+
+            </div>
+            <div class="col-md-1" style="padding-left: 0px;padding-right: 30px">
+                <div class="sesol-btn txt-fff bg-449dd7" id="delete_all">清空
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-right: 30px;padding-left: 30px">
+            <input style="display: none;" id="flag"/>
+            <table id="tab2_material_table" class="table table-bordered  table-hover col-md-8"
+                   style="width: 100%; margin-top: 8px;">
+                <thead>
+                <tr>
+                    <th style="width: 5%;text-align: center;">序号</th>
+                    <th style="width: 15%;text-align: center">物料
+                        <div class="cuttool_tab2_table_add" style="width: 10%;margin-right:5px;float: right;">
+                            <a id="cuttool_tab2_table_add_a" style="cursor: pointer;">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </div>
+                    </th>
+                    <th style="width: 15%;text-align: center" colspan="8">描述</th>
+                    <th style="width: 8%;text-align: center;">数量</th>
+                    <th style="width: 5%;text-align: center">单位</th>
+                    <th style="width: 8%;text-align: center">易消耗</th>
+                    <th style="width: 8%;text-align: center">切削主体</th>
+                    <th style="width: 8%;text-align: center;">编码主体</th>
+                    <th style="width: 8%;text-align: center">品牌</th>
+                    <th style="width: 15%;text-align: center">日期</th>
+                    <th style="width: 5%;text-align: center">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="sesol-btn txt-fff bg-449dd7" style="display: none;width: 120px;" id="cAssemblyMsg">保存表格数据测试</div>
+
+        <!--物料参数内容-->
+        <div class="row">
+            <div class="col-md-10 "
+                 style="border: 1px solid #ccc;border-radius: 3px;background-color: #ffffff;width: 95%;margin-left: 30px;min-height: 480px">
+                <fieldset>
+                    <legend style="font-size: 18px;margin-bottom: 10px;">配件参数</legend>
+                    <div class="row">
+                        <div class="col-md-1" style="padding-top: 5px;text-align: right;">
+                            <span>类型</span>
+                        </div>
+                        <div class="col-md-2" style="width: 150px;">
+                            <input id="tab2_materialtype" class="form-control" readonly="readonly"/>
+                        </div>
+                        <div class="col-md-2" style="padding-top: 8px;text-align: right;width: 120px;">
+                            <span>累计加工时间</span>
+                        </div>
+                        <div class="col-md-1" style="width: 100px;">
+                            <input class="form-control" readonly="readonly"/>
+                        </div>
+                        <div class="col-md-1" style="padding-top: 8px;text-align: right;width: 100px;">
+                            <span>累计件数</span>
+                        </div>
+                        <div class="col-md-1" style="width: 100px;">
+                            <input class="form-control" readonly="readonly"/>
+                        </div>
+                        <div class="col-md-2" style="padding-top: 8px;text-align: right;width: 140px;">
+                            <span>单件寿命/MIN</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input class="form-control" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-6">
+                            <div style="border: 1px solid #ccc;border-radius: 3px;min-height: 370px;background-color: #f1f1f1">
+                                <fieldset>
+                                    <legend style="margin-left:5px;font-size: 17px;">示意图</legend>
+                                    <div id="tab2_type_pic">
+                                        <!--<img src="img/factory_class_3.png" style="width: 360px;height: 260px;"/>-->
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="border: 1px solid #ccc;border-radius: 3px;min-height: 370px;background-color: #f1f1f1">
+                                <fieldset>
+                                    <legend style="margin-left:5px;font-size: 17px;">参数</legend>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center">参数名</th>
+                                            <th style="text-align: center">参数值</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tab2_CTypeTable">
+                                        <!-- <tr>
+                                             <td style="text-align: center">111</td>
+                                             <td style="text-align: center">aaa</td>
+                                         </tr>
+                                         <tr>
+                                             <td style="text-align: center">222</td>
+                                             <td style="text-align: center">bbb</td>
+                                         </tr>-->
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------刀具定义 tab(切削参数)   div-------------------- -->
+    <div class="cuttool_tab" id="cuttool_tab3" style="display: none; ">
+        <div class="row text-center">
+            <div id="testgetvalue" style="display:none;width: 50px">savetest</div>
+            <span class="col-md-2 col-md-offset-3 text-center margin-top-10">功能</span>
+            <div class="col-md-2">
+                <input id="tab3_function" class="col-md-12 form-control " readonly="readonly"/>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-5 col-md-offset-3">
+                <div id="par_div_left" class="account-company-auth frame-block " style="min-height: 400px">
+                    <fieldset>
+                        <legend>参数</legend>
+                        <table class="table table-bordered">
+                            <thead>
+                            </thead>
+                            <tbody id="tab3_funPars">
+                            </tbody>
+                        </table>
+                        <!--<table class="table table-bordered">
+                            <thead>
+                            </thead>
+                            <tbody id="tab3_funPars">
+                                <tr><td>222</td><td>111s</td></tr>
+                            </tbody>
+                        </table>-->
+                        <!--<div class="row" style="padding-left: 30px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">每切削刃进给(fz)</span>
+                            <input class="col-md-4 text-left"/>
+                            <span class="col-md-2">mm</span>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">最大切削次数(hex)</span>
+                            <input class="col-md-4"/>
+                            <span class="col-md-2">mm</span>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">主切削刃角(kr)</span>
+                            <input class="col-md-4"/>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">有效刃数(zc)</span>
+                            <input class="col-md-4"/>
+                            <span class="col-md-2">件</span>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">轴向切削深度(ap)</span>
+                            <input class="col-md-4"/>
+                            <span class="col-md-2">mm</span>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">径向切削深度(ae)</span>
+                            <input class="col-md-4"/>
+                            <span class="col-md-2">mm</span>
+                        </div>
+                        <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                            <span class="col-md-5" style="padding-right: 0;padding-top: 3px">径向切削起始值(aei)</span>
+                            <input class="col-md-4"/>
+                            <span class="col-md-2">mm</span>
+                        </div>-->
+                    </fieldset>
+                </div>
+            </div>
+            <!--   <div class="col-md-5 " style="margin-left: 30px;margin-bottom: 30px">
+                  <div id="par_div_right" class="account-company-auth frame-block" style="min-height: 400px">
+                      <fieldset>
+                          <legend>推荐切削参数</legend>
+                         <div class="row" style="padding-left: 30px;">
+                              <span class="col-md-5 " style="padding-right: 0;padding-top: 3px">切削速度(vc)</span>
+                              <input class="col-md-4"/>
+                              <span class="col-md-2">m/min</span>
+                          </div>
+                          <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                              <span class="col-md-5" style="padding-right: 0;padding-top: 3px">主轴转速(n)</span>
+                              <input class="col-md-4"/>
+                              <span class="col-md-2">n/min</span>
+                          </div>
+                          <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                              <span class="col-md-5" style="padding-right: 0;padding-top: 3px">进给速度(vf)</span>
+                              <input class="col-md-4"/>
+                              <span class="col-md-2">mm/min</span>
+                          </div>
+                          <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                              <span class="col-md-5" style="padding-right: 0;padding-top: 3px">切削功率(p)</span>
+                              <input class="col-md-4"/>
+                              <span class="col-md-2">kw</span>
+                          </div>
+                          <div class="row" style="padding-left: 30px;margin-top: 10px;">
+                              <span class="col-md-5" style="padding-right: 0;padding-top: 3px">切削力距(mc)</span>
+                              <input class="col-md-4"/>
+                              <span class="col-md-2">N.M</span>
+                          </div>
+                          <div style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                              <div class="account-company-auth" style="height: 250px;background-color: #ffffb5;">
+                                  <div class="row margin-top-10" style="margin-left: 20px;">
+                                      <span style="font-size: 17px;font-weight: bold;">计算主轴速度(n)</span>
+                                  </div>
+                                  <div class="row account-company-auth margin-top-10"
+                                       style="background-color: #ffffff;margin-left: 25px;height:65px;width:
+                                      250px;">
+                                      <div class="row">
+                                          <span style="margin-left: 90px;">
+                                              V<sub>c</sub>X1000
+                                          </span>
+                                      </div>
+                                      <div class="row">
+                                          <span class="col-md-1">n</span>
+                                          <span class="col-md-2">=</span>
+
+                                          <div class="col-md-1 class-split" style="width: 100px;text-align: center;padding: 0;height: 10px;"></div>
+                                      </div>
+                                      <div class="row">
+                                          <span class="col-md-4" style="padding-left: 100px;">πXD<sub>c</sub></span>
+                                      </div>
+                                  </div>
+                                  <div class="row margin-top-10" style="margin-left: 20px;">
+                                      <span style="font-size: 17px;font-weight: bold;">计算工作台进给量(V<sub>f</sub>)</span>
+                                  </div>
+                                  <div class="row account-company-auth margin-top-10"
+                                       style="background-color: #ffffff;margin-left: 25px;height:40px;width:
+                                       250px;padding-top: 10px;padding-left: 70px;">
+                                      <span>
+                                          V<sub>f</sub>=
+                                          Z<sub>n</sub>X
+                                          nxf<sub>z</sub>
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </fieldset>
+                  </div>
+              </div>-->
+
+        </div>
+    </div>
+    <!-- -------------------刀具定义 tab(刀具位置)   div-------------------- -->
+    <div class="cuttool_tab bg-fff" id="cuttool_tab4" style="display: none">
+        <div class=" generalfont ">
+            <div class="row  margin-top-20 ">
+                <div class="col-md-2 text-right margin-top-5">
+                    <span>刀具编号</span>
+                </div>
+                <div class="col-md-3">
+                    <input id="tab4_cuttool_no" type="text" class="form-control " readonly="readonly">
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1  text-center  margin-top-5" style="margin-left: 40px">
+                    <span>描述</span>
+                </div>
+                <div class="col-md-3">
+                    <input id="tab4_cuttool_description" type="text" class="form-control " readonly="readonly">
+                </div>
+
+            </div>
+            <div class="row  margin-top-10">
+                <div class="col-md-6" style="width:45%;">
+                    <div class="row"
+                         style="background-color:#F4F4F4;margin-top:20px;margin-left: 50px;min-height:450px;width: 95%;float: left; padding: 0px
+                         0px 5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+                        <fieldset>
+                            <legend>
+                                <div style="font-size:17px ">
+                                    <span>库里</span>
+                                </div>
+                            </legend>
+                            <div class="col-md-12 ">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>库房号</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>库房号</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>货位号</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>地址</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-6" style="width:45%;">
+                    <div class="row"
+                         style="background-color:#F4F4F4;margin-top:20px;margin-left: 50px;min-height:450px;width: 95%;float: left; padding: 0px
+                         0px 5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+                        <fieldset>
+                            <legend>
+                                <div style="font-size:17px ">
+                                    <span>在外</span>
+                                </div>
+                            </legend>
+                            <div class="col-md-12 ">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>生产线</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>机床</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>刀库号</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>人员</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="col-md-3 text-center margin-top-5">
+                                    <span>缓存工位</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " readonly="readonly">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------底部按钮-------------------->
+    <div class="col-md-12 margin-top-5">
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="btn_cuttool_team">刀具组
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="saveBtn">保存</div>
+        </div>
+        <div class="col-md-1">
+            <div class="sesol-btn txt-fff bg-449dd7" id="deleteBtn">删除</div>
+        </div>
+        <div class="col-md-1">
+            <div class="sesol-btn txt-fff bg-449dd7" id="btn_cuttool_search">查找
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="writeRFID">写入RFID
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="readRFID">读取RFID
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="duquduidaoyi">读取对刀仪
+            </div>
+            <span id="returnMsg" style="display: none;"></span>
+            <span id="getCutTool" style="display: none;"></span>
+        </div>
+    </div>
+
+
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

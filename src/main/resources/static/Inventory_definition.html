@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+    name :郭峰
+    date :2017/09/27
+    title:盘库定义
+-->
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>盘库定义</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-盘点-盘库定义</span>
+        <input type="hidden" id="Inventory_id">
+    </div>
+    <div class="row margin-top-5">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="account-company-auth frame-block" style="padding:1px;padding-bottom:10px;margin:1px;">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span style="color:red;">*</span>名称
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Inventory_name">
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" style="width:100%;" id="select" class="btn btn-info">查找</button>
+                            </div>
+                        </div>
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span>说明</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="Inventory_explain">
+                            </div>
+                        </div>
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span>日期</span>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Inventory_date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-5 account-info-list margin-top-1"
+                         style="height:190px;background-color:#F4F4F4;margin-left:30px;float:left;
+                                padding:0px 0px 5px 8px;border:1px solid #ccc;border-radius:3px;">
+                        <fieldset>
+                            <legend style="margin-bottom:2px;">
+                                <div style="font-size:14px ">
+                                    <span>盘点子库存</span>
+                                </div>
+                            </legend>
+                            <div class="col-md-12"style="padding:0;margin-top:-4px;">
+                                <div class="col-md-6 form-inline">
+                                    <div class="form-group">
+                                        <input type="radio" class="radio" value="全部" name="radio_name">全部
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-inline">
+                                    <div class="form-group">
+                                        <input type="radio" class="radio" value="待定" checked name="radio_name">待定
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0;margin-top:20px;">
+                                <div class="table-body" style="height:120px;">
+                                    <table class="table table-bordered text-center table-hover" id="zkc_table">
+                                        <tbody style="background:#FFFFFF"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-5 account-info-list margin-top-1"
+                         style="height:190px;background-color:#F4F4F4;margin-left:30px;float:left;
+                                padding:0px 0px 5px 8px;border:1px solid #ccc;border-radius:3px;">
+                        <fieldset>
+                            <legend style="margin-bottom:2px;">
+                                <div style="font-size:14px ">
+                                    <span>审批</span>
+                                </div>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-3 text-right col-nopadding">审批控制</div>
+                                <div class="col-md-8">
+                                    <div class="cus-select" id="type_state">
+                                        <div class="cus-select-btn"></div>
+                                        <input id="approval_control" type="text" readonly class="form-control">
+                                        <ul style="text-align: center; display: none;">
+                                            <li>超出允差</li>
+                                            <li>从不</li>
+                                            <li>总是</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-4"><div style="margin-left:40%;">+</div></div>
+                                <div class="col-md-4"><div style="margin-left:40%;">-</div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-right col-nopadding">数量(%)</div>
+                                <div class="col-md-4"><input type="number" min="0" class="form-control" id="number_just"></div>
+                                <div class="col-md-4"><input type="number" min="0" class="form-control" id="number_negative"></div>
+                            </div>
+                            <div class="row account-info-list">
+                                <div class="col-md-3 text-right col-nopadding">值</div>
+                                <div class="col-md-4"><input type="number" min="0" class="form-control" id="value_just"></div>
+                                <div class="col-md-4"><input type="number" min="0" class="form-control" id="value_negative"></div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row margin-top-20">
+                    <div class="col-md-5 account-info-list margin-top-1"
+                         style="height:150px;background-color:#F4F4F4;margin-left:30px;float:left;
+                                padding:0px 0px 5px 8px;border:1px solid #ccc;border-radius:3px;">
+                        <fieldset>
+                            <legend style="margin-bottom:2px;">
+                                <div style="font-size:14px ">
+                                    <span>状态</span>
+                                </div>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="col-md-1" style="margin-top:7px;">
+                                        <input type="checkbox" id="snapshot_type" disabled class="checkbox disabled">
+                                    </div>
+                                    <div class="col-md-10">完成快照</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="col-md-1" style="margin-top:7px;">
+                                        <input type="checkbox" id="adjustment_type" disabled class="checkbox disabled">
+                                    </div>
+                                    <div class="col-md-10">已传送调整</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-3 text-right col-nopadding">快照日期</div>
+                                    <div class="col-md-8">
+                                        <input type="text" id="snapshot_date" readonly class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-5 margin-top-20">
+                        <div class="col-md-12" style="margin:0;padding:0;">
+                            <div class="col-md-1">
+                                <input type="checkbox" id="dynamic_label" val="1" checked>
+                            </div>
+                            <div class="col-md-10">允许动态使用标签</div>
+                        </div>
+                        <div class="col-md-6 account-info-list">
+                            <button type="button" style="width:100%;" class="btn btn-info" id="cancelSignBtn">取消货签</button>
+                        </div>
+                        <div class="col-md-6 account-info-list">
+                            <button type="button" style="width:100%;margin-left:48%;" class="btn btn-info" id="cancelInventoryBtn">取消盘点</button>
+                        </div>
+                        <div class="col-md-6 account-info-list">
+                            <button type="button" style="width:100%;" class="btn btn-info" id="saveBtn">保存</button>
+                        </div>
+                        <div class="col-md-6 account-info-list">
+                            <button type="button" style="width:100%;margin-left:48%;" class="btn btn-info" id="photographBtn">拍照</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

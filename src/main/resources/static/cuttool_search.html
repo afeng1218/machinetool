@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具查询</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <!-- endbuild:commonCss -->
+</head>
+<body>
+<div class=" generalfont bg-fff col-nopadding">
+    <input style="display: none;" id="pageName" value="cuttoolSearch"/>
+    <!--定时任务click事件-->
+    <input style="display: none;" type="button" id="timeOutClose"/>
+    <div class="account-nav-title bg-a9a9a9 ">
+        <span>刀具查询</span>
+    </div>
+    <div class="col-md-12 font-size-15">
+        <div class="col-md-12 margin-top-20">
+            <div class="col-md-2 text-center margin-top-5">
+                <span>刀具编号</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_cuttool_no" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>描述</span>
+            </div>
+
+            <div class="col-md-6">
+                <input id="cx_cuttool_description" type="text" class="form-control " readonly="readonly">
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-20">
+            <div class="col-md-2 text-center margin-top-5">
+                <span>直径</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_programming_diameter_small" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>~</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_programming_diameter_large" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>长度</span>
+            </div>
+            <div class="col-md-2">
+                <input id="cx_programming_diameter_length" type="text" class="sesol-input">
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-20">
+            <div class="col-md-2 text-center margin-top-5">
+                <span>刃数</span>
+            </div>
+            <div class="col-md-2">
+                <input id="cx_renshu" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>是否报废</span>
+            </div>
+            <div class="col-md-2">
+                <div class="cus-select" id="cutooolsearch_isScrap">
+                    <div class="cus-select-btn"></div>
+                    <input id="cx_isScrap" type="text" readonly/>
+                    <ul>
+                        <li>是</li>
+                        <li>否</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>特性说明</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_characteristic_description" type="text" class="sesol-input">
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-20">
+            <div class="col-md-2 text-center margin-top-5">
+                <span>是否启用</span>
+            </div>
+            <div class="col-md-2">
+                <div class="cus-select" id="cutooolsearch_isEnable">
+                    <div class="cus-select-btn"></div>
+                    <input id="cx_isEnable" type="text" readonly/>
+                    <ul>
+                        <li>是</li>
+                        <li>否</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>残余寿命</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_surplus_lifetime_from" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-2 text-center margin-top-5">
+                <span>至</span>
+            </div>
+
+            <div class="col-md-2">
+                <input id="cx_surplus_lifetime_to" type="text" class="sesol-input">
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-20">
+            <div class="col-md-2 text-center margin-top-5">
+                <span>组织物料</span>
+            </div>
+            <div class="col-md-4">
+                <input id="cx_org_materials" type="text" class="sesol-input">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control " readonly="readonly">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row"
+             style="background-color:#F4F4F4;margin-top:20px;margin-left: 30px;margin-bottom:20px;min-height:250px;width: 95%;float: left;
+                     padding: 0px 0px
+                     5px 8px;border: 1px solid #ccc;border-radius: 3px;">
+            <fieldset>
+                <legend>
+                    <div style="font-size:17px ">
+                        <span>分类</span>
+                    </div>
+                </legend>
+            </fieldset>
+            <div class="col-md-12 font-size-15">
+                <div class="col-md-1 col-md-offset-1 text-center margin-top-5">
+                    <span>功能</span>
+                </div>
+                <div class="col-md-4">
+                    <div class="cus-select" id="cx_cuttool_function">
+                        <div class="cus-select-btn"></div>
+                        <input id="cx_function" type="text" readonly/>
+                        <ul>
+                            <!-- <li>功能一</li>
+                             <li>功能二</li>
+                             <li>功能三</li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center margin-top-5">
+                    <span>类型</span>
+                </div>
+                <div class="col-md-4">
+                    <div class="cus-select" id="cx_cuttool_type">
+                        <div class="cus-select-btn"></div>
+                        <input id="cx_type" type="text" readonly/>
+                        <ul>
+                            <!-- <li>类型一</li>
+                             <li>类型二</li>
+                             <li>类型三</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 margin-top-20">
+                <div id="search_fun_img" class="col-md-6 text-right">
+                </div>
+                <div id="search_type_img" class="col-md-6" style="padding-left: 50px;">
+                </div>
+            </div>
+            <div class="col-md-12 margin-top-20 " style="margin-bottom: 30px">
+                <div class="col-md-10 ">
+                </div>
+                <div class="col-md-2">
+                    <div class="sesol-btn txt-fff bg-449dd7" id="cuttoolSearchBtn">查询
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

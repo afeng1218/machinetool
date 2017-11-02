@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--
+    name :郭峰
+    date :2017/09/12
+    title:工艺加工
+-->
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>工艺加工</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+    <!--页面name-->
+    <div class="account-nav-title bg-449dd7 print">
+        <span>刀具管理-基础数据-工艺加工</span>
+    </div>
+    <!-- 文本框 -->
+    <div class="row margin-top-10 print" style="margin-left:0px;">
+        <div class="col-md-12 form-inline">
+            <div class="form-group">
+                <label>物料:</label>
+                <div class="input-group" style="width:165px;">
+                    <input type="hidden" id="wl_id">
+                    <input id="wl_code" type="text" readonly="readonly" class="form-control"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="wl_button" type="button">选择</button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>物料描述:</label>
+                <input type="text" style="width:195px;" class="form-control" id="wl_miaoshu" readonly>
+            </div>
+            <div class="form-group">
+                <label>版本号:</label>
+                <input type="number" style="width:65px;" class="form-control" id="wl_banben" value="101">
+            </div>
+            <div class="form-group">
+                <label>状态:</label>
+                <input type="text" style="width:70px;" class="form-control" id="wl_type" value="未审批" readonly>
+            </div>
+            <div class="form-group">
+                <button type="button" id="saveBtn" class="btn btn-info">保存</button>
+            </div>
+            <div class="form-group">
+                <button type="button" id="removeBtn" class="btn btn-info">删除</button>
+            </div>
+            <div class="form-group">
+                <button type="button" id="approveBtn" class="btn btn-info">审批</button>
+            </div>
+            <div class="form-group">
+                <button type="button" id="printBtn" class="btn btn-info">打印</button>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-10" style="margin-left:-5px;">
+        <div class="col-md-12">
+            <div style="padding-right:17px;">
+                <!-- 标题 -->
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center" style="width:5%;" bgcolor="#EFEFEF">
+                            <span style="cursor:pointer;"class="glyphicon glyphicon-plus" id="addRow"></span>
+                        </th>
+                        <th class="text-center" style="width:10%;" bgcolor="#EFEFEF">工序号</th>
+                        <th class="text-center" style="width:15%;" bgcolor="#EFEFEF">工序名称</th>
+                        <th class="text-center" style="width:30%;" bgcolor="#EFEFEF">工序描述</th>
+                        <th class="text-center" style="width:15%;" bgcolor="#EFEFEF">程序名</th>
+                        <th class="text-center" style="width:15%;" bgcolor="#EFEFEF">设备</th>
+                        <th class="text-center" style="width:3%;" bgcolor="#EFEFEF"></th>
+                    </tr>
+                </table>
+                <!-- 标题 end -->
+            </div>
+            <!-- 内容 -->
+            <div class="table-body autoName">
+                <table class="table table-bordered text-center table-hover" style="margin-top:1px;" id="gyTable">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- 内容 end -->
+        </div>
+    </div>
+    <!-- 工艺卡片 -->
+    <div class="row margin-top-10" style="margin-left:5px;">
+        <table style="width:98%;text-align:center;" border="1">
+            <tr style="height:25px;">
+                <td style="width:80px;min-width:80px;margin:0;padding:0;">工件名称</td>
+                <td style="width:120px;min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="process_name"></td>
+                <td style="width:80px;min-width:80px;margin:0;padding:0;">材料</td>
+                <td style="width:120px;min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="material"></td>
+                <td style="width:100px;min-width:100px;margin:0;padding:0;">机床型号</td>
+                <td style="width:120px;min-width:120px;;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="equipment"></td>
+                <td style="width:200px;min-width:200px;font-size:18px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" rowspan="2"
+                    colspan="4" type="text" class="input" id="title_name">沈阳工学院</td>
+            </tr>
+            <tr style="height:25px;">
+                <td style="width:80px;min-width:80px;margin:0;padding:0;">工件图号</td>
+                <td style="width:120px;min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="map_no"></td>
+                <td style="width:80px;min-width:80px;margin:0;padding:0;">硬度</td>
+                <td style="width:120px;min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="number" class="input"
+                    id="hardness">0</td>
+                <td style="width:100px;min-width:100px;margin:0;padding:0;">刀架类型</td>
+                <td style="width:120px;min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="tool_carrier"></td>
+            </tr>
+            <tr style="height:25px;">
+                <td style="min-width:200px;margin:0;padding:0;" colspan="2">工序加工简图</td>
+                <td style="min-width:80px;margin:0;padding:0;">装卡方式</td>
+                <td style="min-width:120px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" colspan="3" type="text" class="input"
+                    id="pretend_card"></td>
+                <td style="width:100px;min-width:100px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="program_name"></td>
+                <td style="min-width:50px;margin:0;padding:0;">工序号</td>
+                <td style="width:70px;min-width:70px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="number" class="input" id="process_number"></td>
+                <td style="width:70px;min-width:70px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input" id="order_val"></td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;">设计</td>
+                <td colspan="11" rowspan="6" style="height:350px;padding:0;margin:0;">
+                    <form id="process_diagram_form" enctype="multipart/form-data">
+                        <div id="images_" class="col-md-12 account-info-list" style="padding:0;margin-top:1%;">
+                            <fieldset>
+                                <div id="materialParDiv" class="col-md-12 col-nopadding">
+                                    <div class="col-md-12 col-nopadding ">
+                                        <input id="process_diagram" name="process_diagram" class="file" type="file" data-show-caption="false">
+                                        <input id="id" name="id" type="hidden"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;;height:25px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="designer"></td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;">日期</td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;height:25px;margin:0;padding:0;word-wrap:break-word;word-break:break-all;" type="text" class="input"
+                    id="design_date"></td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;">符合说明</td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;height:250px;word-wrap:break-word;word-break:break-all;">
+                    <img src="img/gyjgfhsm.png">
+                </td>
+            </tr>
+            <tr style="height:25px">
+                <td style="min-width:80px;">附件说明</td>
+                <td style="margin:0;padding:0;" colspan="11" align="left" type="text" class="input" id="attachment_description"></td>
+            </tr>
+            <tr>
+                <td colspan="12" style="margin:0;padding:0;" valign="top">
+                    <div class="col-md-12">
+                        <div style="padding-right:17px;margin-top: 2px;">
+                            <!-- 标题 -->
+                            <table class="table table-bordered" style="font-size:12px;">
+                                <tr>
+                                    <th class="text-center" style="width:5%;">
+                                        <span style="cursor:pointer;"class="glyphicon glyphicon-plus" id="addDj"></span>
+                                    </th>
+                                    <th class="text-center" style="width:9%;">刀具编号</th>
+                                    <th class="text-center" style="width:9%;">实际刀具编号</th>
+                                    <th class="text-center" style="width:14%;">加工过程描述</th>
+                                    <th class="text-center" style="width:9%;">切削直径mm/max</th>
+                                    <th class="text-center" style="width:9%;">切削直径mm/min</th>
+                                    <th class="text-center" style="width:9%;">切削速度m/min</th>
+                                    <th class="text-center" style="width:9%;">主轴转速r/min</th>
+                                    <th class="text-center" style="width:9%;">切削深度mm</th>
+                                    <th class="text-center" style="width:9%;">进给量mm/r</th>
+                                    <th class="text-center" style="width:6%;">时间(s)</th>
+                                    <th class="text-center" style="width:4%;"></th>
+                                </tr>
+                            </table>
+                            <!-- 标题 end -->
+                        </div>
+                        <!-- 内容 -->
+                        <div class="table-body autoName">
+                            <table class="table table-bordered text-center table-hover" style="font-size:11px;margin-top:1px;" id="djTable">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <!-- 内容 end -->
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 25px;">
+                <td colspan="12" align="left">
+                    刀具清单：
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12" style="margin:0;padding:0;" valign="top">
+                    <div class="col-md-12">
+                        <div style="padding-right:17px;margin-top: 2px;">
+                            <!-- 标题 -->
+                            <table class="table table-bordered" style="font-size:12px;">
+                                <tr>
+                                    <th class="text-center" style="width:5%;">序号</th>
+                                    <th class="text-center" style="width:10%;">刀号</th>
+                                    <th class="text-center" style="width:10%;">刀具编码</th>
+                                    <th class="text-center" style="width:10%;">刀具描述</th>
+                                    <th class="text-center" style="width:10%;">子物料</th>
+                                    <th class="text-center" style="width:10%;">物料描述</th>
+                                    <th class="text-center" style="width:10%;">数量</th>
+                                </tr>
+                            </table>
+                            <!-- 标题 end -->
+                        </div>
+                        <!-- 内容 -->
+                        <div class="table-body autoName">
+                            <table class="table table-bordered text-center table-hover" style="font-size:11px;margin-top:1px;" id="djTableQd">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <!-- 内容 end -->
+                        <div style="height:2px;"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

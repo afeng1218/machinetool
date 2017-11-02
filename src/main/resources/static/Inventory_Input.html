@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+    name :郭峰
+    date :2017/09/28
+    title:盘点录入
+-->
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>盘点录入</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-盘点-盘点录入</span>
+    </div>
+    <div class="row margin-top-5">
+        <div class="row account-info-list" style="padding:0;">
+            <div class="col-md-2 text-right col-nopadding">物料盘库记录名称</div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="hidden" id="Inventory_id">
+                    <input type="hidden" id="adjustment_type">
+                    <input type="text" readonly id="Inventory_name" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="select" type="button">选择</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-1 text-right col-nopadding">描述</div>
+            <div class="col-md-5">
+                <input type="text" readonly id="Inventory_explain" class="form-control">
+            </div>
+        </div>
+        <div class="row account-info-list">
+            <div class="col-md-2 text-right col-nopadding">冻结日期</div>
+            <div class="col-md-3">
+                <input type="text" readonly id="snapshot_date" class="form-control">
+            </div>
+            <div class="col-md-1 text-right col-nopadding">默认盘点人</div>
+            <div class="col-md-2">
+                <input type="text" id="Inventory_user" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button type="button" style="width:40%;margin-left:15%;" id="selectList" class="btn btn-info">查找</button>
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-5">
+            <div style="padding-right:17px;">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center" style="width:6%;">货签
+                            <span style="cursor:pointer;display:none;"class="glyphicon glyphicon-plus" id="addRow"></span>
+                        </th>
+                        <th class="text-center" style="width:6%;">新货签</th>
+                        <th class="text-center" style="width:10%;">物料编码</th>
+                        <th class="text-center" style="width:15%;">描述</th>
+                        <th class="text-center" style="width:6%;">单位</th>
+                        <th class="text-center" style="width:6%;">数量</th>
+                        <th class="text-center" style="width:6%;">子库存</th>
+                        <th class="text-center" style="width:6%;">货位</th>
+                        <th class="text-center" style="width:6%;">批次</th>
+                        <th class="text-center" style="width:6%;">序列</th>
+                        <th class="text-center" style="width:6%;">版本</th>
+                        <th class="text-center" style="width:6%;">盘点人</th>
+                        <th class="text-center" style="width:3%;"></th>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered text-center table-hover" id="inventoryTable">
+                    <tbody style="background:#FFFFFF">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12 account-info-list">
+            <div class="col-md-2 col-md-offset-7">
+                <button type="button" style="width:100%;" id="printId" class="btn btn-info">打印盘点表</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" style="width:100%;" id="saveBtn" class="btn btn-info">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

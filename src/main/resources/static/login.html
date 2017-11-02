@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>沈阳工学院刀具管理系统-浏览器</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/general.css"/>
+    <link rel="stylesheet" href="css/page/login.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body style="overflow-x:hidden">
+
+<!-- Top content -->
+<div class="top-content">
+    <div class="row">
+        <div class="col-md-1 col-lg-offset-1">
+            <!--<img class="logo cursor-pointer" src="img/icon/sesol_logo.png"/>-->
+        </div>
+    </div>
+    <div class="inner-bg">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 form-box" style="background-color: transparent; ">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h2 style="color: #006dcc;font-weight: bold;">用户登录</h2>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <div class="col-md-3"
+                                     style="align: center center;padding-left: 25px;margin-top: 8px;padding-right: 0;">
+                                    <span style="font-weight: bold;">用户名:</span>
+                                </div>
+                                <div class="col-md-9" style="padding-left: 0;">
+                                    <input type="text" placeholder="用户名..."
+                                           class="form-username form-control" id="username">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="row" style="padding-left: 14px;padding-right: 14px;">
+                                    <div class="col-md-3"
+                                         style="align:center center;padding-left: 40px;margin-top: 8px;padding-right: 0;">
+                                        <span style="font-weight: bold;">密码:</span>
+                                    </div>
+                                    <div class="col-md-9" style="padding-left: 0;">
+                                        <input type="password" placeholder="密码..."
+                                               class="form-password form-control" id="password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-7" style="padding-left: 0;">
+                                    <button id="submit" type="button" class="btn"
+                                            style="height: 115px;width: 115px;font-weight: bold;font-size: 20px;">
+                                        登&nbsp;&nbsp;录
+                                    </button>
+                                </div>
+                                <div class="col-md-5" style="padding-top: 90px;">
+                                    <a href="register.html" target="view_window"
+                                       style="font-size: 13px;margin-left: 10px;">注册</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-offset-4">
+                            <span id="nameOrPasswordFalse" style="color: red; font-size: 13px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载require主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+
+</body>
+
+</html>

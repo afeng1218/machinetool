@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消耗报表</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+</head>
+<body style="overflow-x: hidden;background-color: #FFFFFF;">
+<div class="account-nav-title bg-449dd7">
+    <input style="display: none;" id="pageName" value="consumptionReport"/>
+    <span>消耗报表</span>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-1  text-right">
+        <span>方式</span>
+    </div>
+    <div class="col-md-3">
+        <div class="cus-select" id="consump_type_select">
+            <div class="cus-select-btn"></div>
+            <input id="consump_type" type="text" placeholder="--请选择--" readonly="">
+            <ul style="text-align: center; ">
+                <li>
+                    汇总
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-1 text-right col-nopadding">
+        <span>物料类别</span>
+    </div>
+    <div class="col-md-3">
+        <input id="mType" type="text" class="form-control"/>
+    </div>
+    <div class="col-md-1  text-right">
+        <span>产品线</span>
+    </div>
+    <div class="col-md-3" style="width: 23%">
+        <div class="cus-select" id="productLine_select">
+            <div class="cus-select-btn"></div>
+            <input id="productLine" type="text" placeholder="--请选择--" readonly="">
+            <ul style="text-align: center"></ul>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-1  text-right">
+        <span>人员</span>
+    </div>
+    <div class="col-md-3">
+        <input id="person" type="text" class="form-control"/>
+    </div>
+    <div class="col-md-1 text-right">
+        <span>库房</span>
+    </div>
+    <div class="col-md-3">
+        <input id="storeroom" type="text" class="form-control"/>
+        <input id="roomID" type="text" style="display: none">
+    </div>
+    <div class="col-md-1 col-nopadding text-right">
+        <span>消耗来源</span>
+    </div>
+    <div class="col-md-3" style="width: 23%">
+        <div class="cus-select" id="consumptionResource_select">
+            <div class="cus-select-btn"></div>
+            <input id="consumptionResource" type="hidden" value=""/>
+            <ul style="text-align: center"></ul>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin: 30px 10px;">
+    <div class="col-md-12">
+        <div class="account-company-auth" style="padding: 10px 10px;min-height: 180px;">
+            <fieldset>
+                <legend>日期范围</legend>
+            </fieldset>
+            <div class="row">
+                <div class="col-md-1 text-center " style="padding-top: 5px;">
+                    <span>开始</span>
+                </div>
+                <div class="col-md-1" style="padding-top: 5px; width: 30px">
+                                    <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;"
+                                          data-link-field="beginDate"
+                                          id="beginDateBtn"/>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly id="beginDate"/>
+                </div>
+            </div>
+            <div class="row margin-top-20">
+                <div class="col-md-1 text-center " style="padding-top: 5px;">
+                    <span>结束</span>
+                </div>
+                <div class="col-md-1" style="padding-top: 5px; width: 30px">
+                                    <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;"
+                                          data-link-field="endDate"
+                                          id="endDateBtn"/>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly id="endDate"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row margin-top-10" style="margin: 30px 10px;">
+    <div class="col-md-12">
+        <div class="account-company-auth" style="padding: 10px 10px;min-height: 180px;">
+            <fieldset>
+                <legend>物料</legend>
+            </fieldset>
+            <div class="row">
+                <div class="col-md-1 text-center " style="padding-top: 5px;">
+                    <span>开始</span>
+                </div>
+                <div class="col-md-1" style="padding-top: 5px; width: 30px">
+                                    <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;"
+                                          data-link-field="beginDate2"
+                                          id="beginDateBtn2"/>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly id="beginDate2"/>
+                </div>
+            </div>
+            <div class="row margin-top-20">
+                <div class="col-md-1 text-center " style="padding-top: 5px;">
+                    <span>结束</span>
+                </div>
+                <div class="col-md-1" style="padding-top: 5px; width: 30px">
+                                    <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;"
+                                          data-link-field="endDate2"
+                                          id="endDateBtn2"/>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" readonly id="endDate2"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-9">
+        <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查询</div>
+    </div>
+</div>
+
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

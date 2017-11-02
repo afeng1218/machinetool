@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>刀具借用/归还汇总</title>
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+</head>
+<body style="background-color: #FFFFFF;overflow-x: hidden;">
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7">
+        <span style="font-size: 16px">刀具借用/归还行汇总</span>
+        <input id="pageName" style="display: none;" value="borrowSummaryRow"/>
+    </div>
+    <div class="row" style="padding-left: 15px;padding-right: 15px;">
+        <div  style="overflow-x: scroll;">
+            <div style="width: 2140px;padding-right: 17px;">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr style="height: 32px">
+                        <td style="padding: 0;width: 120px;">借用号</td>
+                        <td style="padding: 0;width: 120px;">刀具编号</td>
+                        <td style="padding: 0;width: 120px;">物料编码</td>
+                        <td style="padding: 0;width: 200px;">物料描述</td>
+                        <td style="padding: 0;width: 100px;">品牌</td>
+                        <td style="padding: 0;width: 120px;">借用人</td>
+                        <td style="padding: 0;width: 100px;">借用数量</td>
+                        <td style="padding: 0;width: 100px;">归还数量</td>
+                        <td style="padding: 0;width: 120px;">工单</td>
+                        <td style="padding: 0;width: 120px;">设备</td>
+                        <td style="padding: 0;width: 120px;">剩余寿命</td>
+                        <td style="padding: 0;width: 200px;">创建日期</td>
+                        <td style="padding: 0;width: 200px;">借用日期</td>
+                        <td style="padding: 0;width: 200px;">预计归还日期</td>
+                        <td style="padding: 0;width: 200px;">归还日期</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="table-body" style="width: 2140px;">
+                <table class="table table-bordered text-center" id="borrowReturnRowTable">
+                    <thead style="display: none;">
+                    <tr>
+                        <td style="padding: 0;width: 120px;">借用号</td>
+                        <td style="padding: 0;width: 120px;">刀具编号</td>
+                        <td style="padding: 0;width: 120px;">物料编码</td>
+                        <td style="padding: 0;width: 200px;">物料描述</td>
+                        <td style="padding: 0;width: 100px;">品牌</td>
+                        <td style="padding: 0;width: 120px;">借用人</td>
+                        <td style="padding: 0;width: 100px;">借用数量</td>
+                        <td style="padding: 0;width: 100px;">归还数量</td>
+                        <td style="padding: 0;width: 120px;">工单</td>
+                        <td style="padding: 0;width: 120px;">设备</td>
+                        <td style="padding: 0;width: 120px;">剩余寿命</td>
+                        <td style="padding: 0;width: 200px;">创建日期</td>
+                        <td style="padding: 0;width: 200px;">借用日期</td>
+                        <td style="padding: 0;width: 200px;">预计归还日期</td>
+                        <td style="padding: 0;width: 200px;">归还日期</td>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-5">
+            <div class="sesol-btn txt-fff bg-449dd7" id="output">导出</div>
+        </div>
+        <div class="col-md-1 ">
+            <div class="sesol-btn txt-fff bg-449dd7" id="open">打开</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

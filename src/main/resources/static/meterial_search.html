@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>物料查询</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+</head>
+<body>
+<div class="container frame-block bg-fff">
+    <div class="row account-info-list margin-top-10 col-md-12">
+        <div class="col-md-2 text-center">
+            <span>输入查询内容</span>
+        </div>
+        <div class="col-md-10">
+            <div class="input-group ">
+                <input type="text" class="form-control" placeholder="搜索...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">查询</button>
+                      </span>
+            </div>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10 col-md-12">
+        <div class="col-md-12 panel panel-default">
+            <table class="table table-bordered">
+                <tr>
+                    <td>物料</td>
+                    <td>物料描述</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>物料1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>物料2</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10 col-md-12">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <div class="sesol-btn txt-fff bg-449dd7" id="sure">确定</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+<script data-main="js/main" src="js/require.js"></script>
+<script type="text/javascript" src="js/page/material_definition_tab_change.js"></script>
+</body>
+</html>

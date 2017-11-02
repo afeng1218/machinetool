@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+    name :郭峰
+    date :2017/09/28
+    title:生成货签
+-->
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>生成货签</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-盘点-生成货签</span>
+    </div>
+    <div class="row margin-top-5">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="account-company-auth frame-block" style="padding:1px;padding-bottom:10px;margin:1px;">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span style="color:red;">*</span>名称
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="hidden">
+                                    <input type="hidden" id="Inventory_id">
+                                    <input type="text" id="Inventory_name" readonly="readonly" class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" id="select" type="button">选择</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span>说明</span>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="Inventory_explain" readonly class="form-control">
+                            </div>
+                        </div>
+                        <div class="row account-info-list" >
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span>日期</span>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="Inventory_date" readonly class="form-control">
+                            </div>
+                        </div>
+                        <div class="row account-info-list" >
+                            <div class="col-md-1"></div>
+                            <div class="col-md-1 text-right col-nopadding">
+                                <span>货签类型</span>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="col-md-5 form-inline">
+                                    <div class="form-group">
+                                        <input type="radio" class="radio" value="自定义" name="radio_name">自定义
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-inline">
+                                    <div class="form-group">
+                                        <input type="radio" class="radio" value="默认" checked name="radio_name">默认
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-top-20">
+                            <div class="col-md-10 account-info-list margin-top-1"
+                                 style="height:130px;background-color:#F4F4F4;margin-left:30px;float:left;
+                                padding:0px 0px 5px 8px;border:1px solid #ccc;border-radius:3px;">
+                                <fieldset>
+                                    <legend style="margin-bottom:2px;">
+                                        <div style="font-size:14px ">
+                                            <span>货签</span>
+                                        </div>
+                                    </legend>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-3 text-right col-nopadding">
+                                            <span>起始货签</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="number" id="goods_sign" readonly value="1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:5px;">
+                                        <div class="col-md-3 text-right col-nopadding">
+                                            <span>数字增量</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="number" id="goods_sign_number" readonly value="1" min="0" class="form-control">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row account-info-list">
+                            <button type="button" style="width:15%;margin-left:40%;"  id="saveBtn" class="btn btn-info">生成</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

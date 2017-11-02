@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>云机刀具管理系统-浏览器</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/general.css"/>
+    <link rel="stylesheet" href="css/page/register.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body style="overflow-x:hidden">
+<!-- Top menu -->
+<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="register.html"></a>
+        </div>
+    </div>
+</nav>
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+
+                    <fieldset>
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <!--  <h3>步骤 1 / 3</h3>-->
+
+                                <p>告诉我你是谁</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2" style="text-align: center;padding-right: 0;">
+                                        <span> 用户名：</span>
+                                    </div>
+                                    <div class="col-md-10" style="padding-left: 0;">
+                                        <input type="text" placeholder="用户名..."
+                                               class="form-last-name form-control" id="name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2"
+                                         style="text-align: center;padding-right: 0;padding-left: 30px;">
+                                        <span> 密码：</span>
+                                    </div>
+                                    <div class="col-md-10" style="padding-left: 0;">
+                                        <input type="password" placeholder="密码..."
+                                               class="form-last-name form-control" id="password"/>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 13px;">
+                                    <div class="col-md-2" style="text-align: center;padding-right: 0;padding-left: 0;">
+                                        <span> 确认密码：</span>
+                                    </div>
+                                    <div class="col-md-10" style="padding-left: 0;">
+                                        <input type="password" placeholder="确认密码..."
+                                               class="form-last-name form-control" id="confirmPassword"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button id="registerButton" type="button" class="btn"
+                                        style="background-color: #006dcc;color: #fff;margin-left: 170px;width: 200px;">
+                                    注册
+                                </button>
+                            </div>
+                            <div class="row" style="text-align: center;">
+                                <span id="registerMessage" style="font-size: 13px;color: red;"></span>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                    <!-- <fieldset>
+                         <div class="form-top">
+                             <div class="form-top-left">
+                                 <h3>Step 2 / 3</h3>
+
+                                 <p>Set up your account:</p>
+                             </div>
+                             <div class="form-top-right">
+                                 <i class="fa fa-key"></i>
+                             </div>
+                         </div>
+                         <div class="form-bottom">
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-email">Email</label>
+                                 <input type="text" name="form-email" placeholder="Email..."
+                                        class="form-email form-control" id="form-email">
+                             </div>
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-password">Password</label>
+                                 <input type="password" name="form-password" placeholder="Password..."
+                                        class="form-password form-control" id="form-password">
+                             </div>
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-repeat-password">Repeat password</label>
+                                 <input type="password" name="form-repeat-password" placeholder="Repeat password..."
+                                        class="form-repeat-password form-control" id="form-repeat-password">
+                             </div>
+                             <button type="button" class="btn btn-previous">Previous</button>
+                             <button type="button" class="btn btn-next">Next</button>
+                         </div>
+                     </fieldset>
+
+                     <fieldset>
+                         <div class="form-top">
+                             <div class="form-top-left">
+                                 <h3>Step 3 / 3</h3>
+
+                                 <p>Social media profiles:</p>
+                             </div>
+                             <div class="form-top-right">
+                                 <i class="fa fa-twitter"></i>
+                             </div>
+                         </div>
+                         <div class="form-bottom">
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-facebook">Facebook</label>
+                                 <input type="text" name="form-facebook" placeholder="Facebook..."
+                                        class="form-facebook form-control" id="form-facebook">
+                             </div>
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-twitter">Twitter</label>
+                                 <input type="text" name="form-twitter" placeholder="Twitter..."
+                                        class="form-twitter form-control" id="form-twitter">
+                             </div>
+                             <div class="form-group">
+                                 <label class="sr-only" for="form-google-plus">Google plus</label>
+                                 <input type="text" name="form-google-plus" placeholder="Google plus..."
+                                        class="form-google-plus form-control" id="form-google-plus">
+                             </div>
+                             <button type="button" class="btn btn-previous">Previous</button>
+                             <button type="submit" class="btn">Sign me up!</button>
+                         </div>
+                     </fieldset>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+    name :郭峰
+    date :2017/09/29
+    title:盘库审批
+-->
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>盘库审批</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/jfjh.jpg" media="screen"/>
+
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-盘点-盘库审批</span>
+    </div>
+    <div class="row margin-top-5">
+        <div class="row account-info-list" style="padding:0;">
+            <div class="col-md-2 text-right col-nopadding">物料盘库记录名称</div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="hidden" id="Inventory_id">
+                    <input type="hidden" id="adjustment_type">
+                    <input type="text" id="Inventory_name" readonly class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="select" type="button">选择</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-1 text-right col-nopadding">描述</div>
+            <div class="col-md-5">
+                <input type="text" id="Inventory_explain" readonly class="form-control">
+            </div>
+        </div>
+        <div class="row account-info-list">
+            <div class="col-md-2 text-right col-nopadding">冻结日期</div>
+            <div class="col-md-3">
+                <input type="text" id="snapshot_date" readonly class="form-control">
+            </div>
+            <div class="col-md-1 text-right col-nopadding">默认审批人</div>
+            <div class="col-md-2">
+                <input type="text" id="approval_user" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button type="button" style="width:40%;margin-left:15%;" id="selectList" class="btn btn-info">查找</button>
+            </div>
+        </div>
+        <div class="col-md-12 margin-top-5">
+            <div style="padding-right:17px;">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center" style="width:5%;">通过</th>
+                        <th class="text-center" style="width:5%;">拒绝</th>
+                        <th class="text-center" style="width:10%;">物料编码</th>
+                        <th class="text-center" style="width:13%;">描述</th>
+                        <th class="text-center" style="width:8%;">快照数量</th>
+                        <th class="text-center" style="width:5%;">单位</th>
+                        <th class="text-center" style="width:8%;">调整数量</th>
+                        <th class="text-center" style="width:7%;">调整值</th>
+                        <th class="text-center" style="width:5%;">%</th>
+                        <th class="text-center" style="width:7%;">子库存</th>
+                        <th class="text-center" style="width:5%;">货位</th>
+                        <th class="text-center" style="width:5%;">批次</th>
+                        <th class="text-center" style="width:5%;">序列</th>
+                        <th class="text-center" style="width:5%;">版本</th>
+                        <th class="text-center" style="width:7%;">审批人</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-body">
+                <table class="table table-bordered text-center table-hover" id="inventoryTable">
+                    <tbody style="background:#FFFFFF">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12 account-info-list">
+            <div class="col-md-2 col-md-offset-2">
+                <button type="button" style="width:100%;" class="btn btn-info" id="saveBtn">审批</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" style="width:100%;" class="btn btn-info" id="adoptAll">全部通过</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" style="width:100%;" class="btn btn-info" id="refuseAll">全部拒绝</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" style="width:100%;" class="btn btn-info" id="startUp">启动调整</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

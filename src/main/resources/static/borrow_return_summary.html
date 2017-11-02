@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用/归还汇总</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+
+</head>
+<body style="overflow-x: hidden;background-color: #FFFFFF;">
+<div class="bg-fff" style="margin-top: 0;min-height: 10px;">
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-库房-借用/归还汇总</span>
+        <input style="display: none;" id="pageName" value="borrowReturnSummary"/>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1 col-md-offset-1 text-right" style="padding: 5px 0 0 0;">
+            <span>刀具任务号</span>
+        </div>
+        <div class="col-md-3">
+            <input id="cuttool_taskNo" type="text" class="form-control"/>
+        </div>
+        <div class="col-md-1  text-right" style="padding: 5px 0 0 0;">
+            <span>类别</span>
+        </div>
+        <div class="col-md-3">
+            <div class="cus-select" id="type">
+                <div class="cus-select-btn"></div>
+                <input id="borrowOrreturn" type="text" placeholder="--请选择--" readonly="" value="归还">
+                <ul style="text-align: center; display: none;">
+                    <li>借用</li>
+                    <li>归还</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1"></div>
+        <div class="col-md-1  text-right" style="padding: 5px 0 0 0;">
+            <span>借用人</span>
+        </div>
+        <div class="col-md-3">
+            <input id="borrower" type="text" class="form-control"/>
+        </div>
+        <div class="col-md-1  text-right" style="padding: 5px 0 0 0;">
+            <span>机床</span>
+        </div>
+        <div class="col-md-3">
+            <input id="equipmentNO" type="text" class="form-control"/>
+            <input id="equipmentID" type="text" style="display: none"/>
+        </div>
+    </div>
+
+    <div class="row account-info-list margin-top-10">
+        <div class="col-md-1"></div>
+        <div class="col-md-1  text-right" style="padding:5px 0 0 0;">
+            <span>状态</span>
+        </div>
+        <div class="col-md-3">
+            <div class="cus-select" id="status">
+                <div class="cus-select-btn"></div>
+                <input id="stateinput" type="text" placeholder="--请选择--" readonly="" value="">
+                <ul style="text-align: center; display: none;">
+                    <li>全部</li>
+                    <li>已归还</li>
+                    <li>在借</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-1  text-right" style="padding:5px 0 0 0;">
+            <span>库房</span>
+        </div>
+        <div class="col-md-3">
+            <input id="roomNO" type="text" class="form-control"/>
+            <input id="roomID" type="text" style="display: none;"/>
+        </div>
+    </div>
+
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-1 text-right" style="padding: 5px 0 0 0;">
+            <span>刀具编号</span>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="cuttoolNo"/>
+        </div>
+        <div class="col-md-1" style="margin-top: 5px;">
+            <span class="glyphicon glyphicon-search" style="cursor: pointer;" id="cuttoolSearch"/>
+        </div>
+        <div class="col-md-5 ">
+            <input type="text" class="form-control" readonly id="cuttoolDes"/>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-1 col-md-offset-1  text-right" style="padding: 5px 0 0 0;">
+            <span>物料</span>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="materialNo"/>
+        </div>
+        <div class="col-md-1" style="margin-top: 5px;">
+            <span class="glyphicon glyphicon-search" style="cursor: pointer;" id="materialSearch"/>
+        </div>
+        <div class="col-md-5 ">
+            <input type="text" class="form-control" readonly id="materialDes"/>
+        </div>
+    </div>
+
+    <div class="row margin-top-20">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="account-company-auth" style="padding: 10px 10px;min-height: 180px;">
+                        <fieldset>
+                            <legend>日期范围</legend>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding-top: 5px;">
+                                <span>创建</span>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" readonly id="createDateBegin"/>
+                            </div>
+                            <div class="col-md-2" style="margin-top: 5px;padding: 0;width: 40px;">
+                                <div class="col-md-1" style="padding-left: 1px;">
+                                    <span class="glyphicon glyphicon-calendar dateRange" style="cursor:pointer;"
+                                          data-link-field="createDateBegin"
+                                          id="createDateBeginTime"/>
+                                </div>
+                                <div class="col-md-1" style="padding-left: 5px;">
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0;">
+                                <input type="text" class="form-control" readonly id="createDateEnd"/>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 5px;padding-left: 0;">
+                                <span class="glyphicon glyphicon-calendar dateRange" style="cursor: pointer;"
+                                      data-link-field="createDateEnd"
+                                      id="createDateEndTime"/>
+                            </div>
+                        </div>
+                        <div class="row margin-top-17" style="margin-bottom: 20px;">
+                            <div class="col-md-2 text-right" style="padding-top: 5px;">
+                                <span>预归还</span>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" readonly id="planReturnBegin"/>
+                            </div>
+                            <div class="col-md-2" style="margin-top: 5px;padding: 0;width: 40px;">
+                                <div class="col-md-1" style="padding-left: 1px;">
+                                        <span class="glyphicon glyphicon-calendar dateRange" style="cursor: pointer;"
+                                              data-link-field="planReturnBegin" id="planReturnDateTime"/>
+                                </div>
+                                <div class="col-md-1" style="padding-left: 5px;">
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0;">
+                                <input type="text" class="form-control" readonly id="planReturnEnd"/>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 5px;padding-left: 0;">
+                                <span class="glyphicon glyphicon-calendar dateRange" style="cursor: pointer;"
+                                      data-link-field="planReturnEnd"
+                                      id="planReturnEndData"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="account-company-auth col-md-4" style="min-height: 180px;">
+                        <fieldset>
+                            <legend>结果</legend>
+                        </fieldset>
+                        <div id="status_select" class="col-md-8 col-nomargin-nopadding">
+                            <input id="resuleBy" type="hidden" value="1"/>
+                            <div class="row col-md-12">
+                                <div id="total-check" class="col-md-1 col-nomargin-nopadding">
+                                    <input checked type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                           value="option1">
+                                </div>
+                                <div class="col-md-10">
+                                    <span>题头</span>
+                                </div>
+                            </div>
+                            <div class="row col-md-12 margin-top-20">
+                                <div id="row-check" class="col-md-1 col-nomargin-nopadding">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                </div>
+                                <div class="col-md-10 ">
+                                    <span>行</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-2 col-md-offset-9">
+            <div class="sesol-btn txt-fff bg-449dd7" id="searchBtn">查询</div>
+        </div>
+    </div>
+</div>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>刀具发放</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+</head>
+<body>
+<div class="generalfont bg-fff">
+    <input style="display: none;" id="pageName" value="cuttoolBorrow"/>
+    <div class="account-nav-title bg-449dd7 ">
+        <span>刀具管理-库房-刀具发放</span>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1 col-nopadding">
+            <span>刀具任务号</span>
+        </div>
+        <div class="col-md-2">
+            <input id="borrow_no" type="text" class="form-control" readonly >
+            <input id="hiddenTaskNo" type="text" style="display:none;">
+        </div>
+        <div class="col-md-2">
+            <span>整体道具借出</span>
+            <input id="totalcuttoolborrow" type="checkbox" checked style="margin-left: 25px">
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-1 col-nopadding">
+            <span>刀具编号</span>
+        </div>
+        <div class="col-md-2">
+            <input id="cBorrowCNo" type="text" class="form-control" >
+        </div>
+        <div class="col-md-1">
+            <span>库房</span>
+        </div>
+        <div class="col-md-2">
+            <input id="cBorrowCRoom" type="text" class="form-control read"  readonly>
+            <input id="isStereoLibrary" type="text" style="display:none;">
+        </div>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1">
+            <span>工单号</span>
+        </div>
+        <div class="col-md-2">
+            <input id="work_order_no" type="text" class="form-control" readonly="readonly">
+        </div>
+        <div class="col-md-1">
+            <span>人员</span>
+        </div>
+        <div class="col-md-2">
+            <input id="borrower" type="text" class="form-control">
+            <input id="employeeNo" type="text" style="display: none">
+        </div>
+        <div class="col-md-1">
+            <span>机床</span>
+        </div>
+        <div class="col-md-2">
+            <input id="equipment_name" type="text" class="form-control">
+            <input id="equipment_id" type="text" style="display: none;">
+        </div>
+        <div class="col-md-1 col-nopadding">
+            <span>剩余寿命</span>
+        </div>
+        <div class="col-md-2">
+            <input id="surplus_lifetime" type="text" class="form-control" readonly="readonly">
+        </div>
+    </div>
+    <div class="row margin-top-20 " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-2">
+            <div id="readRFID" class="sesol-btn txt-fff bg-449dd7">读取RFID</div>
+        </div>
+        <div class="col-md-1">
+            <div id="cBorrowSearch" class="sesol-btn txt-fff bg-449dd7">来源</div>
+        </div>
+        <div class="col-md-1">
+            <div id="saveBtn"  class="sesol-btn txt-fff bg-449dd7">保存</div>
+            <input style="display: none;" id="enableBeSave" />
+            <input style="display: none;" id="saveClick" />
+            <input style="display: none;" id="sendCheck"  />
+            <input type="hidden" id="pintUrl" value=""/>
+        </div>
+        <div class="col-md-1">
+            <div id="deleteBtn" class="sesol-btn txt-fff bg-449dd7">删除</div>
+        </div>
+    </div>
+    <div class="row " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-1 col-nopadding" style="width: 80px">
+            <div id="importantbtn" class="sesol-btn txt-fff bg-449dd7">主要</div>
+        </div>
+        <div class="col-md-1 col-nopadding" style="width: 80px">
+            <div id="otherbtn" class="sesol-btn txt-fff " style="background-color: #e5e5e5;color: #333;">其他</div>
+        </div>
+        <!--style="background-color: #87CEFA"-->
+    </div>
+    <div class="row " style="margin-left: 5px;margin-right: 5px;">
+        <div class="col-md-12 col-nopadding">
+            <!-- 标题 -->
+            <div style="padding-right:17px;">
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr>
+                        <td class="text-center" style="width:6%;padding: 0 0;height: 40px;vertical-align: inherit;">
+                            <div class="cuttool_tab2_table_add" style="float: left;padding-left: 8px">
+                                <a id="cuttool_borrow_table_add" style="cursor: pointer;">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                            行
+                        </td>
+                        <td class="text-center" style="width: 12%;padding: 0 0;vertical-align: inherit">物料</td>
+                        <td class="important text-center" style="width: 16%;padding: 0 0;vertical-align: inherit">描述</td>
+                        <td class="important text-center" style="width: 4%;padding: 0 0;vertical-align: inherit">单位</td>
+                        <td class="important text-center" style="width: 12%;padding: 0 0;vertical-align: inherit">物品新旧</td>
+                        <td class="important text-center" style="width: 8%;padding: 0 0;vertical-align: inherit">借用数量</td>
+                        <td class="important text-center" style="width: 6%;padding: 0 0;vertical-align: inherit">货位</td>
+                        <td class="important text-center" style="width: 6%;padding: 0 0;vertical-align: inherit">品牌</td>
+                        <td class="important text-center" style="width: 15%;padding: 0 0;vertical-align: inherit">借用日期</td>
+                        <td class="important text-center" style="width: 15%;padding: 0 0;vertical-align: inherit">预归还日期</td>
+                        <td class="other text-center" style="width: 22%;display: none;padding: 0 0;vertical-align: inherit">归还数量</td>
+                        <td class="other text-center" style="width: 20%;display: none;padding: 0 0;vertical-align: inherit">归还日期</td>
+                        <td class="other text-center" style="width: 40%;display: none;padding: 0 0;vertical-align: inherit">备注</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- 标题 end-->
+            <!-- 内容 -->
+            <div class="table-body">
+                <table class="table table-bordered text-center table-hover" id="cBorrowTable">
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容 end-->
+        </div>
+    </div>
+
+</div>
+
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>
