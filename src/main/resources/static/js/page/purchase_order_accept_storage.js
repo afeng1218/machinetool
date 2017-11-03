@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/5/6.
+ * Created by GuoFeng on 2016/5/6.
  */
 var printIfrname=null;  //打印frame
 define(['jquery', 'common', 'layer', 'page/common_search'], function ($, COMMON, layer, commonSearch) {

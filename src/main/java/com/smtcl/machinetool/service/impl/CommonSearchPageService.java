@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/4/18.
+ * Created by GuoFeng on 2016/4/18.
  */
 @Service
 public class CommonSearchPageService implements ICommonSearchPageService{

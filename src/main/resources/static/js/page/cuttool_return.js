@@ -1,5 +1,5 @@
 /**
- * Created by CJS on 2016/4/8.
+ * Created by GuoFeng on 2016/4/8.
  */
 var printIfrname=null;  //打印frame
 define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], function ($, COMMON, layer, pageSearch) {

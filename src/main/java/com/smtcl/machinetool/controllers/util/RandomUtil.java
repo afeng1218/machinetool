@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.controllers.util;
 
 /**
- * Created by SunJun on 2016/3/22.
+ * Created by GuoFeng on 2016/3/22.
  * TODO 随机生成指定位数数字
  */
 public class RandomUtil{

@@ -3,7 +3,7 @@ package com.smtcl.machinetool.models.machinetool;
 import java.sql.Timestamp;
 
 /**
- * Created by CJS on 2016/5/2.
+ * Created by GuoFeng on 2016/5/2.
  */
 public class CuttoolRowModel {
 

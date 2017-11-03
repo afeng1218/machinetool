@@ -12,7 +12,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/7/21.
+ * Created by GuoFeng on 2016/7/21.
  */
 @Service
 public class AccountConfigurePermissionService implements IAccountConfigurePermissionService {

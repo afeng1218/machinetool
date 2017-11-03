@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/3/21. 通用物料版本定义页面js
+ * Created by GuoFeng on 2016/3/21. 通用物料版本定义页面js
  */
 define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
 

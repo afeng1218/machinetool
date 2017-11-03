@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.models.machinetool;
 
 /**
- * Created by CJS on 2016/4/8.
+ * Created by GuoFeng on 2016/4/8.
  */
 public class CAssemblyModel{
 

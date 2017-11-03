@@ -5,7 +5,7 @@ import com.smtcl.machinetool.models.machinetool.CParameterModel;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/19.
+ * Created by GuoFeng on 2016/2/19.
  * TODO 参数模型service
  */
 

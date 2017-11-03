@@ -11,7 +11,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Created by SunJun on 2016/7/18.
+ * Created by GuoFeng on 2016/7/18.
  */
 @Service
 public class RFIDService implements IRFIDService {

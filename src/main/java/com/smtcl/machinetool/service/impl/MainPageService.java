@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/2/27.
+ * Created by GuoFeng on 2016/2/27.
  */
 @Service
 public class MainPageService implements IMainPageService{

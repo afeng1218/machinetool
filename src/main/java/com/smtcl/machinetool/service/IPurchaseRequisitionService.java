@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/3/22. TODO 采购申请后台service
+ * Created by GuoFeng on 2016/3/22. TODO 采购申请后台service
  */
 public interface IPurchaseRequisitionService{
 

@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by CJS on 2016/7/4.
+ * Created by GuoFeng on 2016/7/4.
  */
 @Service
 public class BorrowerService implements IBorrowerService{

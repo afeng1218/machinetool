@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/3/20.
+ * Created by GuoFeng on 2016/3/20.
  * TODO 通用物料查询界面js 更具不同父页面进行不同的js处理
  */
 define(['jquery', 'common'], function ($, COMMON) {

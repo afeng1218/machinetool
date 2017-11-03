@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/4/15.
+ * Created by GuoFeng on 2016/4/15.
  *
  * 查询配置
  * var searchVal = {

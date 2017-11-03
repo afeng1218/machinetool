@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/3/8. TODO 库存明细：库房查询、库位查询、物料查询
+ * Created by GuoFeng on 2016/3/8. TODO 库存明细：库房查询、库位查询、物料查询
  */
 @RestController
 @ResponseBody

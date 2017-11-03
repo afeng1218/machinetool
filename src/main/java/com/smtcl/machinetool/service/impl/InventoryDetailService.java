@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/3/8.
+ * Created by GuoFeng on 2016/3/8.
  */
 @Service
 public class InventoryDetailService implements IInventoryDetailService{

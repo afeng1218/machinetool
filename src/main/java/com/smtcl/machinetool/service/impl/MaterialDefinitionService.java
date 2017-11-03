@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/1/22.
+ * Created by GuoFeng on 2016/1/22.
  */
 @Service
 public class MaterialDefinitionService implements IMaterialDefinitionService {

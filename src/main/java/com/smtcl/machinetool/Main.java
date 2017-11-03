@@ -8,7 +8,7 @@ import org.springframework.context.annotation.*;
 import org.springframework.scheduling.annotation.*;
 
 /**
- * Created by SunJun on 2016/2/22.
+ * Created by GuoFeng on 2016/2/22.
  * TODO Spring Boot 启动方法
  */
 @SpringBootApplication

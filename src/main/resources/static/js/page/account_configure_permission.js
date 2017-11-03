@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/6/1.
+ * Created by GuoFeng on 2016/6/1.
  */
 define(['jquery', 'common', 'layer', 'page/common_search', 'bootstrapTreeView'], function ($, COMMON, layer, commonSearch) {
 

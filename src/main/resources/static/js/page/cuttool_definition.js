@@ -1,5 +1,5 @@
 /**
- * Created by CJS on 2016/3/21.
+ * Created by GuoFeng on 2016/3/21.
  */
 define(['jquery', 'common', 'layer', 'page/common_search', 'fileinput2', 'bootstrap', 'datetimepicker'], function ($, COMMON, layer, pageSearch) {
 
@@ -43,7 +43,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'fileinput2', 'bootst
         }
 
         /**
-         * Created by SunJun on 2016/8/8
+         * Created by GuoFeng on 2016/8/8
          * 保存所有刀具信息
          * @param isUpdate 更新还是新增刀具
          * @constructor
@@ -1064,7 +1064,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'fileinput2', 'bootst
                 minView: 'month'
             });
 
-            /******************读取RFID Created by SunJun 2016/7/28*************************/
+            /******************读取RFID Created by GuoFeng 2016/7/28*************************/
             /**
              * 写入RFID
              */
@@ -1429,7 +1429,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'fileinput2', 'bootst
 
             /********************************RFID添加结束************************************/
 
-            /***************************Created by SunJun 2016.6.28**************************/
+            /***************************Created by GuoFeng 2016.6.28**************************/
             /*对刀仪反馈信息*/
             $('#returnMsg').click(function () {
 

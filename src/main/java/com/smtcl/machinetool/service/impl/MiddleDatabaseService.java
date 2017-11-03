@@ -4,7 +4,7 @@ import org.springframework.scheduling.annotation.*;
 import org.springframework.stereotype.*;
 
 /**
- * Created by SunJun on 2016/8/12.
+ * Created by GuoFeng on 2016/8/12.
  */
 @Service
 public class MiddleDatabaseService{

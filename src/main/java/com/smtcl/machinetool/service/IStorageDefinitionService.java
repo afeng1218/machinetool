@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/3/2. TODO 库房定义Service
+ * Created by GuoFeng on 2016/3/2. TODO 库房定义Service
  */
 public interface IStorageDefinitionService{
 

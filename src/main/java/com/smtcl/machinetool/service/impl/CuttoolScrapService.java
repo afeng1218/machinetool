@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by CJS on 2016/6/2. Changed by SunJun on 2016/8/2
+ * Created by GuoFeng on 2016/6/2. Changed by GuoFeng on 2016/8/2
  */
 @Service
 public class CuttoolScrapService implements ICuttoolScrapService{
@@ -324,7 +324,7 @@ public class CuttoolScrapService implements ICuttoolScrapService{
 			}
 
 			/**
-			 * changed by SunJun 2016/8/8
+			 * changed by GuoFeng 2016/8/8
 			 */
 			/*附件寿命计算 如果是整体刀具*/
 			if (json.getBoolean("totalcuttoolborrow")){

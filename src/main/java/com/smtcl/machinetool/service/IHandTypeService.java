@@ -6,7 +6,7 @@ import com.smtcl.machinetool.models.machinetool.CHandType;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/19.
+ * Created by GuoFeng on 2016/2/19.
  */
 public interface IHandTypeService{
 

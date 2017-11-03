@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by SunJun on 2016/2/27.
+ * Created by GuoFeng on 2016/2/27.
  * TODO 用户注册
  */
 @RestController

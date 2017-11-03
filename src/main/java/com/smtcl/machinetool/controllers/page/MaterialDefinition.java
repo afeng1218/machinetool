@@ -9,7 +9,7 @@ import org.springframework.web.multipart.*;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/1/18. TODO 物料定义 物料维护 版本定义 版本维护
+ * Created by GuoFeng on 2016/1/18. TODO 物料定义 物料维护 版本定义 版本维护
  */
 @RestController
 @ResponseBody

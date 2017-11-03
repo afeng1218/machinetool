@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/1/22.
+ * Created by GuoFeng on 2016/1/22.
  */
 define(["jquery", "layer", "lib/jquery.cookie", "lib/Math.uuid"], function ($, layer) {
 

@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.service;
 
 /**
- * Created by SunJun on 2016/7/12.
+ * Created by GuoFeng on 2016/7/12.
  */
 public interface ISendStereoLibraryService {
 

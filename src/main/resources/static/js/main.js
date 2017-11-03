@@ -1,7 +1,7 @@
 /**
  * requireJs模式载入入口
  * Created by xiezhichao on 2016/1/7.
- * Changed by SunJun on 2016/1/21
+ * Changed by GuoFeng on 2016/1/21
  */
 (function () {
     //配置引入的库

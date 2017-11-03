@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/4/28.
+ * Created by GuoFeng on 2016/4/28.
  */
 define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], function ($, COMMON, layer, commonSearch) {
 

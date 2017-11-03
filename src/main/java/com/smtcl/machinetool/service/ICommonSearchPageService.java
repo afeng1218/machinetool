@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/4/18.
+ * Created by GuoFeng on 2016/4/18.
  */
 public interface ICommonSearchPageService{
 

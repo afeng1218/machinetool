@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by SunJun on 2016/8/15.
+ * Created by GuoFeng on 2016/8/15.
  */
 @Service
 public class getMenuAuthorityService implements IgetMenuAuthorityService {

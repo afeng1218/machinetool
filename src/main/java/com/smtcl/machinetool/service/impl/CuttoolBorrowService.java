@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/4/21.
- * Changed by SunJun on 2016/8/11
+ * Created by GuoFeng on 2016/4/21.
+ * Changed by GuoFeng on 2016/8/11
  */
 @Service
 public class CuttoolBorrowService implements ICuttoolBorrowService {
@@ -27,7 +27,7 @@ public class CuttoolBorrowService implements ICuttoolBorrowService {
     IGenericDAO dao;
 
     /**
-     * Changed by SunJun on 2016/8/11
+     * Changed by GuoFeng on 2016/8/11
      *
      * @param uploadValue
      * @return

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/2/25.
+ * Created by GuoFeng on 2016/2/25.
  */
 @Service
 public class LoginService implements ILoginService {

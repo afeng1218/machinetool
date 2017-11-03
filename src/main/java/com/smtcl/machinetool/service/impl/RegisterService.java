@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/2/27.
+ * Created by GuoFeng on 2016/2/27.
  */
 @Service
 public class RegisterService implements IRegisterService {

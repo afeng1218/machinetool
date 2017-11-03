@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.service;
 
 /**
- * Created by SunJun on 2016/4/21. 常用工具类接口
+ * Created by GuoFeng on 2016/4/21. 常用工具类接口
  */
 public interface IUtilService{
 

@@ -3,7 +3,7 @@ package com.smtcl.machinetool.models.machinetool;
 import java.sql.Timestamp;
 
 /**
- * Created by CJS on 2016/7/4.
+ * Created by GuoFeng on 2016/7/4.
  */
 public class BorrowerModel{
 

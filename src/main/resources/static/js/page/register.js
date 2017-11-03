@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/2/24.
+ * Created by GuoFeng on 2016/2/24.
  */
 define(['jquery', 'common', 'bootstrap', 'jqueryBackstretch', 'retina'], function ($, COMMON) {
 

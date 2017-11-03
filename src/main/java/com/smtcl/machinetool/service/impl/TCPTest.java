@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Created by SunJun on 2016/7/20.
+ * Created by GuoFeng on 2016/7/20.
  */
 public class TCPTest{
 

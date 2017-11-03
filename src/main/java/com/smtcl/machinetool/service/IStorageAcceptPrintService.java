@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.service;
 
 /**
- * Created by SunJun on 2016/7/25.
+ * Created by GuoFeng on 2016/7/25.
  */
 public interface IStorageAcceptPrintService{
 

@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.Date;
 
 /**
- * Created by SunJun on 2016/3/22.
+ * Created by GuoFeng on 2016/3/22.
  */
 @Service
 public class PurchaseRequisitionService implements IPurchaseRequisitionService {

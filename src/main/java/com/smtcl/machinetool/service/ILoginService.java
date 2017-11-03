@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import org.json.*;
 
 /**
- * Created by SunJun on 2016/2/25. TODO 用户登录service
+ * Created by GuoFeng on 2016/2/25. TODO 用户登录service
  */
 public interface ILoginService{
 

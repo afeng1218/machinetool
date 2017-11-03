@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.Date;
 
 /**
- * Created by SunJun on 2016/4/26.
+ * Created by GuoFeng on 2016/4/26.
  */
 @Service
 public class PurchaseOrderService implements IPurchaseOrderService{

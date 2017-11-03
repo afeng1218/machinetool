@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.Date;
 
 /**
- * Created by guofeng on 2016/4/20. Changed by SunJun on 2016/6/16
+ * Created by guofeng on 2016/4/20. Changed by GuoFeng on 2016/6/16
  */
 
 @Service
@@ -439,7 +439,7 @@ public class PurchaseAgreementService implements IPurchaseAgreement{
 	}
 
 	/**
-	 * 采购协议-供应商 物料某版本协议价格获取 create by SunJun
+	 * 采购协议-供应商 物料某版本协议价格获取 create by GuoFeng
 	 */
 	@Override
 	public Object getAgreementUnitPrice(String supplierNo, String materialNo, String version){

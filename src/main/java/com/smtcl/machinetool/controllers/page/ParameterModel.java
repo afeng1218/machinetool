@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/1/26. TODO 参数模型：参数列表查询、功能列表查询、类别功能查询对应图片信息
+ * Created by GuoFeng on 2016/1/26. TODO 参数模型：参数列表查询、功能列表查询、类别功能查询对应图片信息
  */
 @RestController
 @ResponseBody

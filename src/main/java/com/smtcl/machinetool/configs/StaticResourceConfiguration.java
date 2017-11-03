@@ -4,7 +4,7 @@ import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
- * Created by SunJun on 2016/1/11. TODO WebMvc Resource路径扫描包配置
+ * Created by GuoFeng on 2016/1/11. TODO WebMvc Resource路径扫描包配置
  */
 @Configuration
 public class StaticResourceConfiguration extends WebMvcConfigurerAdapter{

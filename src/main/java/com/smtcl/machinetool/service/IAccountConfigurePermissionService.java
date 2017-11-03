@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by SunJun on 2016/7/21.
+ * Created by GuoFeng on 2016/7/21.
  */
 public interface IAccountConfigurePermissionService{
 

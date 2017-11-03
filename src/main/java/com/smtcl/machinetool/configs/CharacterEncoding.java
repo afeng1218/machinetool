@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
- * Created by SunJun on 2016/8/31.
+ * Created by GuoFeng on 2016/8/31.
  */
 @Configuration
 public class CharacterEncoding {

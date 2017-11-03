@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.service;
 
 /**
- * Created by SunJun on 2016/4/26. 采购订单service
+ * Created by GuoFeng on 2016/4/26. 采购订单service
  */
 public interface IPurchaseOrderService{
 

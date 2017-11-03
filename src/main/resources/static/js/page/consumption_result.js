@@ -1,5 +1,5 @@
 /**
- * Created by CJS on 2016/6/21.
+ * Created by GuoFeng on 2016/6/21.
  */
 define(['jquery', 'common','layer','tableExport'], function ($,COMMON,layer) {
 

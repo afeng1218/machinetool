@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/2/23.
+ * Created by GuoFeng on 2016/2/23.
  */
 define(['jquery', 'common', 'layer', 'jqueryBackstretch'], function ($, COMMON, layer) {
 

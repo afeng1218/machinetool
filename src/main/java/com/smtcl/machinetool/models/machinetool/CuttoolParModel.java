@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.models.machinetool;
 
 /**
- * Created by CJS on 2016/6/16.
+ * Created by GuoFeng on 2016/6/16.
  */
 public class CuttoolParModel {
     private int id;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/19.
+ * Created by GuoFeng on 2016/2/19.
  */
 @Service
 public class HandTypeService implements IHandTypeService {

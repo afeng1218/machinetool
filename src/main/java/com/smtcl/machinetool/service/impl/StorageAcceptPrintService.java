@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/7/25.
+ * Created by GuoFeng on 2016/7/25.
  */
 @Service
 public class StorageAcceptPrintService implements IStorageAcceptPrintService {

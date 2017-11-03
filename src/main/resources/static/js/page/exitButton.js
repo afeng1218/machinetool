@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/7/23.
+ * Created by GuoFeng on 2016/7/23.
  */
 /**
  * 退出click事件监听

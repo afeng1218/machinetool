@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/3/1. TODO 库房定义 库房基础数据查询 获取人员信息 库房信息删除
+ * Created by GuoFeng on 2016/3/1. TODO 库房定义 库房基础数据查询 获取人员信息 库房信息删除
  */
 @RestController
 @ResponseBody

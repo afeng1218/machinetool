@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import org.springframework.transaction.annotation.*;
 
 /**
- * Created by CJS on 2016/6/2.
+ * Created by GuoFeng on 2016/6/2.
  */
 public interface ICuttoolScrapService {
 

@@ -21,9 +21,9 @@ import javax.imageio.*;
 import javax.servlet.http.*;
 
 /**
- * Created by CJS on 2016/1/25. TODO 刀具定义维护 1.刀具定义 2.图片上传
- * Changed by SunJUn on 2016/7/20 TODO 添加读取对刀仪、发送西门子
- * Changed by SunJUn on 2016/8/9 TODO 修改刀具保存，整合所有分散的上传模块，重新添加保存方法，添加事务处理
+ * Created by GuoFeng on 2016/1/25. TODO 刀具定义维护 1.刀具定义 2.图片上传
+ * Changed by GuoFeng on 2016/7/20 TODO 添加读取对刀仪、发送西门子
+ * Changed by GuoFeng on 2016/8/9 TODO 修改刀具保存，整合所有分散的上传模块，重新添加保存方法，添加事务处理
  */
 @RestController
 @ResponseBody
@@ -391,7 +391,7 @@ public class CuttoolDefinition {
     }
 
     /**
-     * created by SunJun on 2016/7/20
+     * created by GuoFeng on 2016/7/20
      * 获取对刀仪共享文件加文件状态
      *
      * @return
@@ -403,7 +403,7 @@ public class CuttoolDefinition {
     }
 
     /**
-     * created by SunJun on 2016/7/20
+     * created by GuoFeng on 2016/7/20
      * 获取对刀仪指定目录共享文件夹数据
      *
      * @param path
@@ -416,7 +416,7 @@ public class CuttoolDefinition {
     }
 
     /**
-     * created by SunJun on 2016/7/20
+     * created by GuoFeng on 2016/7/20
      * 发送西门子
      *
      * @param json
@@ -429,7 +429,7 @@ public class CuttoolDefinition {
     }
 
     /**
-     * created by SunJun on 2016/7/20
+     * created by GuoFeng on 2016/7/20
      * 写入RFID
      *
      * @return
@@ -441,7 +441,7 @@ public class CuttoolDefinition {
     }
 
     /**
-     * created by SunJun on 2016/8/9
+     * created by GuoFeng on 2016/8/9
      * 刀具保存
      *
      * @param request 上传的保存数据

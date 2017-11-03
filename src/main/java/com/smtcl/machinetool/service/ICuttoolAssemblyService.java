@@ -6,7 +6,7 @@ import com.smtcl.machinetool.models.machinetool.CCuttoolAssembly;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/22.
+ * Created by GuoFeng on 2016/2/22.
  * TODO 刀具装配Service
  */
 public interface ICuttoolAssemblyService{

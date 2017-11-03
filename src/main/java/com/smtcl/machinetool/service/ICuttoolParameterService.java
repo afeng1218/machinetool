@@ -5,7 +5,7 @@ import com.smtcl.machinetool.models.machinetool.CuttoolParModel;
 import java.util.List;
 
 /**
- * Created by CJS on 2016/2/23.
+ * Created by GuoFeng on 2016/2/23.
  * TODO 刀具参数Service
  */
 public interface ICuttoolParameterService{

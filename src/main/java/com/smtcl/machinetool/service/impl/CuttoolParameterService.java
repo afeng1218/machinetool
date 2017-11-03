@@ -13,7 +13,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/23.
+ * Created by GuoFeng on 2016/2/23.
  */
 @Service
 public class CuttoolParameterService implements ICuttoolParameterService {

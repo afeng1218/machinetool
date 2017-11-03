@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by CJS on 2016/4/21.
- * Changed by SunJun on 2016/8/11
+ * Created by GuoFeng on 2016/4/21.
+ * Changed by GuoFeng on 2016/8/11
  */
 @RestController
 @ResponseBody
@@ -54,7 +54,7 @@ public class CuttoolBorrow{
 	}
 
 	/**
-	 * Created by SunJun on 2016/8/11
+	 * Created by GuoFeng on 2016/8/11
 	 * 刀具是否可以借用判断查询
 	 *
 	 * @param cuttoolNo 刀具编号

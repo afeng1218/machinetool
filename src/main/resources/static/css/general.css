@@ -1131,9 +1131,10 @@ header {
 }
 
 .logo {
-    margin-top: 35px;
-    width: auto;
-    height: 20px;
+    margin-top: -2px;
+    margin-left:35px;
+    width: 120px;
+    height: 30px;
 }
 
 .nav-title {

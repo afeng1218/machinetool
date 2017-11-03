@@ -1,7 +1,7 @@
 package com.smtcl.machinetool.controllers.util;
 
 /**
- * Created by SunJun on 2016/4/12.
+ * Created by GuoFeng on 2016/4/12.
  */
 public class UUID{
 

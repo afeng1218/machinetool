@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Created by SunJun on 2016/2/25. TODO 登陆Controller 用户登录验证
+ * Created by GuoFeng on 2016/2/25. TODO 登陆Controller 用户登录验证
  */
 @RestController
 @RequestMapping("/login")

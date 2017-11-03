@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/22.
+ * Created by GuoFeng on 2016/2/22.
  * TODO 刀具装配类
  */
 @RestController

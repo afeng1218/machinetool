@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/22. TODO 刀具装配Service
+ * Created by GuoFeng on 2016/2/22. TODO 刀具装配Service
  */
 @Service
 public class CuttoolAssemblyService implements ICuttoolAssemblyService{

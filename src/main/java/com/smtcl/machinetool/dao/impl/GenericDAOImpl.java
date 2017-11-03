@@ -16,7 +16,7 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 /**
- * Created by SunJun on 2016/1/22. TODO 通用dao实现类
+ * Created by GuoFeng on 2016/1/22. TODO 通用dao实现类
  */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)

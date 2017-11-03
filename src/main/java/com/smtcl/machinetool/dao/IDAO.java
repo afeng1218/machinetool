@@ -5,7 +5,7 @@ import org.omg.Dynamic.*;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/1/22. TODO 通用dao 数据库：增、删、改、查的操作
+ * Created by GuoFeng on 2016/1/22. TODO 通用dao 数据库：增、删、改、查的操作
  */
 public interface IDAO{
 

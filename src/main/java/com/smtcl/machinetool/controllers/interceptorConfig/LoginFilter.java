@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
- * Created by SunJun on 2016/2/21. TODO 登陆验证拦截类 拦截所有html请求 进行登陆验证
+ * Created by GuoFeng on 2016/2/21. TODO 登陆验证拦截类 拦截所有html请求 进行登陆验证
  */
 public class LoginFilter implements Filter{
 

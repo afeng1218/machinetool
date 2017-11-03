@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/3/22.
+ * Created by GuoFeng on 2016/3/22.
  */
 define(['jquery', 'common', 'layer', 'datetimepicker'], function ($, COMMON, layer) {
 

@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/3/8.
+ * Created by GuoFeng on 2016/3/8.
  * TODO 库存明细查询
  */
 public interface IInventoryDetailService {

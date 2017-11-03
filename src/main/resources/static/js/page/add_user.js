@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/7/15.
+ * Created by GuoFeng on 2016/7/15.
  */
 define(['jquery', 'common', 'layer', 'page/common_search'], function ($, COMMON, layer, commonSearch) {
 

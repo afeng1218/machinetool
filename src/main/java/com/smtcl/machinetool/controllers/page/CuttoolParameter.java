@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by CJS on 2016/2/18.
+ * Created by GuoFeng on 2016/2/18.
  * TODO 刀具参数
  */
 @RestController

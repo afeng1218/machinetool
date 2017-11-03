@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/4/19.
+ * Created by GuoFeng on 2016/4/19.
  */
 @Service
 public class CargoSpaceDefinitionService implements ICargoSpaceDefinition{

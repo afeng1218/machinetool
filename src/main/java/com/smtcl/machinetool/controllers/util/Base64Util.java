@@ -6,7 +6,7 @@ import sun.misc.BASE64Encoder;
 import java.io.IOException;
 
 /**
- * Created by SunJun on 2016/3/4. TODO Base64编解码程序 主要用于数据库用户名密码加密 加密数据传输
+ * Created by GuoFeng on 2016/3/4. TODO Base64编解码程序 主要用于数据库用户名密码加密 加密数据传输
  */
 public class Base64Util{
 

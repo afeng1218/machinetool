@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/3/22. TODO 采购申请controller
+ * Created by GuoFeng on 2016/3/22. TODO 采购申请controller
  */
 @RestController
 @ResponseBody

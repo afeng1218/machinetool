@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.*;
 
 /**
- * Created by SunJun on 2016/2/26. TODO 主页面：获取不同用户权限信息、用户退出操作
+ * Created by GuoFeng on 2016/2/26. TODO 主页面：获取不同用户权限信息、用户退出操作
  */
 @Controller
 @RequestMapping("/main")

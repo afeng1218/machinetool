@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.*;
 
 /**
- * Created by SunJun on 2016/1/22. TODO 通用物料service接口
+ * Created by GuoFeng on 2016/1/22. TODO 通用物料service接口
  */
 public interface IMaterialDefinitionService{
 

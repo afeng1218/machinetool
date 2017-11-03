@@ -3,7 +3,7 @@ package com.smtcl.machinetool.service;
 import org.json.JSONArray;
 
 /**
- * Created by SunJun on 2016/2/27. TODO 主页面service接口
+ * Created by GuoFeng on 2016/2/27. TODO 主页面service接口
  */
 public interface IMainPageService{
 

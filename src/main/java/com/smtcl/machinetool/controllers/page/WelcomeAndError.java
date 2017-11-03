@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by SunJun on 2016/2/20.
+ * Created by GuoFeng on 2016/2/20.
  *
  */
 @Controller

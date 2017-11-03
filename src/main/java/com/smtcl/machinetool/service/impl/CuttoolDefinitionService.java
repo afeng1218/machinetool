@@ -22,8 +22,8 @@ import java.text.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/19.
- * Changed by SunJun on 2016/8/8
+ * Created by GuoFeng on 2016/2/19.
+ * Changed by GuoFeng on 2016/8/8
  */
 @Service
 public class CuttoolDefinitionService implements ICuttoolDefinitionService {

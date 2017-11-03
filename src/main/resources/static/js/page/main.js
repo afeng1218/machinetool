@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/2/23. 主页面js
+ * Created by GuoFeng on 2016/2/23. 主页面js
  */
 define(['jquery', 'common', 'layer', 'bootstrap', 'bootstrapTreeView'], function ($, COMMON, layer) {
 
@@ -16,7 +16,7 @@ define(['jquery', 'common', 'layer', 'bootstrap', 'bootstrapTreeView'], function
         $('#hiddenName').val(username);
 
         /*设置主页面 菜单页面高度*/
-        var height = ((screen.height * 6) / 7) - 36;
+        var height = ((screen.height * 6) / 7) - 25;
         $('#mainPageContent').css('height', height);
         $('#mainPageContent div:first-child').css('height', height);
         $('#mainPageContent div:last-child').css('height', height);
@@ -36,13 +36,17 @@ define(['jquery', 'common', 'layer', 'bootstrap', 'bootstrapTreeView'], function
 
             $('#hiddenDefaultStorage').val(data.defaultStorage);
 
-
             /*根据权限加载用户菜单*/
             var options = {
                 'state.expanded': false,//展开节点
                 'bootstrap2': false,
                 'showTags': false,//显示标签
                 'levels': 3,//节点最大层级
+                // 'color':'black',//字体颜色
+                // 'backColor':'#ebebeb',//背景颜色
+                // 'onhoverColor':'#c2c2c2',//鼠标效果颜色
+                // 'borderColor':'#A9A9A9',//边框颜色
+                //'selectedBackColor':'#ff7171',
                 'data': data.authorityTree[0]//节点数据
             };
 

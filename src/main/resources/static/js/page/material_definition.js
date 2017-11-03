@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/1/15
+ * Created by GuoFeng on 2016/1/15
  */
 define(["jquery", "../common", "layer", "lib/jquery.form", "datetimepicker", "fileinput"], function ($, COMMON, layer) {
 

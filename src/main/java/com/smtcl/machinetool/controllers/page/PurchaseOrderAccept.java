@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by SunJun on 2016/5/18.
+ * Created by GuoFeng on 2016/5/18.
  */
 @RestController
 @ResponseBody

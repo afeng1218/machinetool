@@ -1,8 +1,8 @@
 /**
- * Created by CJS on 2016/6/21.
+ * Created by GuoFeng on 2016/6/21.
  */
 /**
- * Created by CJS on 2016/7/4.
+ * Created by GuoFeng on 2016/7/4.
  */
 define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], function ($, COMMON, layer, pageSearch) {
 

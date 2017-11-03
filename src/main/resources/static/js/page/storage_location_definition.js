@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/3/7.
+ * Created by GuoFeng on 2016/3/7.
  */
 define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
 

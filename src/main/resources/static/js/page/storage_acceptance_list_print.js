@@ -1,5 +1,5 @@
 /**
- * Created by SunJun on 2016/7/8.
+ * Created by GuoFeng on 2016/7/8.
  */
 define(['jquery', 'common', 'jQueryPrint'], function ($, COMMON) {
 

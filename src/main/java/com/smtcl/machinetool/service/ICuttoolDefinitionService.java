@@ -8,8 +8,8 @@ import javax.servlet.http.*;
 import java.util.*;
 
 /**
- * Created by CJS on 2016/2/19. TODO 刀具定义
- * Changed by SunJun on 2016/8/8 TODO 添加对刀仪和发送西门子接口模块
+ * Created by GuoFeng on 2016/2/19. TODO 刀具定义
+ * Changed by GuoFeng on 2016/8/8 TODO 添加对刀仪和发送西门子接口模块
  */
 public interface ICuttoolDefinitionService{
 
@@ -81,7 +81,7 @@ public interface ICuttoolDefinitionService{
 	List searchCParBycno(String cuttoolNo, int type);
 
 	/**
-	 * Created by SunJun on 2016/7/20
+	 * Created by GuoFeng on 2016/7/20
 	 * 获取对刀仪状态
 	 *
 	 * @return
@@ -89,7 +89,7 @@ public interface ICuttoolDefinitionService{
 	Object getMicrosetState();
 
 	/**
-	 * Created by SunJun on 2016/7/20
+	 * Created by GuoFeng on 2016/7/20
 	 * 获取对刀仪数据
 	 *
 	 * @param path
@@ -99,7 +99,7 @@ public interface ICuttoolDefinitionService{
 	Object getMicroset(String path);
 
 	/**
-	 * Created by SunJun on 2016/7/20
+	 * Created by GuoFeng on 2016/7/20
 	 * 发送西门子
 	 * @param json
 	 * @return
@@ -107,7 +107,7 @@ public interface ICuttoolDefinitionService{
 	String sendState(String json);
 
 	/**
-	 * Created by SunJun on 2016/8/9
+	 * Created by GuoFeng on 2016/8/9
 	 * 保存所有刀具信息
 	 * @param request
 	 * @return

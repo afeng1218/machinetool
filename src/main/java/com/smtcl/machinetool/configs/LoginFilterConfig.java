@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by SunJun on 2016/2/21. TODO 登陆验证过滤器配置 registrationBean.addUrlPatterns("*.html");配置过滤方法
+ * Created by GuoFeng on 2016/2/21. TODO 登陆验证过滤器配置 registrationBean.addUrlPatterns("*.html");配置过滤方法
  */
 @Configuration
 public class LoginFilterConfig{

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by SunJun on 2016/8/15.
+ * Created by GuoFeng on 2016/8/15.
  */
 @Service
 public class getSessionDataService implements IgetSessionDataService {

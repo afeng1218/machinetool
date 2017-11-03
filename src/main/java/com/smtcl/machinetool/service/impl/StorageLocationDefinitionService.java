@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by SunJun on 2016/3/7. 库位定义service
+ * Created by GuoFeng on 2016/3/7. 库位定义service
  */
 @Service
 public class StorageLocationDefinitionService implements IStorageLocationDefinitionService{

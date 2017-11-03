@@ -3,7 +3,7 @@
  * [Product] machineTool [Copyright] Copyright © 2016 ICSS All Rights Reserved. [FileName] DatabaseConfig.java [History] Version Date Author Content
  * -------- --------- ---------- ------------------------ v1.0.0 2016年1月8日 longpeng 最初版本
  * <p>
- * changed by SunJun v1.0.1 2016年7月13日
+ * changed by GuoFeng v1.0.1 2016年7月13日
  **/
 
 package com.smtcl.machinetool.configs;

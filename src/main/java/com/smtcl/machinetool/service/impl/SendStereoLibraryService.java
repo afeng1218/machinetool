@@ -11,7 +11,7 @@ import java.io.*;
 import java.net.InetAddress;
 
 /**
- * Created by SunJun on 2016/7/12.
+ * Created by GuoFeng on 2016/7/12.
  */
 @Service
 public class SendStereoLibraryService implements ISendStereoLibraryService {
