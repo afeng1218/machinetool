@@ -15,12 +15,6 @@ define(["jquery", "common", "layer", 'page/common_search', "lib/jquery.form", "d
             layer.tips('请填写参数名！', ds.eq(ds.length-1).children("td").eq(1));
             return null;
         }
-        //默认值不能为空！
-        // if (ds.eq(ds.length-1).children("td").eq(2).html() == "" && suggested_cutting_par=="") {
-        //     ds.eq(ds.length-1).children("td").eq(2).click();
-        //     layer.tips('请填写默认值！', ds.eq(ds.length-1).children("td").eq(2));
-        //     return null;
-        // }
 
         grid.append('<tr name="newTr" style="height: 35px;">' +
             '<td style="width:8%;padding-top:5px;">' +

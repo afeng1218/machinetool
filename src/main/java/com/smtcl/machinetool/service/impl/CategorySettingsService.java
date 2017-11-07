@@ -39,8 +39,7 @@ public class CategorySettingsService implements ICategorySettingsService {
         //返回参数
         JSONObject result = new JSONObject();
         try {
-            System.out.println("map=" + map);
-            JSONObject json = new JSONObject(map);
+            JSONObject json = new JSONObject(map);map=null;
             CParameterModel model = new CParameterModel();
             model.setId(json.getString("id"));
             model.setCategory(json.getString("category"));
