@@ -89,11 +89,11 @@ public class Login {
              * 页面权限
              */
             jsonObject.append("pageAuthority", result.get("pageAuthority"));
-
+	        /**
+	         * 组织
+             */
+            jsonObject.append("organization",result.get("organization"));
         }
-
         return jsonObject.toString();
-
     }
-
 }

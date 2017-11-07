@@ -67,34 +67,28 @@ public class LoginService implements ILoginService {
         result.put("orderApprovalAuthority", orderApprovalAuthority);
 
         List<Map<String, String>> storageNo = dao.executeQuery("select " +
-                " new Map(csrd.storageRoomNo as storageRoomNo) " +
+                " new Map(csrd.storageRoomNo as storageRoomNo,cr.organization as organization) " +
                 " from CRegist cr,CStorageRoomDefinition csrd " +
                 " where cr.storageRoomId=csrd.storageRoomId " +
                 " and cr.name='" + name + "' ");
-
         if (storageNo.size() > 0 && storageNo.get(0) != null) {
-
             result.put("storageRoomNo", storageNo.get(0).get("storageRoomNo"));
-
+            result.put("organization",storageNo.get(0).get("organization"));
         } else {
-
             result.put("storageRoomNo", "");
+            result.put("organization","");
         }
         /**
          * 获取用户页面权限
          */
         if (!name.equals("admin")) {
-
             List list = dao.executeQuery("select new Map(cam.linkPage as linkPage,caa.authority as authority) " +
                     "from CAccountAuthority caa,CAuthorityMenu cam " +
                     " where caa.id.functionNode=cam.nodeId " +
                     " and caa.id.account='" + name + "' " +
                     " and caa.authority=1" );
-
             result.put("pageAuthority", list);
         }
-
         return result;
     }
-
 }

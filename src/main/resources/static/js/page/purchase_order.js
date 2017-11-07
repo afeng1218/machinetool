@@ -44,12 +44,12 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
         var arrUrl = window.location.href.split("/");
         var strPage = COMMON.ECODE.Base64.encode(arrUrl[arrUrl.length - 1]);
         var username = COMMON.ECODE.Base64.decode($.cookie('username'));
-
+        var organization = COMMON.ECODE.Base64.decode($.cookie("organization"));//组织
         if ($.cookie(strPage) == null && username != 'admin') {
-
             $('#saveBtn').remove();
             $('#deleteBtn').remove();
-        }
+        };arrUrl=null;strPage=null;username=null;
+        $("#accept").val(organization);organization=null;
         /**
          * layer config
          */

@@ -488,13 +488,15 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
         }
 
         function init() {
-
+            /**
+             * layer config
+             */
+            COMMON.LAYER_CONFIG.config();
             /**
              * 设置审批权
              */
             var orderApprovalAuthority = COMMON.ECODE.Base64.decode($.cookie('orderApprovalAuthority'));
             if (orderApprovalAuthority == '否') {
-
                 $('#approveBtn').remove();
             }
             /**
@@ -503,18 +505,12 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             var arrUrl = window.location.href.split("/");
             var strPage = COMMON.ECODE.Base64.encode(arrUrl[arrUrl.length - 1]);
             var username = COMMON.ECODE.Base64.decode($.cookie('username'));
-
+            var organization = COMMON.ECODE.Base64.decode($.cookie("organization"));//组织
             if ($.cookie(strPage) == null && username != 'admin') {
-
                 $('#saveBtn').remove();
                 $('#deleteBtn').remove();
-            }
-
-            /**
-             * layer config
-             */
-            COMMON.LAYER_CONFIG.config();
-
+            };arrUrl=null;strPage=null;username=null;
+            $("#by_unilateral").val(organization);organization=null;
             //设置表格有效高度
             var height = window.screen.height / 3;
             $('.table-body').css("height", height + "px");
@@ -563,16 +559,6 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                 }
             }
 
-            /*绑定日期选择器
-             $('.calendarBtn').datetimepicker({
-             format: 'yyyy-mm-dd hh:mm:ss',
-             language: 'zh-CN',  //汉化
-             autoclose: true,    //选择日期后自动关闭
-             pickerPosition: 'bottom-left',
-             todayBtn: 1,
-             linkFormat: 'yyyy-mm-dd hh:mm:ss',
-             minView: 'month'
-             });*/
             function current() {
                 var d = new Date(), str = '';
                 str += d.getFullYear() + '-'; //获取当前年份
@@ -600,9 +586,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                 bdKeydown(0, this);
             });
             //采购员绑定失去焦点事件
-            $('#buyer').blur(function () {
-                //alert(this.value);
-            });
+            $('#buyer').blur(function () {});
 
             //供应商绑定回车事件！
             $('#supplier_name').keydown(function () {

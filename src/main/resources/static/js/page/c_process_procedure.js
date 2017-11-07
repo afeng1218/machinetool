@@ -19,10 +19,12 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker', "fi
                 var arrUrl=window.location.href.split("/");
                 var strPage=COMMON.ECODE.Base64.encode(arrUrl[arrUrl.length - 1]);arrUrl=null;
                 var username=COMMON.ECODE.Base64.decode($.cookie('username'));
+                var organization = COMMON.ECODE.Base64.decode($.cookie("organization"));//组织
                 if($.cookie(strPage)== null && username != 'admin'){
                     $('#saveBtn').remove();
                     $('#deleteBtn').remove();
                 };strPage=null;username=null;
+                $("#title_name").html(organization);organization=null;
                 //设置表格有效高度
                 var height=window.screen.height/3.5;
                 $('.autoName').css("height", height+"px");
@@ -327,7 +329,8 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker', "fi
                     searchValue:'',
                     colName:'物料编码,物料描述',
                     searchTable:'CGeneralMaterial',
-                    searchCol:'materialNo,materialDescribe,materialId'
+                    searchCol:'materialNo,materialDescribe,materialId',
+                    addLimit:[{'colName':'materialClass','colValue':'工艺'}]
                 },
                 //查询物料界面
                 b:function(fun_){

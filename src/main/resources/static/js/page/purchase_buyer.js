@@ -4,19 +4,6 @@
 define(['jquery', '../common', 'layer','page/common_search', 'bootstrap', 'datetimepicker'], function ($, COMMON, layer, common_search) {
 
         function init() {
-
-            /**
-             * 获取用户权限
-             */
-            var arrUrl = window.location.href.split("/");
-            var strPage = COMMON.ECODE.Base64.encode(arrUrl[arrUrl.length - 1]);
-            var username = COMMON.ECODE.Base64.decode($.cookie('username'));
-
-            if ($.cookie(strPage) == null && username != 'admin') {
-
-                $('#saveBtn').remove();
-                $('#deleteBtn').remove();
-            }
             /**
              * layer config
              */
@@ -78,7 +65,7 @@ define(['jquery', '../common', 'layer','page/common_search', 'bootstrap', 'datet
                     //searchTable：表的实体类
                     searchTable : 'CBuyer',
                     //searchCol：唯一ID、采购员、说明
-                    searchCol   : 'id,buyer,explainText'
+                    searchCol   : 'buyer,explainText,id'
                 };
                 common_search.OPEN_PAGE.openPage(map,function(e){
                     $('#id').val(e.id);
