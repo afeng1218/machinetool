@@ -32,14 +32,14 @@ public class CuttoolDefinition {
     //设置日期格式
     private SimpleDateFormat ymdhms =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    @Value("${wis.appid}")
-    private String appid;
+    //@Value("${wis.appid}")
+    //private String appid;
 
-    @Value("${wis.appkey}")
-    private String appkey;
+    //@Value("${wis.appkey}")
+    //private String appkey;
 
-    @Value("${wis.server}")
-    private String server;
+    //@Value("${wis.server}")
+    //private String server;
 
     /**
      * 刀具定义service
