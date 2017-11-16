@@ -13,10 +13,10 @@ define(['jquery', 'common', 'layer', 'bootstrap', 'bootstrapTreeView'], function
         /*设置隐藏用户名*/
         $('#hiddenName').val(username);
         /*设置主页面 菜单页面高度*/
-        var height = ((screen.height * 6) / 7)-13;
+        var height = ((screen.height * 6) / 7)-15;
         $('#mainPageContent').css('height', height);
-        $('#mainPageContent div:first-child').css('height', height - 15);
-        $('#mainPageContent div:last-child').css('height', height - 15);
+        $('#mainPageContent div:first-child').css('height', height-15);
+        $('#mainPageContent div:last-child').css('height', height-15);
         var uploadValue = {
             'username': username
         };

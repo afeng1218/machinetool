@@ -282,7 +282,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                 var a=$("#zkc_table tbody").append('<tr class="newTr" style="height:25px;padding:0;margin:0;">'+
                     '<td style="padding:0;width:100%;line-height:25px;" type="text" typeName="货位">' +
                     '<div class="col-md-10 zkcAll" id="'+HashMap.num+'_'+HashMap.son_stock+'" style="height:25px;">'+HashMap.son_stock+'</div>'+
-                    '<div class="col-md-1 zkcRem" style="margin-left:20px;"><a href="#" class="glyphicon glyphicon-remove" onclick="(function(e){var a=$(\'#zkc_table tbody tr\').length;if(a==1){return null;};var tr=$(e).parent().parent().parent();if($(tr).children(\'td\').eq(2).html()!=\'\'){$(\'.\'+$(tr).children(\'td\').eq(2).html()).remove()};tr.remove();})(this);"></a></div>' +
+                    '<div class="col-md-1 zkcRem" style="margin-left:20px;"><a href="javascript:void(0)" class="glyphicon glyphicon-remove" onclick="(function(e){var a=$(\'#zkc_table tbody tr\').length;if(a==1){return null;};var tr=$(e).parent().parent().parent();if($(tr).children(\'td\').eq(2).html()!=\'\'){$(\'.\'+$(tr).children(\'td\').eq(2).html()).remove()};tr.remove();})(this);"></a></div>' +
                     '</td>'+
                 '</tr>');a=null;
                 if(event){a=af.table.event("#"+HashMap.num+'_'+HashMap.son_stock);a=null;}else{$(".zkcRem").remove();};

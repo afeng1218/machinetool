@@ -20,32 +20,30 @@
     <script src="js/lib/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-<div class="container frame-block" id="mainPage" style="padding:0;margin:0;">
-    <div class="row">
-        <div class=" account-nav-title bg-303030" style="border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
-            <div class="row">
-                <div class="col-md-2">
-                    <img class="logo cursor-pointer" src="img/icon/ykzx.png"/>
-                </div>
-                <div class="col-md-2 col-md-offset-7">
-                    <span style="font-size:13px;color: rgb(183,181,183);">当前用户：</span>
-                    <span id="userName" style="color: rgb(183,181,183);"></span>
-                    <a id="exit" href="exit.html"
-                       style="font-size: 13px;color: #ff0000;margin-left: 15px;" onclick="exit()">退出登录</a>
-                    <!--隐藏用户名-->
-                    <input style="display: none;" id="hiddenName"/>
-                    <!--隐藏账号审批权限-->
-                    <input style="display: none;" id="hiddenApprovalAuthority"/>
-                    <!--账号默认库房-->
-                    <input style="display: none;" id="hiddenDefaultStorage"/>
-                    <!--page name-->
-                    <input style="display: none;" id="pageName" value="mainPage"/>
-                </div>
+<body style="overflow:hidden;">
+<div class="container frame-block" id="mainPage" style="min-height:650px;padding:0;margin:0;overflow:hidden;">
+    <div class="row bg-303030" style="border-bottom-left-radius: 0;border-bottom-right-radius:0;">
+        <div class="row account-nav-title">
+            <div class="col-md-2">
+                <img class="logo cursor-pointer" src="img/icon/ykzx.png"/>
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                <span style="font-size:13px;color: rgb(183,181,183);">当前用户：</span>
+                <span id="userName" style="color: rgb(183,181,183);"></span>
+                <a id="exit" href="exit.html"
+                   style="font-size: 13px;color: #ff0000;margin-left: 15px;" onclick="exit()">退出登录</a>
+                <!--隐藏用户名-->
+                <input style="display: none;" id="hiddenName"/>
+                <!--隐藏账号审批权限-->
+                <input style="display: none;" id="hiddenApprovalAuthority"/>
+                <!--账号默认库房-->
+                <input style="display: none;" id="hiddenDefaultStorage"/>
+                <!--page name-->
+                <input style="display: none;" id="pageName" value="mainPage"/>
             </div>
         </div>
     </div>
-    <div class="row bg-545454" style="min-height: 631px;" id="mainPageContent">
+    <div class="row bg-545454" style="min-height:631px;" id="mainPageContent">
         <div class="col-md-2" style="padding-left:0;padding-right: 0;overflow:scroll;overflow-x: hidden;">
             <div id="treeview"></div>
         </div>
