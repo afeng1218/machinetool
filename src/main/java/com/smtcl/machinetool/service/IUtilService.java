@@ -21,4 +21,5 @@ public interface IUtilService{
 	 */
 	Integer getSerialNumber(String table, String col, String byName, String condition);
 	String getSerialString(String table, String col, String byName, String condition); //string
+	Integer getMaxId(String table, String col);
 }

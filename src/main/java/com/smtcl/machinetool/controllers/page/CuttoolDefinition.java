@@ -68,45 +68,45 @@ public class CuttoolDefinition {
 	 * 更新刀具寿命
      * @return
      */
-    private boolean updateLife(String cno){
-        try{
-            String sql="SELECT a.cuttool_no,b.material_no,c.initial_lifetime " +
-                    "FROM c_process_card AS a " +
-                    "LEFT JOIN c_general_material AS b ON a.material_id=b.material_id " +
-                    "LEFT JOIN c_cuttool_basedata AS c ON a.cuttool_no=c.cuttool_no " +
-                    "WHERE a.cuttool_no='"+cno+"'";
-            List list=dao.createSQL(sql);sql=null;
-            int num=0;
-            //初始寿命
-            int initial_lifetime=((HashMap)list.get(0)).get("initial_lifetime")==null||
-                    ((HashMap)list.get(0)).get("initial_lifetime").toString().equals("")?0:
-                    (int)((HashMap)list.get(0)).get("initial_lifetime");
-            for(int i=0;i<list.size();i++){
-                String a=list.get(i).toString().replaceAll("=",":");
-                JSONObject b=new JSONObject(a);a=null;
-                /**********************调用wis接口,查询刀具加工次数算出刀具剩余寿命*************************/
-                String  equipmentID = b.get("material_no").toString();b=null;//工艺编码
-                String  dataTime = ymdhms.format(new Date());
-                ApiSDK  openApi = new ApiSDK(server,appid,appkey);
-                HashMap params = new HashMap();
-                params.put("equipmentID", equipmentID);equipmentID=null;
-                params.put("dataTime", dataTime);dataTime=null;
-                params.put("equipmentStatus", "free");
-                JSONObject json = new JSONObject(openApi.call("/dc/sendEquipStatus", params, "http"));
-                params=null;openApi=null;
-                int n=json==null?0:json.getInt("wcsl");//返回的数据 6替换为json
-                num=num+n;//寿命累计
-                /**********************调用wis接口,查询刀具加工次数算出刀具剩余寿命 edn**********************/
-            };list=null;
-            int surplus_lifetime=initial_lifetime-num;
-            sql="UPDATE c_cuttool_basedata AS a SET a.surplus_lifetime='"+(surplus_lifetime<0?0:surplus_lifetime)+"' WHERE a.cuttool_no='"+cno+"'";
-            dao.sqlUpdate(sql);sql=null;
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally{
-            return true;
-        }
-    };
+//    private boolean updateLife(String cno){
+//        try{
+//            String sql="SELECT a.cuttool_no,b.material_no,c.initial_lifetime " +
+//                    "FROM c_process_card AS a " +
+//                    "LEFT JOIN c_general_material AS b ON a.material_id=b.material_id " +
+//                    "LEFT JOIN c_cuttool_basedata AS c ON a.cuttool_no=c.cuttool_no " +
+//                    "WHERE a.cuttool_no='"+cno+"'";
+//            List list=dao.createSQL(sql);sql=null;
+//            int num=0;
+//            //初始寿命
+//            int initial_lifetime=((HashMap)list.get(0)).get("initial_lifetime")==null||
+//                    ((HashMap)list.get(0)).get("initial_lifetime").toString().equals("")?0:
+//                    (int)((HashMap)list.get(0)).get("initial_lifetime");
+//            for(int i=0;i<list.size();i++){
+//                String a=list.get(i).toString().replaceAll("=",":");
+//                JSONObject b=new JSONObject(a);a=null;
+//                /**********************调用wis接口,查询刀具加工次数算出刀具剩余寿命*************************/
+//                String  equipmentID = b.get("material_no").toString();b=null;//工艺编码
+//                String  dataTime = ymdhms.format(new Date());
+//                ApiSDK  openApi = new ApiSDK(server,appid,appkey);
+//                HashMap params = new HashMap();
+//                params.put("equipmentID", equipmentID);equipmentID=null;
+//                params.put("dataTime", dataTime);dataTime=null;
+//                params.put("equipmentStatus", "free");
+//                JSONObject json = new JSONObject(openApi.call("/dc/sendEquipStatus", params, "http"));
+//                params=null;openApi=null;
+//                int n=json==null?0:json.getInt("wcsl");//返回的数据 6替换为json
+//                num=num+n;//寿命累计
+//                /**********************调用wis接口,查询刀具加工次数算出刀具剩余寿命 edn**********************/
+//            };list=null;
+//            int surplus_lifetime=initial_lifetime-num;
+//            sql="UPDATE c_cuttool_basedata AS a SET a.surplus_lifetime='"+(surplus_lifetime<0?0:surplus_lifetime)+"' WHERE a.cuttool_no='"+cno+"'";
+//            dao.sqlUpdate(sql);sql=null;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            return true;
+//        }
+//    };
 
     //模糊查询刀具信息
     @RequestMapping(value = "/blursearch", method = RequestMethod.POST)
@@ -118,7 +118,7 @@ public class CuttoolDefinition {
             for (int i = 0; i < basedataList.size(); i++) {
                 Map<String, Object> tooldata = new HashMap<String, Object>();
                 String cno = basedataList.get(i).getCuttoolNo();
-                if(updateLife(cno)){ //更新刀具寿命
+//                if(updateLife(cno)){ //更新刀具寿命
                     String cinitStatus = "";
                     int isEnable = basedataList.get(i).getInitiateStatus();
                     if (isEnable == 1) {
@@ -196,7 +196,7 @@ public class CuttoolDefinition {
                     //发送状态
                     tooldata.put("send_state", basedataList.get(i).getSendState() == null ? 0 : basedataList.get(i).getSendState());
                     list.add(tooldata);
-                }
+//                }
             }
             return list;
         } else {

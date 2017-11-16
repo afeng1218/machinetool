@@ -43,6 +43,13 @@ body {
     background-color: #424955;
 }
 
+.bg-303030{
+    background-color: rgb(30,30,30);
+}
+.bg-545454{
+    background-color: rgb(54,54,54);
+}
+
 /*浅黑*/
 .bg-d5d3d4 {
     background-color: #d5d3d4;
@@ -79,6 +86,10 @@ body {
 /*淡蓝*/
 .bg-449dd7 {
     background-color: #449dd7;
+}
+
+.bg-183181183{
+    background-color: rgb(54,54,54);
 }
 
 /*蓝*/

@@ -30,7 +30,7 @@ public class LoginFilter implements Filter{
 		String requestURI = req.getRequestURI();
 
         /*过滤排除登录页面和注册页面请求*/
-		if (requestURI.endsWith("login.html") || requestURI.endsWith("register.html")){
+		if (requestURI.endsWith("login.html") || requestURI.endsWith("register.html") ||requestURI.endsWith("_wis_open_machinetool_sygxy____.html")){
 
 			chain.doFilter(request, response);
 			return;

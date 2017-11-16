@@ -39,6 +39,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                     $("#adjustment_type").val(result.adjustmentType),//是否已经调整
                     $("#Inventory_name").val(result.inventoryName),//名称
                     $("#Inventory_explain").val(result.inventoryExplain);//描述
+                    $("#approval_type").val(0);//恢复没有审批的状态
                     if(result.snapshotDate==null||result.snapshotDate=='null'){
                         $("#snapshot_date").val('');
                     }else{
@@ -52,7 +53,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
         },
         selectList:function(e,loading){
             if($("#Inventory_id").val()==''){
-                layer.msg("请选择需要盘点的库！");
+                layer.msg("请选择需要盘点的盘库记录！");
                 return null;
             };
             var index_=loading
@@ -61,6 +62,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             var r=af.table.remove();r=null;
             var id=$("#Inventory_id").val();//ID
             var a=COMMON.WS.ajax("cstorageRoomDefinition/selectList", "post", id, true, function (data){
+                if(data.length>0){$("#approval_type").val(data[0].approval_type);};
                 for(var i=0;i<data.length;i++){
                     var map={
                         approval_type:data[i].approval_type==null?'':data[i].approval_type, //审批状态
@@ -87,9 +89,22 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             return null;
         },
         saveData:function(){
+            var tr=$("#inventoryTable tbody tr");
+            if(tr.length==0){
+                layer.msg("请您查询盘库记录后审批！");
+                return null;
+            };
             if($("#adjustment_type").val()=='1'){
                 layer.msg("当前盘库记录已经启动调整，无需再次审批！");
                 return null;
+            };
+            if(tr.length==0){tr=null;return null;};
+            for(var i=0;i<tr.length;i++){
+                if(tr.find("input:radio:checked").val()==undefined){
+                    layer.msg("由于此程序具有不可撤消的特性，您必须批准或拒绝所有的调整！");
+                    layer.close(index_);index_=null;
+                    return null;
+                };
             };
             var upload=new Array;
             var id=$("#Inventory_id").val();
@@ -109,6 +124,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                 if(data){
                     var a=af.selectList(null,index_);
                     a=null;layer.msg("审批成功！");
+                    $("#approval_type").val(1);
                 }else{
                     layer.msg("审批失败！");
                 };data=null;index_=null;
@@ -116,33 +132,51 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             return null;
         },
         startUp:function(){
+            var tr=$("#inventoryTable tbody tr");
+            if(tr.length==0){return null;};
+            if($("#approval_type").val()==0){
+                layer.msg("由于此程序具有不可撤消的特性，您必须批准或拒绝所有的调整！");
+                return null;
+            };
             if($("#adjustment_type").val()=='1'){
                 layer.msg("当前盘库记录已经启动调整，无需再次启动！");
                 return null;
             };
             var index_=layer.load(3, {shade:[0.2, '#393D49']});
-            var tr=$("#inventoryTable tbody tr");
-            if(tr.length==0){tr=null;return null;};
-            for(var i=0;i<tr.length;i++){
-                if(tr.find("input:radio:checked").val()==undefined){
-                    layer.msg("由于此程序具有不可撤消的特性，您必须批准或拒绝所有的调整！");
-                    layer.close(index_);index_=null;
-                    return null;
-                };
-            };
-            var map={
+            var upload=new Array();
+            var head={
                 id:$("#Inventory_id").val(),
                 name:$("#Inventory_name").val()
             };
-            var a=COMMON.WS.ajax("cstorageRoomDefinition/startUp", "post", JSON.stringify(map), true, function (data){
+            var update=new Array();
+            var reg = new RegExp("^-[0-9]*$");
+            for(var i=0;i<tr.length;i++){
+                var a=Number(tr.eq(i).find('td:eq(4)').text());
+                var b=tr.eq(i).find('td:eq(6)').text();
+                if(reg.test(b)){
+                    a=a-Number(b);
+                }else{
+                    a=a+Number(b);
+                };
+                var map={
+                    material_no:tr.eq(i).find('td:eq(2)').text(),
+                    available_quantity:a
+                };
+                update.push(map);map=null;
+            };tr=null;reg=null;
+            upload.push({
+                head:head,
+                update:update
+            });head=null;update=null;
+            COMMON.WS.ajax("cstorageRoomDefinition/startUp", "post", JSON.stringify(upload), true, function (data){
                 if(data){
                     layer.msg("启动成功！");
                     $("#adjustment_type").val(1);
-                    layer.close(index_);index_=null;
                 }else{
                     layer.msg("启动失败！");
                 };data=null;
-            });a=null;map=null;
+                layer.close(index_);index_=null;
+            });upload=null;
             return null;
         },
         table:{

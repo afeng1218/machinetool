@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>收集要素定义</title>
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+    <div class="frame-block bg-fff" style="margin:0;padding:0;min-height:10px;">
+        <!--页面name-->
+        <div class="account-nav-title bg-a9a9a9">
+            <span>刀具管理-质量管理-收集要素定义</span>
+        </div>
+        <!-- 文本框 -->
+        <div class="row margin-top-5" style="padding:0;margin-left:1px;">
+            <div class="col-md-12 form-inline">
+                <div class="form-group">
+                    <label>新建时间:</label>
+                    <input type="text" style="width:180px;" id="newTime" class="form-control date">
+                </div>
+                <div class="form-group">
+                    <label>-</label>
+                    <input type="text" style="width:180px;" id="endTime" class="form-control date">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="selectBtn" style="width:100px;" class="btn btn-info">查找</button>
+                </div>
+                <div class="form-group" style="margin-left:20%;">
+                    <button type="button" id="saveBtn" style="width:100px;" class="btn btn-info">保存</button>
+                </div>
+            </div>
+        </div>
+        <!--table -->
+        <div class="row margin-top-5" style="margin-left:0px;">
+            <div class="col-md-12">
+                <div style="padding-right:17px;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="text-center" style="width:6%;">序号
+                                <span style="cursor:pointer"class="glyphicon glyphicon-plus" id="addRow"></span>
+                            </th>
+                            <th class="text-center" style="width:25%;">检测项目</th>
+                            <th class="text-center" style="width:25%;">提示</th>
+                            <th class="text-center" style="width:10%;">类型</th>
+                            <th class="text-center" style="width:6%;">启用</th>
+                            <th class="text-center" style="width:22%;">活动提示</th>
+                            <th class="text-center" style="width:6%;"></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table-body" style="min-height:255px;">
+                    <table class="table table-bordered text-center table-hover" id="projectTable">
+                        <tbody style="background:#FFFFFF"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--规格&缺陷 -->
+        <form id="formId">
+        <div class="row" style="padding:0;margin:10px 0px 0px 0px;">
+            <div class="col-md-5 account-info-list margin-top-1"
+                 style="min-height:250px;margin-left:14px;border:1px solid #ccc;border-radius:3px;">
+                <fieldset>
+                    <legend style="margin-bottom:15px;">
+                        <div style="font-size:14px ">
+                            <span>规格限制</span>
+                        </div>
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>目标值:</label>
+                        </div>
+                        <div class="col-md-9" style="padding:0;margin:0;">
+                            <input type="number" id="target_value" min="0" style="width:255px;" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>自定义范围:</label>
+                        </div>
+                        <div class="col-md-9 form-inline" style="padding:0;margin:0;">
+                            <div class="form-group">
+                                <input type="number" id="custom_up" min="0" style="width:120px;" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>-</label>
+                                <input type="number" id="custom_down" min="0" style="width:120px;" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>规格范围:</label>
+                        </div>
+                        <div class="col-md-9 form-inline" style="padding:0;margin:0;">
+                            <div class="form-group">
+                                <input type="number" id="specifications_up" min="0" style="width:120px;" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>-</label>
+                                <input type="number" id="specifications_down" min="0" style="width:120px;" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>合理范围:</label>
+                        </div>
+                        <div class="col-md-9 form-inline" style="padding:0;margin:0;">
+                            <div class="form-group">
+                                <input type="number" id="reasonable_up" min="0" style="width:120px;" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>-</label>
+                                <input type="number" id="reasonable_down" min="0" style="width:120px;" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-6 account-info-list margin-top-1"
+                 style="min-height:250px;margin-left:40px;border:1px solid #ccc;border-radius:3px;">
+                <fieldset>
+                    <legend style="margin-bottom:5px;">
+                        <div style="font-size:14px ">
+                            <span>缺陷值</span>
+                        </div>
+                    </legend>
+                    <div class="col-md-12" style="padding:0;margin:0;">
+                        <div style="padding-right:17px;">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th class="text-center" style="width:30%;">简码
+                                        <span style="cursor:pointer"class="glyphicon glyphicon-plus" id="addQX"></span>
+                                    </th>
+                                    <th class="text-center" style="width:60%;">说明</th>
+                                    <th class="text-center" style="width:10%;"></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="table-body" style="height:150px;">
+                            <table class="table table-bordered text-center table-hover" id="tableQX">
+                                <tbody style="background:#FFFFFF"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

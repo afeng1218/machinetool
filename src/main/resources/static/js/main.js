@@ -26,7 +26,8 @@
             layer: 'lib/layer/layer',
             tableExport: 'lib/tableExport',
             jqueryCookie: 'lib/jquery.cookie',
-            jQueryPrint: 'lib/jQuery.print'
+            jQueryPrint: 'lib/jQuery.print',
+            chartBundle:'lib/chart/Chart.bundle'
         },
         shim: {
             "bootstrap": {

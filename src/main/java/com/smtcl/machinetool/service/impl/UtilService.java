@@ -123,4 +123,20 @@ public class UtilService implements IUtilService{
 		}
 		return no.toString();
 	}
+
+	/**
+	 * 获取最大ID
+	 * @param table
+	 * @param col
+	 * @return
+	 */
+	@Override
+	public Integer getMaxId(String table, String col){
+		List list=dao.executeQuery("select max(cah." + col + ") from " + table + " as cah");
+		int maxId=1;
+		if(list.get(0)!=null){
+			maxId=Integer.parseInt(list.get(0).toString());
+		};
+		return maxId;
+	}
 }

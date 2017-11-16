@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden;background-color:#ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>质量分析</title>
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <!-- endbuild:commonCss -->
+    <style>
+        canvas{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+<div class="frame-block bg-fff" style="margin:0;padding:0;min-height:10px;">
+    <div class="account-nav-title bg-a9a9a9">
+        <span>刀具管理-质量管理-质量分析</span>
+    </div>
+    <div class="row" style="padding:0;margin-top:5px;margin-left:1px;">
+        <div class="col-md-12 form-inline">
+            <div class="form-group">
+                <label>日期:</label>
+                <input type="text" style="width:120px;" id="newTime" class="form-control date">
+            </div>
+            <div class="form-group">
+                <label>-</label>
+                <input type="text" style="width:120px;" id="endTime" class="form-control date">
+            </div>
+            <div class="form-group">
+                <label>产品:</label>
+                <input type="text" style="width:150px;" id="" class="form-control date">
+            </div>
+            <div class="form-group">
+                <label>检测项目:</label>
+                <input type="text" style="width:150px;" id="" class="form-control date">
+            </div>
+            <div class="form-group">
+                <label>收集计划:</label>
+                <input type="text" style="width:150px;" id="" class="form-control date">
+            </div>
+            <div class="form-group">
+                <button type="button" id="selectBtn" style="width:100px;" class="btn btn-info">查找</button>
+            </div>
+
+        </div>
+    </div>
+    <div id="basedata_tab" class="row">
+        <div class="col-md-12 padding-left-30">
+            <div class="row orders-search">
+                <div class="col-md-10" id="base-status-bar">
+                    <input type="hidden" id="base-status-bar-value" value=""/>
+                    <div class="sesol-btn order select" data="1">控制图</div>
+                    <div class="sesol-btn order" data="2">CPK分析</div>
+                    <div class="sesol-btn order" data="3">样本运行图</div>
+                    <div class="sesol-btn order" data="4">均值运行图</div>
+                    <div class="sesol-btn order" data="5">CPK趋势图</div>
+                    <div class="sesol-btn order" data="6">合格率趋势图</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="base_tab" id="base_tab1" style="padding:0;margin:0;">
+        <div class="row" style="margin:0;padding:0;">
+            <div id="basedata_tab_parent" class="row margin-top-5">
+                <div class="col-md-12 padding-left-30">
+                    <div class="row orders-search">
+                        <div class="col-md-10" id="base-status-bar_parent">
+                            <input type="hidden" id="base-status-bar-value_parent" value=""/>
+                            <div class="sesol-btn order select" data="1">平均值</div>
+                            <div class="sesol-btn order" data="2">标注差</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 平均值 -->
+            <div class="base_tab_parent" id="base_tab_parent1" style="padding:0;margin:0;">
+                <canvas id="canvas" width="1100" height="300"></canvas>
+            </div>
+            <!-- 标准差 -->
+            <div class="base_tab_parent" id="base_tab_parent2" style="padding:0;margin:0;">
+            </div>
+        </div>
+        <div class="row" style="margin:0;padding:0;">
+            aaa
+        </div>
+    </div>
+    <div class="base_tab" id="base_tab2" style="display:none;">
+    </div>
+    <div class="base_tab" id="base_tab3" style="display:none;">
+    </div>
+    <div class="base_tab" id="base_tab4" style="display:none;">
+    </div>
+    <div class="base_tab" id="base_tab5" style="display:none;">
+    </div>
+    <div class="base_tab" id="base_tab6" style="display:none;">
+    </div>
+    <button type="button" id="loadBtn" style="width:100px;" class="btn btn-info">刷新</button>
+</div>
+<script data-main="js/main" src="js/require.js"></script>
+</body>
+</html>

@@ -33,11 +33,11 @@ define(['jquery', 'common', 'layer', 'bootstrap', 'bootstrapTreeView'], function
                 'bootstrap2': false,
                 'showTags': false,//显示标签
                 'levels': 4,//节点最大层级
-                // 'color':'black',//字体颜色
-                'backColor':'#ededed',//背景颜色
-                // 'onhoverColor':'#c2c2c2',//鼠标效果颜色
-                // 'borderColor':'#A9A9A9',//边框颜色
-                //'selectedBackColor':'#ff7171',
+                'color':'rgb(183,181,183)',//字体颜色
+                'backColor':'rgb(54,54,54)',//背景颜色
+                'onhoverColor':'rgb(48,48,48)',//鼠标效果颜色
+                'borderColor':'rgb(79,67,58)',//边框颜色
+                'selectedBackColor':'rgb(205,60,52)',
                 'data': data.authorityTree[0]//节点数据
             };
             /**

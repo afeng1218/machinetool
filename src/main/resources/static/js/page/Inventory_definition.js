@@ -174,6 +174,10 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             });
             //取消货签
             a=$("#cancelSignBtn").click(function(){
+                if($("#Inventory_id").val()==""){
+                    layer.tips("请查找需要取消货签的记录！","#select");
+                    return null;
+                };
                 if($("#adjustment_type").is(':checked')){
                     layer.msg("已传送调整不允许取消货签！");
                     return null;
@@ -196,19 +200,33 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
             });a=null;
             //取消盘点
             a=$("#cancelInventoryBtn").click(function(){
+                if($("#Inventory_id").val()==""){
+                    layer.tips("请查找需要取消盘点的记录！","#select");
+                    return null;
+                };
                 if($("#adjustment_type").is(':checked')){
                     layer.msg("已传送调整不允许取消盘点！");
                     return null;
-                }
-                var id=$("#Inventory_id").val();
-                var a=COMMON.WS.ajax("cstorageRoomDefinition/cancelInventory", "post", id, true, function (data){
-                    layer.close(index_);index_=null;
-                    if(data){
-                        layer.msg("货签取消成功！");
-                    }else{
-                        layer.msg("货签取消失败！")
-                    };
-                });id=null;a=null;
+                };
+                var lay=layer.confirm('取消则无法恢复，是否确认取消盘点？', {
+                    btn:['确定', '取消'] //按钮
+                },function() {
+                    var id = $("#Inventory_id").val();
+                    var index_=layer.load(3, {shade: [0.2, '#393D49']})//遮罩
+                    COMMON.WS.ajax("cstorageRoomDefinition/cancelInventory", "post", id, true, function (data) {
+                        layer.close(index_);
+                        index_ = null;
+                        if (data) {
+                            layer.msg("取消盘点成功！");
+                        } else {
+                            layer.msg("取消盘点失败！")
+                        };
+                        $('#formID')[0].reset();
+                        $("#Inventory_id").val('');
+                        af.table.remove(true);
+                    });
+                    id=null;
+                });
             });a=null;
             //保存
             a=$("#saveBtn").click(function(){

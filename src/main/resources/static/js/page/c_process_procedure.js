@@ -327,14 +327,13 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker', "fi
                     popMenu:true,
                     readonly:false,
                     searchValue:'',
-                    colName:'物料编码,物料描述',
+                    colName:'工艺编码,工艺描述',
                     searchTable:'CGeneralMaterial',
                     searchCol:'materialNo,materialDescribe,materialId',
                     addLimit:[{'colName':'materialClass','colValue':'工艺'}]
                 },
                 //查询物料界面
                 b:function(fun_){
-                    af.selectClear.a.searchValue=$('#wl_code').val();
                     var a=COMMON_SEARCH.OPEN_PAGE.openPage(af.selectClear.a, function(HashMap){
                         var a=$('#wl_id').val(HashMap.materialId);a=null;
                         a=$('#wl_code').val(HashMap.materialNo);a=null;

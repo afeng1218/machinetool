@@ -105,10 +105,11 @@ public class CstorageRoomDefinitionService implements ICstorageRoomDefinitionSer
 			//子库存
 			if(!obj.getString("Inventory_range").equals("")){//只有子库存不为空的时候才操作内容表
 				String[] Inventory_range=obj.getString("Inventory_range").split("\\|");
-				String where="where 1=1";
+				String where="where";
 				for(int i=0;i<Inventory_range.length;i++){
-					where+=" or csrd.storage_room_no='"+Inventory_range[i]+"'";
+					where+=" csrd.storage_room_no='"+Inventory_range[i]+"' or ";
 				};Inventory_range=null;
+				if(where.endsWith("where")){where="";}else{where=where.substring(0,where.length()-3);};
 				//获取物料基本信息
 				sql="select cgm.material_no as materialNo物料编码,csl.available_quantity as availableQuantity拍照数量,"+
 						" csrd.storage_room_no as storage_room_no子库存,"+
@@ -263,7 +264,6 @@ public class CstorageRoomDefinitionService implements ICstorageRoomDefinitionSer
 	public String saveInput(String map){
 		try{
 			String sql="";
-			System.out.println("map="+map);
 			JSONArray array=new JSONArray(map);
 			DecimalFormat df=new DecimalFormat("#0.0");
 			for(int i=0;i<array.length();i++){
@@ -344,42 +344,60 @@ public class CstorageRoomDefinitionService implements ICstorageRoomDefinitionSer
 	@Override
 	@Transactional
 	public String startUp(String map, HttpServletRequest request){
+		String return_="false";
 		try{
-			JSONObject obj=new JSONObject(map);
+			JSONObject head=new JSONArray(map).getJSONObject(0).getJSONObject("head");
+			JSONArray update=new JSONArray(map).getJSONObject(0).getJSONArray("update");
 			//盘点题头表
-			String id=obj.getString("id");
+			String id=head.getString("id");
 			String sql="update c_inventory_head as a set a.adjustment_type=1 where a.id="+id;
 			dao.sqlUpdate(sql);sql=null;
 			//事物处理表
-			String name=obj.getString("name");
+			String name=head.getString("name");head=null;
 			sql="insert into c_material_affairs_handle(" +
 					"transaction_manager_no,source_type,source," +
 					"transaction_manager_type,transaction_manager_activity,create_person," +
 					"create_time)values("+id+",'盘点调整','"+name+"','物理库存盘点调整','库存调整'," +
 					"'"+request.getSession().getAttribute("USER_NAME")+"'," +
 					"'"+ymdhms.format(new Date())+"')";
-			dao.sqlUpdate(sql);sql=null;
-			id=null;name=null;
-			return true+"";
+			dao.sqlUpdate(sql);sql=null;id=null;name=null;
+			//库存存量更改
+			for(int i=0;i<update.length();i++){
+				JSONObject date=update.getJSONObject(i);
+				sql="UPDATE c_stock_list AS a,c_general_material AS b " +
+						"SET a.available_quantity='"+date.getInt("available_quantity")+"' " +
+						"WHERE a.material_id=b.material_id AND b.material_no='"+date.getString("material_no")+"'";
+				dao.sqlUpdate(sql);sql=null;date=null;
+			};update=null;
+			return_="true";
 		}catch (Exception e){
 			e.printStackTrace();
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//回滚
+		}finally{
+			return return_;
 		}
-		return null;
 	}
 
 	/**
 	 * 取消盘点
-	 * @param map
+	 * @param id
 	 * @return
 	 */
 	@Override
-	public String cancelInventory(String map){
+	public String cancelInventory(String id){
+		String retur_="false";
 		try{
-
+			if(!id.equals("")){
+				String sql="DELETE a,b FROM c_inventory_head as a " +
+						"LEFT JOIN c_inventory_list AS b ON a.id=b.Inventory_id " +
+						"WHERE a.id="+id;
+				dao.sqlUpdate(sql);
+				sql=null;retur_="true";
+			};
 		}catch (Exception e){
-
+			e.printStackTrace();
+		}finally{
+			return retur_;
 		}
-		return null;
 	}
 }
