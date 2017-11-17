@@ -92,8 +92,10 @@ public class ConsumptionReportService implements IConsumptionReportService {
                 materialList = dao.executeQuery(mhql);
                 material = materialList.get(0);
 
+                System.out.println("material="+material.getMaterialClass());
+
                 List<CParameterModel> CPList = dao.executeQuery("from CParameterModel cpm " +
-                        " where cpm.category=" + material.getMaterialClass() + "'");
+                        " where cpm.category='" + material.getMaterialClass() + "'");
 
                 model.setMaterialNo(material.getMaterialNo());
                 model.setMaterialDescription(material.getMaterialDescribe());
