@@ -28,13 +28,7 @@
     </div>
     <div class="row margin-top-5">
         <div class="col-xs-2">
-            <select id="selectId" style="width:95%;height:38px;font-size:17px;border:solid 1px #eee;"></select>
-        </div>
-        <div class="col-xs-2 col-md-offset-6">
-            <button type="button" id="loadBtn" style="width:100px;" class="btn btn-info">更新</button>
-        </div>
-        <div class="col-xs-1">
-            <button type="button" id="" style="width:100px;" class="btn btn-info">保存</button>
+            <select id="selectId" style="width:95%;height:28px;font-size:17px;border:solid 1px #eee;background-color:rgb(249,249,249);"></select>
         </div>
     </div>
     <div class="row" style="padding-right:0;margin: 2px 0px 0px 0px;">
@@ -42,43 +36,7 @@
             <div style="padding-right:17px;">
                 <div class="table-body" style="height:535px;margin-top:2px;">
                     <table class="table table-bordered text-center table-hover" id="productionLineTable">
-                        <tbody style="background:#FFFFFF">
-                        <tr class="focus">
-                            <td style="width:100%;font-size:12px;">
-                                <img src="img/t1.png" width="80" height="60">
-                                <div>型号:t1</div>
-                                <div>设备编号:1001</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:100%;font-size:12px;">
-                                <img src="img/t3.png" width="80" height="60">
-                                <div>型号:t3</div>
-                                <div>设备编号:1002</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:100%;font-size:12px;">
-                                <img src="img/t5.png" width="80" height="60">
-                                <div>型号:t5</div>
-                                <div>设备编号:1003</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:100%;font-size:12px;">
-                                <img src="img/m1.1.png" width="80" height="60">
-                                <div>型号:m1.1</div>
-                                <div>设备编号:1004</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:100%;font-size:12px;">
-                                <img src="img/m4.png" width="80" height="60">
-                                <div>型号:m4</div>
-                                <div>设备编号:1005</div>
-                            </td>
-                        </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -92,77 +50,16 @@
                         <th class="text-center" style="width:10%;">初始寿命</th>
                         <th class="text-center" style="width:10%;">报警值</th>
                         <th class="text-center" style="width:10%;">实际寿命</th>
-                        <th class="text-center" style="width:5%;"></th>
+                        <th class="text-center" style="width:5%;">
+                            <a style="margin-right:4px;" href="javascript:void(0)" id="loadBtn" title="查询实际寿命" class="glyphicon glyphicon-search"></a>
+                            <a style="margin-right:4px;"href="javascript:void(0)" id="saveData" title="更新残余寿命" class="glyphicon glyphicon-floppy-save"></a>
+                        </th>
                     </tr>
                 </table>
             </div>
             <div class="table-body" style="height:500px;">
                 <table class="table table-bordered text-center table-hover" id="toolTable">
-                    <tbody style="background:#FFFFFF">
-                        <tr style="min-height:20px;background-color:rgb(232,255,232);">
-                            <td style="width:10%">t1</td>
-                            <td style="width:10%">1001</td>
-                            <td style="width:10%">9999999</td>
-                            <td style="width:10%">1000</td>
-                            <td style="width:10%">8888888</td>
-                            <td style="width:5%;">
-                                <a href="javascript:void(0)" class="glyphicon glyphicon-remove"
-                                   onclick="(function(e){
-                                        var tr=$(e).parent().parent();
-                                        $(tr).children('td').eq(4).html('');
-                                        $(tr).css('background-color','#ffffff');
-                                    })(this);">
-                                </a>
-                            </td>
-                        </tr>
-                        <tr style="min-height:18px;background-color:rgb(255,255,230);">
-                            <td style="width:10%">t2</td>
-                            <td style="width:10%">1002</td>
-                            <td style="width:10%">9999999</td>
-                            <td style="width:10%">1000</td>
-                            <td style="width:10%">1000</td>
-                            <td style="width:5%;">
-                                <a href="javascript:void(0)" class="glyphicon glyphicon-remove"
-                                   onclick="(function(e){
-                                        var tr=$(e).parent().parent();
-                                        $(tr).children('td').eq(4).html('');
-                                        $(tr).css('background-color','#ffffff');
-                                    })(this);">
-                                </a>
-                            </td>
-                        </tr>
-                        <tr style="min-height:20px;background-color:rgb(232,255,232);">
-                            <td style="width:10%">t3</td>
-                            <td style="width:10%">1003</td>
-                            <td style="width:10%">9999999</td>
-                            <td style="width:10%">1000</td>
-                            <td style="width:10%">666666</td>
-                            <td style="width:5%;">
-                                <a href="javascript:void(0)" class="glyphicon glyphicon-remove"
-                                   onclick="(function(e){
-                                        var tr=$(e).parent().parent();
-                                        $(tr).children('td').eq(4).html('');
-                                        $(tr).css('background-color','#ffffff');
-                                    })(this);">
-                                </a>
-                            </td>
-                        </tr>
-                        <tr style="min-height:20px;background-color:rgb(255,221,221);">
-                            <td style="width:10%">t4</td>
-                            <td style="width:10%">1004</td>
-                            <td style="width:10%">9999999</td>
-                            <td style="width:10%">1000</td>
-                            <td style="width:10%">0</td>
-                            <td style="width:5%;">
-                                <a href="javascript:void(0)" class="glyphicon glyphicon-remove"
-                                   onclick="(function(e){
-                                        var tr=$(e).parent().parent();
-                                        $(tr).children('td').eq(4).html('');
-                                        $(tr).css('background-color','#ffffff');
-                                    })(this);">
-                                </a>
-                            </td>
-                        </tr>
+                    <tbody style="background-color: #FFFFFF">
                     </tbody>
                 </table>
             </div>

@@ -154,7 +154,7 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                         '<!-- 标题 end-->' +
                         '<!-- 内容 -->' +
                         '<div class="table-body" id="commonSearchTableBody">' +
-                        '<table class="table table-bordered text-center table-hover" id="searchTable">' +
+                        '<table style="background-color: #FFFFFF;" class="table table-bordered text-center table-hover" id="searchTable">' +
                         '</table>' +
                         '</div>' +
                         '<!-- 内容 end-->' +

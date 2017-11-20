@@ -1,9 +1,6 @@
 package com.smtcl.machinetool.models.machinetool;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * CToolLife entity.
@@ -21,7 +18,6 @@ public class CToolLife implements java.io.Serializable {
 	private String resourceCode;
 	private String toolNumber;
 	private String cuttoolNo;
-	private String actuaLife;
 
 	// Constructors
 
@@ -42,7 +38,6 @@ public class CToolLife implements java.io.Serializable {
 		this.resourceCode = resourceCode;
 		this.toolNumber = toolNumber;
 		this.cuttoolNo = cuttoolNo;
-		this.actuaLife = actuaLife;
 	}
 
 	// Property accessors
@@ -90,15 +85,6 @@ public class CToolLife implements java.io.Serializable {
 
 	public void setCuttoolNo(String cuttoolNo) {
 		this.cuttoolNo = cuttoolNo;
-	}
-
-	@Column(name = "actua_life", length = 200)
-	public String getActuaLife() {
-		return this.actuaLife;
-	}
-
-	public void setActuaLife(String actuaLife) {
-		this.actuaLife = actuaLife;
 	}
 
 }

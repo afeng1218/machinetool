@@ -18,7 +18,26 @@ public class ToolLife{
 	IToolLifeService service;
 
 	@RequestMapping(value = "/selectLine",method = RequestMethod.POST)
-	public String selectLine(@RequestBody String type){
-		return service.selectLine(type);
+	public String selectLine(@RequestBody String map){
+		return service.selectLine(map);
+	};
+
+	@RequestMapping(value = "/selectRowData",method = RequestMethod.POST)
+	public String selectRowData(@RequestBody String map){
+		return service.selectRowData(map);
+	}
+
+	@RequestMapping(value = "/saveData",method = RequestMethod.POST)
+	public String saveData(@RequestBody String map){
+		return service.saveData(map);
+	}
+
+	@RequestMapping(value = "/loadData", method = RequestMethod.POST)
+	public String loadData(@RequestBody String map){
+		return  service.loadData(map);
+	}
+	@RequestMapping(value = "/uploadLifetime", method = RequestMethod.POST)
+	public String uploadLifetime(@RequestBody String map){
+		return  service.uploadLifetime(map);
 	}
 }
