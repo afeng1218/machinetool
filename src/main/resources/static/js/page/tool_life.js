@@ -6,6 +6,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
         loading:function(){
             af.event();
             af.loadDate({production_line_id:'',type:'all'});
+            af.timedRefresh(true,2000);
             COMMON.LAYER_CONFIG.config();
             return null;
         },
@@ -32,9 +33,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                         production_line_id:$("#selectId").val(),
                         resource_code:$(this).attr("value")
                     };
-                    af.loadRightRowData(map,function(){
-                        $("#loadBtn").click();
-                    });map=null;
+                    af.loadRightRowData(map,af.loadTimed);map=null;
                 });
                 $("#productionLineTable>tbody>tr:eq(0)").click();
                 map=null;data.line=null;data.tool=null;data=null;
@@ -71,12 +70,42 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 };
                 data=null;
                 $("#toolTable tbody tr td.update").click(function(){af.open(this);});
-                $("#toolTable tbody tr td a.glyphicon-cloud-upload").click(function(){af.glyphiconCloudUpload(this);});
+                $("#toolTable tbody tr td a.glyphicon-cloud-upload").click(function(){af.cloudUpload(this);});
                 return_();
             });
             return null;
         },
-        glyphiconCloudUpload:function(e){
+        loadTimed:function(){
+            var upload={
+                production_line_id:$("#selectId").val(),//生产线ID
+                resource_code:$("#productionLineTable tbody tr.focus").attr("value"),
+                ip:$("#productionLineTable tbody tr.focus").attr("ip")
+            };
+            COMMON.WS.ajax("toolLife/loadData", "post", JSON.stringify(upload), true, function (data){
+                if(data.return==-1){
+                    layer.msg("连接超时，机床IP是否准确、开机、启动服务？");
+                }else{
+                    //layer.msg("获取实际寿命成功！");
+                    var tr=$("#toolTable tbody tr");
+                    if(data.map!=undefined){
+                        var str=data.map.split("|");
+                        for(var i=3,j=0;i<str.length;i++,j++){
+                            if(tr.eq(j).find("td").eq(1).html()==''){continue;};
+                            tr.eq(j).find("td").eq(4).html(str[i]);
+                            tr.eq(j).css("background-color",af.updateBgColor(
+                                tr.eq(j).find("td").eq(3).html(),
+                                tr.eq(j).find("td").eq(4).html()));
+                            if(tr.eq(j).attr("class")=='load'){
+                                tr.eq(j).attr("class","update");
+                            };
+                        };
+                    };
+                };
+            });
+            upload=null;
+            return null;
+        },
+        cloudUpload:function(e){
             var tr=$(e).parent().parent();
             var openWindow = '<div style="padding:0;margin:0;">' +
                 '<div class="col-xs-3" style="margin-top:4px;width:100px;">实际寿命：</div>'+
@@ -123,39 +152,6 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 af.loadDate({production_line_id:$(this).val(),type:'tool'});
                 return null;
             });
-            //load
-            $("#loadBtn").click(function(){
-                var index_=layer.open({type: 3});
-                var upload={
-                    production_line_id:$("#selectId").val(),//生产线ID
-                    resource_code:$("#productionLineTable tbody tr.focus").attr("value"),
-                    ip:$("#productionLineTable tbody tr.focus").attr("ip")
-                };
-                COMMON.WS.ajax("toolLife/loadData", "post", JSON.stringify(upload), true, function (data){
-                    if(data.return==-1){
-                        layer.msg("超时，请检查机床是否开机、是否启动服务？");
-                    }else{
-                        layer.msg("获取实际寿命成功！");
-                        var tr=$("#toolTable tbody tr");
-                        if(data.map!=undefined){
-                            var str=data.map.split("|");
-                            for(var i=3,j=0;i<str.length;i++,j++){
-                                if(tr.eq(j).find("td").eq(1).html()==''){continue;};
-                                tr.eq(j).find("td").eq(4).html(str[i]);
-                                tr.eq(j).css("background-color",af.updateBgColor(
-                                    tr.eq(j).find("td").eq(3).html(),
-                                    tr.eq(j).find("td").eq(4).html()));
-                                if(tr.eq(j).attr("class")=='load'){
-                                    tr.eq(j).attr("class","update");
-                                };
-                            };
-                        };
-                    };
-                    layer.close(index_);index_=null;
-                });
-                upload=null;
-                return null;
-            });
             //保存
             $("#saveData").click(function(){
                 var index_=layer.open({type: 3});
@@ -188,10 +184,10 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 COMMON.WS.ajax("toolLife/saveData", "post", JSON.stringify(upload), true, function (data){
                     layer.close(index_);index_=null;
                     if(data){
-                        layer.msg("保存成功！");
+                        layer.msg("残余寿命更新成功！");
                         $("#productionLineTable>tbody>tr:eq(0)").click();
                     }else{
-                        layer.msg("保存失败！");
+                        layer.msg("残余寿命更新失败！");
                     };
                 });
             });
@@ -235,6 +231,10 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                     result=null;searchVal=null;e.new=false;
                 });
             };
+            return null;
+        },
+        timedRefresh:function(b,t){
+            if(b){setInterval(function(){af.loadTimed();},t);};
             return null;
         }
     };
