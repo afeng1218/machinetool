@@ -149,14 +149,13 @@ public class ToolLifeService implements IToolLifeService{
 			String servic="2000|"+obj.getString("resource_code")+"|"+ip;
 			for(int i=0;i<20;i++){servic+="|T_LIFECURRENT "+(i+1);};
 			//1.建立客户端socket连接，指定服务器位置及端口
-			socket=new Socket(ip,8000);
+			socket=new Socket();
+			socket.connect(new InetSocketAddress(ip, 8000), 100);//设置连接请求超时时间10 s
 			out = new DataOutputStream (socket.getOutputStream());
 			buf = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
-			System.out.println("servic="+servic);
 			out.write(servic.getBytes());//传输数据
 			out.flush();
 			return_.put("map",buf.readLine());
-			System.out.println("return_="+return_.getString("map"));
 			//2.关闭资源
 			buf.close();
 			out.close();
@@ -193,14 +192,14 @@ public class ToolLifeService implements IToolLifeService{
 					ip+"|T_LIFECURRENT "+
 					obj.getString("tool_number").split("t")[1]+
 					"="+obj.getString("surplus_lifetime");
-			System.out.println("servic="+servic);
-			socket=new Socket(ip,8000);ip=null;
+			socket=new Socket();
+			socket.connect(new InetSocketAddress(ip, 8000), 1000);//设置连接请求超时时间100 s
+			ip=null;
 			out = new DataOutputStream (socket.getOutputStream());
 			buf = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
 			out.write(servic.getBytes());//传输数据
 			out.flush();
 			return_=buf.readLine();//成功返回1 否则-1
-			System.out.println("return_="+return_);
 			buf.close();
 			out.close();
 			socket.close();

@@ -6,7 +6,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
         loading:function(){
             af.event();
             af.loadDate({production_line_id:'',type:'all'});
-            af.timedRefresh(true,2000);
+            af.timedRefresh(true,1000);
             COMMON.LAYER_CONFIG.config();
             return null;
         },
@@ -124,7 +124,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                     };
                     COMMON.WS.ajax("toolLife/uploadLifetime", "post", JSON.stringify(map), true, function (data){
                         if(data==-1){
-                            layer.msg("超时，请检查机床是否开机、是否启动服务？");
+                            layer.msg("连接超时，机床IP是否准确、开机、启动服务？");
                         }else {
                             layer.msg("修改实际寿命成功！");
                         };
@@ -234,7 +234,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
             return null;
         },
         timedRefresh:function(b,t){
-            if(b){setInterval(function(){af.loadTimed();},t);};
+            if(b){window.setInterval(function(){af.loadTimed();},t);};
             return null;
         }
     };
