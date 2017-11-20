@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;background-color: #ffffff;">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
+    <title>现场布局</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/page/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+</head>
+<body>
+<div style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
+    <div class="frame-block bg-fff" style="margin-top:0;min-height:10px;">
+        <div class="fixed-div account-nav-title bg-a9a9a9">
+            <input style="display: none;" id="pageName" value="consumptionReport"/>
+            <span>刀具管理-基础数据-现场布局</span>
+        </div>
+        <div class="row margin-top-30" id="head">
+            <label>车间：
+                <select id="work_shop" style="width: 200px;height: 30px">
+                    <option value="1">车间</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm">增加车间</button>
+            </label>
+            <label>生产线：
+                <select id="production_line" style="width: 200px;height: 30px">
+                    <option value="1">加工岛1</option>
+                    <option value="2">加工岛2</option>
+                    <option value="3">加工岛3</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm">增加生产线</button>
+            </label>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-1"
+                     style="min-height: 500px;background-color: #84ACB3;border-radius:5px;padding-top: 20px;">
+                    <div class="content_wrap" style="width: 100%;">
+                        <div class="zTreeDemoBackground left" style="width: 100%;" id="catalog">
+                            <ul class="list-group">
+                                <li style="list-style-type: none" style="z-index: 999;">
+                                    <!--<a href="javascript:void(0);" class="remove label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</a>-->
+                                    <a href="javascript:void(0);"><span class="drag label label-default" id="chechuang">
+                                <i class=""></i>拖动
+                            </span></a>
+                                    <button type="button" class="bottom">车床</button>
+                                </li>
+                                <br>
+                                <li style="list-style-type: none">
+                                    <!--<a href="javascript:void(0);" class="remove label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</a>-->
+                                    <span class="drag label label-default" id="xichuang"><i
+                                            class=""></i>拖动</span>
+                                    <button type="button" class="bottom">铣床</button>
+                                </li>
+                                <br>
+                                <li style="list-style-type: none">
+                                    <!--<a href="javascript:void(0);" class="remove label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</a>-->
+                                    <span class="drag label label-default" id="mochuang"><i
+                                            class=""></i>拖动</span>
+                                    <button type="button" class="bottom">磨床</button>
+                                </li>
+                                <br>
+                                <li style="list-style-type: none">
+                                    <!--<a href="javascript:void(0);" class="remove label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</a>-->
+                                    <span class="drag label label-default" id="tangchuang"><i
+                                            class=""></i>拖动</span>
+                                    <button type="button" class="bottom">镗床</button>
+                                </li>
+                                <br>
+                                <li style="list-style-type: none">
+                                    <!--<a href="javascript:void(0);" class="remove label label-danger"><i class="glyphicon glyphicon-remove"></i>删除</a>-->
+                                    <span class="drag label label-default"><i
+                                            class=""></i>拖动</span>
+                                    <button type="button" class="bottom">其他工位</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div id="container"></div>
+                </div>
+                <div class="col-xs-3">
+                    <input type="hidden" id="left_table_id" value="">
+                    <table class="table table-bordered" style="width: auto;margin-left: 10px">
+                        <tbody>
+                        <tr>
+                            <td>资源编号</td>
+                            <td class="left_data" data-text="请输入编号..." contenteditable="true" id="resource_code" style="min-width: 100px"></td>
+                        </tr>
+                        <tr>
+                            <td>设备组</td>
+                            <td class="left_data" data-text="请输入设备组" contenteditable="true" id="equipment_group"></td>
+                        </tr>
+                        <tr>
+                            <td>生产线</td>
+                            <td class="left_data" id="production_line_name"></td>
+                        </tr>
+                        <tr>
+                            <td>类别</td>
+                            <td class="left_data" contenteditable="true" data-text="请输入类别" id="category"></td>
+                        </tr>
+                        <tr>
+                            <td>型号</td>
+                            <td class="left_data" data-text="请输入型号..." contenteditable="true" id="model"></td>
+                        </tr>
+                        <tr>
+                            <td>费率</td>
+                            <td class="left_data" data-text="请输入费率..." contenteditable="true" id="rate"></td>
+                        </tr>
+                        <tr>
+                            <td>IP</td>
+                            <td class="left_data" contenteditable="true" data-text="请设置IP" id="ip"></td>
+                        </tr>
+                        <tr>
+                            <td>x轴</td>
+                            <td id="position-x"></td>
+                        </tr>
+                        <tr>
+                            <td>y轴</td>
+                            <td id="position-y"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button type="button" style="width: 200px" class="btn txt-fff bg-449dd7" id="saveBtn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+ <script data-main="js/main" src="js/require.js"></script>
+</html>

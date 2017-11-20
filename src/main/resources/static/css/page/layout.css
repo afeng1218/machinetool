@@ -1,0 +1,73 @@
+#head {
+    text-align:center;
+    padding:5px;
+}
+.bottom{
+    width: 50px;
+    height: 50px;
+}
+#right{
+    position: absolute;
+    right:148px;
+    bottom:261px;
+}
+#div1 {
+    width:900px; height:500px;padding:10px;border:1px solid #aaaaaa;
+    position: absolute;
+    left: 154px;
+    bottom: 30px;
+
+}
+#cart { width:900px; height:500px;padding:10px;border:1px solid #aaaaaa;
+    position: absolute;
+    left: 154px;
+    bottom: 30px; }
+/* 定义列表样式，以便最大化 droppable */
+#cart ol { margin: 0; padding: 1em 0 1em 3em; }
+#table
+{
+    position: absolute;
+    left: 154px;
+    top: 94px;
+    width: 800px;
+    height: 600px;
+    backgroundcolor: #1b6d85;
+    border: 1px;
+}
+/*#sortable { float: left; width: 100%; min-height: 20em; }*/
+/*#sortable.custom-state-active { background: #eee; }*/
+/*#sortable li { float: left;margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 110px; font-size: 1em; text-align: center; }*/
+/*#sortable li img { width: 100%; cursor: move; }*/
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
+.grid-stack {
+    background: white;
+}
+
+
+.newClass { text-indent: 40px; letter-spacing: .4em; width: 410px; height: 100px; padding: 30px; margin: 10px; font-size: 1.6em; }
+#container {
+    min-height: 500px;
+    position: relative;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    z-index: 0;
+
+}
+#container .model table {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+#container .model table thead{
+    background-color: #449DD7;
+    text-align: center;
+    background-image: none;
+}
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text);
+    color: #c6c6c6;
+}

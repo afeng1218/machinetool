@@ -1,6 +1,5 @@
 package com.smtcl.machinetool.controllers.page;
 
-import com.isesol.ismes.platform.api.sdk.*;
 import com.smtcl.machinetool.controllers.util.*;
 import com.smtcl.machinetool.dao.IGenericDAO;
 import com.smtcl.machinetool.models.machinetool.CCuttoolBasedata;
@@ -9,15 +8,11 @@ import org.json.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.image.*;
-import java.io.*;
-import java.lang.reflect.*;
 import java.text.*;
 import java.util.*;
 
 import org.springframework.web.multipart.*;
 
-import javax.imageio.*;
 import javax.servlet.http.*;
 
 /**

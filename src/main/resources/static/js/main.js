@@ -27,7 +27,9 @@
             tableExport: 'lib/tableExport',
             jqueryCookie: 'lib/jquery.cookie',
             jQueryPrint: 'lib/jQuery.print',
-            chartBundle:'lib/chart/Chart.bundle'
+            chartBundle:'lib/chart/Chart.bundle',
+            jqueryui:'lib/jquery-ui',
+            jsPlumb:'lib/jsPlumb-2.2.8'
         },
         shim: {
             "bootstrap": {

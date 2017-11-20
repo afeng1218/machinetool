@@ -29,6 +29,8 @@ public class CSceneLayout implements java.io.Serializable {
 	private Integer x;
 	private Integer y;
 	private String machineType;
+	private String resourceId;
+	private String ip;
 
 	// Constructors
 
@@ -45,7 +47,7 @@ public class CSceneLayout implements java.io.Serializable {
 	public CSceneLayout(Integer id, Integer workshopId, String workshopName,
 			Integer productionLineId, String productionLineName,
 			String resourceCode, String equipmentGroup, String category,
-			String model, Integer rate, Integer x, Integer y, String machineType) {
+			String model, Integer rate, Integer x, Integer y, String machineType,String resourceId,String ip) {
 		this.id = id;
 		this.workshopId = workshopId;
 		this.workshopName = workshopName;
@@ -59,6 +61,8 @@ public class CSceneLayout implements java.io.Serializable {
 		this.x = x;
 		this.y = y;
 		this.machineType = machineType;
+		this.resourceId = resourceId;
+		this.ip = ip;
 	}
 
 	// Property accessors
@@ -178,6 +182,23 @@ public class CSceneLayout implements java.io.Serializable {
 
 	public void setMachineType(String machineType) {
 		this.machineType = machineType;
+	}
+
+	@Column(name = "resource_id", length = 100)
+	public String getResourceId() {
+		return this.resourceId;
+	}
+
+	public void setResourceId(String resourceId) {
+		this.resourceId = resourceId;
+	}
+
+	@Column(name = "ip", length = 100)
+	public String getIp() {
+		return this.ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 }
