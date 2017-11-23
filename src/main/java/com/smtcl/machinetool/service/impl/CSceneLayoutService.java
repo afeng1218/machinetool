@@ -32,8 +32,7 @@ public class CSceneLayoutService implements ICSceneLayoutService {
             String workshop_id=json.getString("workshop_id");
             String production_line_id=json.getString("production_line_id");
             String sql = "from CSceneLayout cs where cs.workshopId ='" + workshop_id + "' and cs.productionLineId ='"+production_line_id+"'";
-            List<CSceneLayout> list = new ArrayList<CSceneLayout>();
-            list = dao.executeQuery(sql);
+            List<CSceneLayout> list = dao.executeQuery(sql);
             if (list.size() > 0 && list != null) {
                 return list;
             }
