@@ -35,7 +35,7 @@ public class ToolLifeService implements IToolLifeService{
 			String where="";
 			if(obj.getString("type").equals("all")){
 				List list=dao.createSQL(sql);sql=null;
-				where=" AND a.production_line_id="+((HashMap)list.get(0)).get("production_line_id");
+				where=" AND a.production_line_id="+(list!=null&&list.size()>0?((HashMap)list.get(0)).get("production_line_id"):"''");
 				return_.put("line",list);list=null;
 			}else{
 				where = " AND a.production_line_id="+(obj.getString("production_line_id").equals("undefined")?"''":obj.getString("production_line_id"));
@@ -88,14 +88,13 @@ public class ToolLifeService implements IToolLifeService{
 	public String saveData(String map){
 		String return_="false";
 		try{
-			System.out.println("map="+map);
 			JSONArray add= new JSONArray(map).getJSONObject(0).getJSONArray("add");
 			JSONArray update= new JSONArray(map).getJSONObject(0).getJSONArray("update");
 			for(int i=0;i<add.length();i++){
 				JSONObject data=add.getJSONObject(i);
 				String sql="insert into c_tool_life(production_line_id,resource_code,tool_number,cuttool_no)values(" +
 						""+data.getInt("production_line_id")+"," +
-						""+data.getInt("resource_code")+"," +
+						"'"+data.getString("resource_code")+"'," +
 						"'"+data.getString("tool_number")+"'," +
 						"'"+data.getString("cuttool_no")+"')";
 				dao.sqlUpdate(sql);sql=null;
@@ -111,7 +110,7 @@ public class ToolLifeService implements IToolLifeService{
 				String sql="UPDATE c_tool_life AS a" +
 						" SET a.cuttool_no='"+data.getString("cuttool_no")+"'"+
 						" WHERE a.production_line_id="+data.getInt("production_line_id")+
-						" AND a.resource_code="+data.getInt("resource_code")+
+						" AND a.resource_code='"+data.getString("resource_code")+"'"+
 						" AND a.tool_number='"+data.getString("tool_number")+"'";
 				dao.sqlUpdate(sql);sql=null;
 				if(!data.getString("cuttool_no").equals("")){//更新残余寿命
@@ -150,7 +149,7 @@ public class ToolLifeService implements IToolLifeService{
 			for(int i=0;i<20;i++){servic+="|T_LIFECURRENT "+(i+1);};
 			//1.建立客户端socket连接，指定服务器位置及端口
 			socket=new Socket();
-			socket.connect(new InetSocketAddress(ip, 8000), 100);//设置连接请求超时时间10 s
+			socket.connect(new InetSocketAddress(ip, 8000), 1000);//设置连接请求超时时间10 s
 			out = new DataOutputStream (socket.getOutputStream());
 			buf = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
 			out.write(servic.getBytes());//传输数据
@@ -179,6 +178,7 @@ public class ToolLifeService implements IToolLifeService{
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public String uploadLifetime(String map){
 		String return_="-1";
 		Socket socket=null;
@@ -208,6 +208,7 @@ public class ToolLifeService implements IToolLifeService{
 			out.close();
 			socket.close();
 			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//回滚
 		}finally{
 			return return_;
 		}

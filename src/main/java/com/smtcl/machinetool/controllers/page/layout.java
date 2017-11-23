@@ -16,13 +16,11 @@ public class layout {
 
     @RequestMapping(value = "/getLayoutById", method = RequestMethod.POST)
     public List getLayoutById(@RequestBody String uploadValue){
-
         return service.getLayoutById(uploadValue);
     }
 
     @RequestMapping(value = "/saveData", method = RequestMethod.POST)
     public String saveDate(@RequestBody String data) {
-        System.out.println(data);
         return service.saveLayout(data);
     }
 }

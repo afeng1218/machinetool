@@ -6,7 +6,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
         loading:function(){
             af.event();
             af.loadDate({production_line_id:'',type:'all'});
-            af.timedRefresh(true,1000);
+            af.timedRefresh(true,1500);
             COMMON.LAYER_CONFIG.config();
             return null;
         },
@@ -83,14 +83,18 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
             };
             COMMON.WS.ajax("toolLife/loadData", "post", JSON.stringify(upload), true, function (data){
                 if(data.return==-1){
-                    layer.msg("连接超时，机床IP是否准确、开机、启动服务？");
+                    if(af.intervalId!=null){
+                        window.clearInterval(af.intervalId);
+                        af.intervalId=null;
+                    };
+                    layer.msg("连接超时！");
                 }else{
                     //layer.msg("获取实际寿命成功！");
                     var tr=$("#toolTable tbody tr");
                     if(data.map!=undefined){
                         var str=data.map.split("|");
                         for(var i=3,j=0;i<str.length;i++,j++){
-                            if(tr.eq(j).find("td").eq(1).html()==''){continue;};
+                            //if(tr.eq(j).find("td").eq(1).html()==''){continue;};
                             tr.eq(j).find("td").eq(4).html(str[i]);
                             tr.eq(j).css("background-color",af.updateBgColor(
                                 tr.eq(j).find("td").eq(3).html(),
@@ -124,7 +128,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                     };
                     COMMON.WS.ajax("toolLife/uploadLifetime", "post", JSON.stringify(map), true, function (data){
                         if(data==-1){
-                            layer.msg("连接超时，机床IP是否准确、开机、启动服务？");
+                            layer.msg("连接超时！");
                         }else {
                             layer.msg("修改实际寿命成功！");
                         };
@@ -195,10 +199,12 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
         },
         updateBgColor:function (life_alarm,surplus_lifetime) {
             var bgColor='';
-            if(Number(surplus_lifetime)<Number(life_alarm)){//实际寿命小于报警值时
-                bgColor="rgb(232,255,232)";//绿色
-            }else if(Number(surplus_lifetime)>=Number(life_alarm)){//实际寿命大于报警值时
-                bgColor="rgb(255,221,221)";//红色
+            if(life_alarm!=''&&surplus_lifetime!='') {
+                if (Number(surplus_lifetime) < Number(life_alarm)) {//实际寿命小于报警值时
+                    bgColor = "rgb(232,255,232)";//绿色
+                } else if (Number(surplus_lifetime) >= Number(life_alarm)) {//实际寿命大于报警值时
+                    bgColor = "rgb(255,221,221)";//红色
+                };
             };
             surplus_lifetime=null;
             life_alarm=null;
@@ -233,8 +239,9 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
             };
             return null;
         },
+        intervalId:null,
         timedRefresh:function(b,t){
-            if(b){window.setInterval(function(){af.loadTimed();},t);};
+            if(b){af.intervalId=window.setInterval(function(){af.loadTimed();},t);};
             return null;
         }
     };

@@ -6,7 +6,7 @@ define(['jquery', 'common', 'layer', 'jqueryBackstretch'], function ($, COMMON, 
     function init(){
         var uploadValue = {
             'test':'admin',
-            'name': 'admin',
+            'name': 'a',
             'password': 'a3834dh373ekjdjd743n3naj282j2d7dasdas333afs',
         };
         /**
