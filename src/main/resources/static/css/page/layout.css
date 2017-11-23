@@ -67,6 +67,14 @@
     text-align: center;
     background-image: none;
 }
+.delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 15px;
+    height: 50px;
+    display: none;
+}
 [contentEditable=true]:empty:not(:focus):before{
     content:attr(data-text);
     color: #c6c6c6;

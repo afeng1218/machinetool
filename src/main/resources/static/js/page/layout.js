@@ -5,6 +5,10 @@ function bigImg(x) {
 function smImg(x) {
     x.style.borderColor = "#9e9e9e"
 };
+function removeElement(obj) {
+    if(confirm("确定删除该模型？"))
+        $('#'+obj).detach();
+}
 define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON, layer) {
     var af = {
         load: function () {
@@ -81,10 +85,14 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
             };
 
             function getModelTable() {
-                var rate = "rate" + model_counter;
+                var rate = "1_" + model_counter;
                 var table = null;
                 if(modelid=="chechuang") {
-                    table = "<div style='border:1px solid #9e9e9e;' onmouseout='smImg(this)' onmousemove='bigImg(this)'><img style='width:100px;height:100px;' src='img/车床.png'></div>";
+                    table = "<div style='border:1px solid #9e9e9e;'" +
+                        " onmouseout='smImg(this)' onmousemove='bigImg(this)'>" +
+                        "<a href='javascript:void(0);' onclick='removeElement(this)' class='delete'><i class='glyphicon glyphicon-remove'></i></a>'" +
+                        "<img style='width:100px;height:100px;' src='img/车床.png'>" +
+                        "</div>";
                 }if(modelid=="xichuang"){
                     table = "<div style='border:1px solid #9e9e9e;' onmouseout='smImg(this)' onmousemove='bigImg(this)'><img style='width:100px;height:100px;' src='img/铣床.png'></div>";
                 }if(modelid=="mochuang"){
@@ -98,6 +106,10 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
             //右侧可编辑表格赋值事件
             $(".left_data").keyup(function(){
                 var jcID=$("#left_table_id").val();
+                //判断位置是否改变
+                if($("#"+jcID).attr("type")=="load"){
+                    $("#"+jcID).attr("type","update");
+                };
                 if($(this).attr("id")=='resource_code'){
                     $("#"+jcID).attr("resource_code",$(this).text());
                 };
@@ -180,6 +192,13 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
                         instance.repaintEverything();
                     }
                 });
+                $("#" + id).mouseenter(function () {
+                    $(this).find(".delete").show();
+
+                });
+                $("#" + id).mouseleave(function () {
+                    $(this).find(".delete").hide();
+                });
                 //鼠标点击div事件
                 $("#" + id).click(function (e) {
                     $("#left_table_id").val(id);//记录当前是哪个床子
@@ -197,47 +216,74 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
             }
             //保存
             $("#saveBtn").click(function (e) {
-                var uploadValue=[];
-                var add=[];
-                var update=[];
-                $(".model").each(function(){
-                    var map={
-                        resource_id:$(this).attr("id"),
-                        resource_code:$(this).attr("resource_code")==null?'':$(this).attr("resource_code"),
-                        equipment_group:$(this).attr("equipment_group")==null?'':$(this).attr("equipment_group"),
-                        workshop_id:$('#work_shop').val(),
-                        production_line_id:$('#production_line').val(),
-                        production_line_name:$('#production_line').find("option:selected").text(),
-                        category:$(this).attr("category")==null?'':$(this).attr("category"),
-                        model:$(this).attr("model")==null?'':$(this).attr("model"),
-                        rate:$(this).attr("rate")==null?'':$(this).attr("rate"),
-                        position_x:$(this).position().left,
-                        position_y:$(this).position().top,
-                        ip:$(this).attr("ip")==null?'':$(this).attr("ip")
-                    };
-                    if($(this).attr("type")=="add"){
-                        add.push(map);map=null;
-                    }
-                    if($(this).attr("type")=="load"){
-                        update.push(map);map=null;
-                    }
-                });
-                uploadValue.push({
-                    add:add,
-                    update:update
-                });
-                add=null;
-                update=null;
-                COMMON.WS.ajax('layout/saveData', 'post', JSON.stringify(uploadValue), true, function (data) {
-                    var flag = true;
-                    if (data == flag) {
-                        layer.msg('保存成功！');
-                    } else {
-                        layer.msg('请重试');
-                    }
-                });
-                uploadValue=null;
-                return null;
+                var uploadValue = [];
+                var add = [];
+                var update = [];
+                if ($("#position-x").html() == "") {
+                    layer.msg("未编辑任何数据无法保存");
+                    return
+                }
+
+                if ($("#resource_code").html() == "") {
+                    layer.msg("请填写资源编号");
+                    return
+                }
+
+                if ($("#equipment_group").html() == "") {
+                    layer.msg("请填写设备组");
+                    return
+                }
+
+                if ($("#model").html() == "") {
+                    layer.msg("请输入设备型号");
+                    return
+                }
+
+                if ($("#ip").html() == "") {
+                    layer.msg("请输入IP");
+                    return
+                } else {
+                    $(".model").each(function () {
+                        var map = {
+                            id: $(this).attr("id"),
+                            resource_code: $(this).attr("resource_code") == null ? '' : $(this).attr("resource_code"),
+                            equipment_group: $(this).attr("equipment_group") == null ? '' : $(this).attr("equipment_group"),
+                            workshop_id: $('#work_shop').val(),
+                            production_line_id: $('#production_line').val(),
+                            production_line_name: $('#production_line').find("option:selected").text(),
+                            category: $(this).attr("category") == null ? '' : $(this).attr("category"),
+                            model: $(this).attr("model") == null ? '' : $(this).attr("model"),
+                            rate: $(this).attr("rate") == null ? '' : $(this).attr("rate"),
+                            position_x: $(this).position().left,
+                            position_y: $(this).position().top,
+                            ip: $(this).attr("ip") == null ? '' : $(this).attr("ip")
+                        };
+                        if ($(this).attr("type") == "add") {
+                            add.push(map);
+                            map = null;
+                        }
+                        if ($(this).attr("type") == "update") {
+                            update.push(map);
+                            map = null;
+                        }
+                    });
+                    uploadValue.push({
+                        add: add,
+                        update: update
+                    });
+                    add = null;
+                    update = null;
+                    COMMON.WS.ajax('layout/saveData', 'post', JSON.stringify(uploadValue), true, function (data) {
+                        var flag = true;
+                        if (data == flag) {
+                            layer.msg('保存成功！');
+                        } else {
+                            layer.msg('请重试');
+                        }
+                    });
+                    uploadValue = null;
+                    return null;
+                }
             });
 
             function loadLine(){
@@ -250,8 +296,8 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
                 COMMON.WS.ajax('layout/getLayoutById', 'post', JSON.stringify(uploadValue), true, function (data) {
                     var html_="";
                     for(var i=0;i<data.length;i++){
-                        html_+="<div class='model jtk-endpoint-anchor ui-draggable ui-draggable-handle' " +
-                            "id='1_'"+(i)+" " +
+                        html_+="<div class='model' " +
+                            "id='"+data[i].id+"'" +
                             "type='load' " +
                             "resource_code='"+data[i].resourceCode+"'" +
                             "equipment_group='"+data[i].equipmentGroup+"'" +
@@ -263,11 +309,49 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
                             "position-y='"+data[i].y+"'" +
                             "ip='"+data[i].ip+"'" +
                             "style='position: absolute; left: "+data[i].x+"px; top:"+data[i].y+"px;'>" +
-                            "<div style='border: 1px solid rgb(158, 158, 158);'>" +
+                            "<div style='border:1px solid #9e9e9e;' onmouseout='smImg(this)' onmousemove='bigImg(this)'>" +
+                            "<a href='javascript:void(0);' onclick='removeElement("+data[i].id+")' class='delete'><i class='glyphicon glyphicon-remove'></i></a>"+
                             "<img style='width:100px;height:100px;' src='img/"+data[i].category+".png'>" +
                             "</div></div>";
                     };
                     $("#container").html(html_);html_=null;
+                    $(".model").draggable({
+                        containment: "parent",
+                        cursor: "move",
+                        drag: function () {
+                            $('#resource_code').html($(this).attr("resource_code")==undefined?'':$(this).attr("resource_code"));
+                            $('#equipment_group').html($(this).attr("equipment_group")==undefined?'':$(this).attr("equipment_group"));
+                            $('#category').html($(this).attr("category")==undefined?'':$(this).attr("category"));
+                            $('#model').html($(this).attr("model")==undefined?'':$(this).attr("model"));
+                            $('#rate').html($(this).attr("rate")==undefined? 0:$(this).attr("rate"));
+                            $('#production_line_name').text($('#production_line').find("option:selected").text());
+                            $('#ip').html($(this).attr("ip")==undefined?'':$(this).attr("ip"));
+                            $('#position-x').text($(this).position().left);
+                            $('#position-y').text($(this).position().top);
+                        },
+                        stop:function (event) {
+                            var id = event.target.id;
+                            //判断位置是否改变
+                            if($("#"+id).attr("type")=="load"){
+                                $("#"+id).attr("type","update");
+                            };
+                            if($(this).attr("position-x")=='position-x'){
+                                $("#"+id).attr("position-x",$(this).position().left);
+                            };
+                            if($(this).attr("position-y")=='position-y'){
+                                $("#"+id).attr("position-y",$(this).position().top);
+                            };
+
+                        }
+                    });
+                    $(".model").mouseenter(function () {
+                        $(this).find(".delete").show();
+
+                    });
+                    $(".model").mouseleave(function () {
+                        $(this).find(".delete").hide();
+                    });
+
                     $(".model").click(function(){
                         $("#left_table_id").val($(this).attr("id")==undefined?'':$(this).attr("id"));//记录当前是哪个床子
                         $('#resource_code').html($(this).attr("resource_code")==undefined?'':$(this).attr("resource_code"));
@@ -287,12 +371,6 @@ define(['jquery', 'common', 'layer', 'jqueryui', 'jsPlumb'], function ($, COMMON
 
             //下拉列表查询事件
             $("#production_line").bind("change",loadLine);
-
-            function removeElement(obj) {
-                var element = $(obj).parents(".model");
-                if (confirm("确定删除该模型？"))
-                    instance.remove(element);
-            }
             loadLine();
         }
     };

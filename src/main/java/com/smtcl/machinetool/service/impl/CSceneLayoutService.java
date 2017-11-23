@@ -87,10 +87,7 @@ public class CSceneLayoutService implements ICSceneLayoutService {
                         "production_line_name='"+obj.getString("production_line_name")+"'," +
                         "model='"+obj.getString("model")+"'," +
                         "category='"+obj.getString("category")+"' " +
-                        "where workshop_id = "+obj.getString("workshop_id")+" " +
-                        "and production_line_id = "+obj.getString("production_line_id") +" " +
-                        "and resource_code='"+obj.getString("resource_code")+"'" +
-                        "and ip='"+obj.getString("ip")+"'";
+                        "where id = "+obj.getString("id")+" ";
                 dao.sqlUpdate(sql);
                 sql=null;
                 obj=null;
