@@ -10,12 +10,11 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
         var arrUrl = window.location.href.split("/");
         var strPage = COMMON.ECODE.Base64.encode(arrUrl[arrUrl.length - 1]);
         var username = COMMON.ECODE.Base64.decode($.cookie('username'));
-
         if ($.cookie(strPage) == null && username != 'admin') {
-
             $('#saveBtn').remove();
             $('#deleteBtn').remove();
         }
+
         /**
          * layer config
          */
@@ -38,48 +37,35 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
 
                         var storageId = $(e.target).find('input').val();
                         COMMON.WS.local('storageLocationDefinition/getStorageLocation', 'get', {storageId: storageId}, true, function (data) {
-
                             /*清空库位下拉*/
                             $('#storageLocationNo ul li').remove();
                             /*清空库位编号input*/
                             $('#storageLocationNo input:first').val('');
                             /*清空库位描述*/
                             $('#storageLocationDescription').val('');
-
                             $('#storageLocationNo ul').append('<li></li>');
                             for (var i = 0; i < data.length; i++) {
-
                                 $('#storageLocationNo ul').append('<li>'
                                     + data[i].cargoSpaceNo +
                                     '<input style="display: none" value="' + data[i].cargoSpaceExplain + '"/>' +
                                     '</li>');
                             }
                         });
-
                     }
-
                 } else {
-
                     $('#storageDescription').val('');
                     $('#storageLocationNo input').val('');
                     $('#storageLocationNo ul li').remove();
                     $('#storageLocationDescription').val('');
-
                 }
-
-
             });
-
         });
         /*库位信息下拉列表事件*/
         $(document).on('click', '#storageLocationNo', function () {
-
             $('#storageLocationNo ul').toggle();
             $('#storageLocationNo ul li').click(function (e) {
-
                 var v = $(e.target);
                 if (v.is('li')) {
-
                     var t = v.text();
                     var describe = v.find('input').val();
                     /*设置库房编号*/
@@ -87,19 +73,14 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                     /*设置库位描述*/
                     $('#storageLocationDescription').val(describe);
                 }
-
             });
-
         });
 
         /*库房信息初始化*/
         COMMON.WS.local('storageLocationDefinition/init', 'get', '', true, function (data) {
-
             /*库房为空就是查找所有库位信息*/
             $('#storage ul').append('<li></li>');
-
             for (var i = 0; i < data.length; i++) {
-
                 $('#storage ul').append('<li>' +
                     '' + data[i].storageRoomNo + '' +
                     '<input style="display: none;" value="' + data[i].storageRoomId + '"/>' +
@@ -123,30 +104,23 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
             'storageLocationDescription': storageLocationDescription
         };
         COMMON.WS.local('storageLocationDefinition/storageLocationSearch', 'get', uploadData, true, function (data) {
-
-
             for (var i = 0; i < data.length; i++) {
-
                 var maxNumber = '';
                 var volumeSize = '';
                 var weight = '';
                 var dimension = '';
                 if (data[i].maxNumber != null) {
-
                     maxNumber = data[i].maxNumber;
                 }
                 if (data[i].volumeSize != null) {
-
                     volumeSize = data[i].volumeSize;
                 }
                 if (data[i].weight != null) {
-
                     weight = data[i].weight;
                 }
                 if (data[i].dimension != null) {
-
                     dimension = data[i].dimension;
-                }
+                };
                 $('#storageTable').append('<tr>' +
                     //库位编号
                     '<td style="padding:0;text-align:center;">' +
@@ -258,17 +232,13 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                     '<span style="cursor: pointer;" class="glyphicon glyphicon-remove remove"><span>' +
                     '</td>' +
                     '</tr>');
-
             }
-
             /**
              * 获取库房信息
              */
             COMMON.WS.local('storageLocationDefinition/getAllStorage', 'get', '', true, function (data) {
-
                 var allTd = $('#storageTable tbody tr:last td');
                 for (var i = 0; i < data.length; i++) {
-
                     $('.storage').append('<li>' +
                         '<a href="javascript:void(0)" class="dropdowna">' + data[i].storageRoomDescribe + '' +
                         '</a>' +
@@ -276,41 +246,31 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                         '</li>');
                 }
             });
-
             /**
              * 获取单位信息
              */
             COMMON.WS.local('storageLocationDefinition/getUnit', 'get', '', true, function (data) {
-
                 for (var i = 0; i < data.length; i++) {
-
                     var apendStr = '<li>' +
                         '<a href="javascript:void(0)" class="dropdowna">' + data[i].unitName + '</a>' +
                         '<input type="hidden" value="' + data[i].unitNo + '"/>' +
                         '</li>';
 
                     if (data[i].unitType == 'quantityUnit') {
-
                         $('.quantityUnit').append(apendStr);
                     }
                     if (data[i].unitType == 'volumeUnit') {
-
                         $('.volumeSizeUnit').append(apendStr);
                     }
                     if (data[i].unitType == 'weightUnit') {
-
                         $('.weightUnit').append(apendStr);
                     }
                     if (data[i].unitType == 'dimensionUnit') {
-
                         $('.dimensionUnit').append(apendStr);
                     }
                 }
             });
-
-
         });
-
     });
 
     /**
@@ -318,30 +278,21 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
      * @param e
      */
     $(document).on('click', '.dropdowna', function (e) {
-
         var choose = $(e.target);
         var td = choose.parent().parent().parent().parent();
-
         var thisTr = td.parent();
-
         var length = choose.parent().find('input').length;
 
         /**
          * 验证库位是否被占用
          */
         if (td.is(thisTr.find('td').eq(2))) {
-
             if (length == 0 || (length > 0 && thisTr.find('td').eq(0).text() != '' && occupyOrNot(thisTr, td, 'edit'))) {
-
                 td.find('button span:first-child').text(choose.text());
                 var inputVal = choose.parent().find('input').val();
-
                 if (td.find('button input').length == 0) {
-
                     td.find('button').append('<input type="hidden" value="' + inputVal + '"/>');
-
                 } else {
-
                     td.find('button input').val(inputVal);
                 }
             }
@@ -349,21 +300,20 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
              * 如果是新增库位信息
              */
             if (thisTr.hasClass('add')) {
-
                 td.find('div button span:first').text(choose.text());
+                var inputVal = choose.parent().find('input').val();
+                if (td.find('button input').length == 0) {
+                    td.find('button').append('<input type="hidden" value="' + inputVal + '"/>');
+                } else {
+                    td.find('button input').val(inputVal);
+                }
             }
-
         } else {
-
             td.find('button span:first-child').text(choose.text());
             var inputVal = choose.parent().find('input').val();
-
             if (td.find('button input').length == 0) {
-
                 td.find('button').append('<input type="hidden" value="' + inputVal + '"/>');
-
             } else {
-
                 td.find('button input').val(inputVal);
             }
         }
@@ -391,7 +341,7 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                         'cargoSpaceId': 'null',
                         'cargoSpaceNo': updateValue.eq(i).find('td:first-child span').text(),
                         'cargoSpaceExplain': updateValue.eq(i).find('td').eq(1).text(),
-                        'storage': updateValue.eq(i).find('td').eq(2).find('div ul input').val(),
+                        'storage': updateValue.eq(i).find('td').eq(2).find('div button input').val(),
                         'state': updateValue.eq(i).find('td').eq(3).find('div button span:first-child').text(),
                         'maxNum': updateValue.eq(i).find('td').eq(4).text(),
                         'quantityUnit': updateValue.eq(i).find('td').eq(5).find('div ul input').val(),
@@ -574,9 +524,7 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                     '<span style="cursor: pointer;" class="glyphicon glyphicon-remove remove"><span>' +
                     '</td>' +
                     '</tr>');
-
                 COMMON.WS.local('storageLocationDefinition/getAllStorage', 'get', '', true, function (data) {
-
                     var allTd = $('#storageTable tbody tr:last td');
                     for (var i = 0; i < data.length; i++) {
                         allTd.eq(2).find('div ul').append('<li>' +
@@ -586,44 +534,30 @@ define(['jquery', 'common', 'layer'], function ($, COMMON, layer) {
                             '</li>');
                     }
                 });
-
                 COMMON.WS.local('storageLocationDefinition/getUnit', 'get', '', true, function (data) {
-
                     var lastTr = $('#storageTable tbody tr:last');
                     for (var i = 0; i < data.length; i++) {
-
                         var apendStr = '<li>' +
                             '<a href="javascript:void(0)" class="dropdowna">' + data[i].unitName + '' +
                             '</a>' +
                             '<input type="hidden" value="' + data[i].unitNo + '"/>' +
                             '</li>';
-
                         if (data[i].unitType == 'quantityUnit') {
-
                             lastTr.find('.quantityUnit').append(apendStr);
-                            /* $('.quantityUnit').append(apendStr);*/
                         }
                         if (data[i].unitType == 'volumeUnit') {
-
                             lastTr.find('.volumeSizeUnit').append(apendStr);
-                            /* $('.volumeSizeUnit').append(apendStr);*/
                         }
                         if (data[i].unitType == 'weightUnit') {
-
                             lastTr.find('.weightUnit').append(apendStr);
-                            /*$('.weightUnit').append(apendStr);*/
                         }
                         if (data[i].unitType == 'dimensionUnit') {
-
                             lastTr.find('.dimensionUnit').append(apendStr);
-                            /*$('.dimensionUnit').append(apendStr);*/
                         }
                     }
                 });
             }
-
         }
-
     });
     /**
      * 验证库位是否被占用

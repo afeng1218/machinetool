@@ -113,7 +113,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
             var tr=$(e).parent().parent();
             var openWindow = '<div style="padding:0;margin:0;">' +
                 '<div class="col-xs-3" style="margin-top:4px;width:100px;">实际寿命：</div>'+
-                '<div class="col-xs-8"><input type="number" min="0" class="form-control new_surplus_lifetime" value="'+$(tr).children('td').eq(4).html()+'"></div>'+
+                '<div class="col-xs-8"><input type="number" min="0.000" class="form-control new_surplus_lifetime" value="0.000"></div>'+
             '</div>';
             layer.open({
                 shade:[0.2, '#393D49'],

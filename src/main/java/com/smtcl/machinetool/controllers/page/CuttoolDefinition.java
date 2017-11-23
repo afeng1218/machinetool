@@ -485,28 +485,45 @@ public class CuttoolDefinition {
                 String borrow_no = objArry.getJSONObject(0).getString("borrow_no");
                 body="PICK/";
                 for(int i=0;i<objArry.length();i++){
-                    body+=objArry.getJSONObject(i).getString("material_no")+"/"+objArry.getJSONObject(i).getString("borrow_number")+"//";
+                    body+=objArry.getJSONObject(i).getString("material_no")+"/"+
+                            objArry.getJSONObject(i).getString("borrow_number")+"/"+
+                            objArry.getJSONObject(i).getString("cargo_space_no")+"/";
                 }objArry=null;
                 imageName =  borrow_no+".png" ;
             }else if(type.equals("2")){  //刀具归还
                 body="STORE/";
                 String return_no = objArry.getJSONObject(0).getString("return_no");
                 for(int i=0;i<objArry.length();i++){
-                    body+=objArry.getJSONObject(i).getString("materialNo")+"/"+objArry.getJSONObject(i).getInt("returnNum")+"//";
+                    body+=objArry.getJSONObject(i).getString("materialNo")+"/"+
+                            objArry.getJSONObject(i).getInt("returnNum")+"/"+
+                            objArry.getJSONObject(i).getString("goodPlace")+"/";
                 }objArry=null;
                 imageName =  return_no+".png" ;
             }else if(type.equals("3")){//订单接受
                 body="STORE/";
                 String orderNo = objArry.getJSONObject(0).getString("orderNo");
                 for(int i=0;i<objArry.length();i++){
-                    body+=objArry.getJSONObject(i).getString("materialNo")+"/"+objArry.getJSONObject(i).getInt("acceptNumber")+"//";
+                    body+=objArry.getJSONObject(i).getString("materialNo")+"/"+
+                            objArry.getJSONObject(i).getInt("acceptNumber")+"/"+
+                            objArry.getJSONObject(i).getString("storageLocationNo")+"/";
+                }objArry=null;
+                imageName =  orderNo+".png" ;
+            }else if(type.equals("4")){//采购退货
+                String orderNo = objArry.getJSONObject(0).getString("orderNo");
+                body="PICK/";
+                for(int i=0;i<objArry.length();i++){
+                    body+=objArry.getJSONObject(i).getString("materialNo")+"/"+
+                            objArry.getJSONObject(i).getString("acceptNumber")+"/"+
+                            objArry.getJSONObject(i).getString("storageLocationNo")+"/";
                 }objArry=null;
                 imageName =  orderNo+".png" ;
             }else{//发料处理
                 String faliaohao = objArry.getJSONObject(0).getString("faliaohao");
                 body="PICK/";
                 for(int i=0;i<objArry.length();i++){
-                    body+=objArry.getJSONObject(i).getString("wuliao_name")+"/"+objArry.getJSONObject(i).getString("fafangshuliang")+"//";
+                    body+=objArry.getJSONObject(i).getString("wuliao_name")+"/"+
+                            objArry.getJSONObject(i).getString("fafangshuliang")+"/"+
+                            objArry.getJSONObject(i).getString("huowei")+"/";
                 }objArry=null;
                 imageName =  faliaohao+".png" ;
             };

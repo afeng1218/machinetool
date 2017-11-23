@@ -85,16 +85,16 @@ public class StockDetailListService implements IStockDetailListService{
 
 			//查询库位ID
 			String  hql2  = "";
-			boolean isNum = roomplace.matches("[0-9]+");
-			if (isNum){
-
-				hql2 = "from CCargoSpaceDefinition place where place.cargoSpaceId='" + roomplace + "'";
-
-			} else{
+//			boolean isNum = roomplace.matches("[0-9]+");
+//			if (isNum){
+//
+//				hql2 = "from CCargoSpaceDefinition place where place.cargoSpaceId='" + roomplace + "'";
+//
+//			} else{
 
 				hql2 = "from CCargoSpaceDefinition place where place.cargoSpaceNo='" + roomplace + "'";
 
-			}
+//			}
 			List<CCargoSpaceDefinition> placelist = new ArrayList<CCargoSpaceDefinition>();
 			CCargoSpaceDefinition       place     = new CCargoSpaceDefinition();
 			placelist = dao.executeQuery(hql2);
@@ -105,7 +105,7 @@ public class StockDetailListService implements IStockDetailListService{
 			}
 			place = placelist.get(0);
 
-			int goods_allocation_id = place.getCargoSpaceId();
+//			int goods_allocation_id = place.getCargoSpaceId();
 
 			//查询物料ID
 			String                 hql3         = "from CGeneralMaterial m where m.materialNo='" + materialNo + "'";

@@ -4,6 +4,7 @@ import com.smtcl.machinetool.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.*;
 import java.util.*;
 
 /**
@@ -28,8 +29,8 @@ public class ToolLife{
 	}
 
 	@RequestMapping(value = "/saveData",method = RequestMethod.POST)
-	public String saveData(@RequestBody String map){
-		return service.saveData(map);
+	public String saveData(@RequestBody String map, HttpServletRequest request){
+		return service.saveData(map,request);
 	}
 
 	@RequestMapping(value = "/loadData", method = RequestMethod.POST)
@@ -37,7 +38,7 @@ public class ToolLife{
 		return  service.loadData(map);
 	}
 	@RequestMapping(value = "/uploadLifetime", method = RequestMethod.POST)
-	public String uploadLifetime(@RequestBody String map){
-		return  service.uploadLifetime(map);
+	public String uploadLifetime(@RequestBody String map, HttpServletRequest request){
+		return  service.uploadLifetime(map,request);
 	}
 }

@@ -144,9 +144,9 @@ public class FaliaoService implements IFaliaoService{
 			if(head.length() > 0){
 				/*****************************发料题头表*******************************/
 				cissueTitle.setPickPerson(head.getString("lingliaoren"));//领料人
-				if(!head.getString("shiyongshebei").equals("")){
-					cissueTitle.setUsingEquipmentId(head.getInt("shiyongshebei"));//使用设备
-				}
+				if (!head.getString("shiyongshebei").equals("")){
+					cissueTitle.setUsingEquipmentId(head.getInt("shiyongshebei_id"));//使用设备
+				};
 				cissueTitle.setUsingCuttool(head.getString("fadaodaoju"));//使用刀具
 				cissueTitle.setStorageRoomId(head.getInt("kufang"));//库房
 				cissueTitle.setRemarks(head.getString("beizhu"));//备注
@@ -191,7 +191,7 @@ public class FaliaoService implements IFaliaoService{
 							ccuttoolConsumption.setGoodsAllocationId(rowData.getInt("huowei_id"));//货位
 						}
 						if (!head.getString("shiyongshebei").equals("")){
-							ccuttoolConsumption.setEquipmentId(head.getInt("shiyongshebei"));//使用设备
+							ccuttoolConsumption.setEquipmentId(head.getInt("shiyongshebei_id"));//使用设备
 						}
 
 						/*********************寿命计算**************************/
@@ -284,6 +284,7 @@ public class FaliaoService implements IFaliaoService{
 					//立体库对接文件填充内容 end
 				}catch (Exception e){
 					result.append("result","5");    //发料失败，未知的错误
+					e.printStackTrace();
 //					bf.close();
 //					file.delete();
 					TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();//回滚
@@ -296,6 +297,7 @@ public class FaliaoService implements IFaliaoService{
 			return result.toString();
 		}catch (Exception e){
 			result.append("result","5");    //发料失败，未知的错误
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return result.toString();
 		}

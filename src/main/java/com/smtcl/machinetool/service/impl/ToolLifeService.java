@@ -8,8 +8,10 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 import org.springframework.transaction.interceptor.*;
 
+import javax.servlet.http.*;
 import java.io.*;
 import java.net.*;
+import java.text.*;
 import java.util.*;
 
 /**
@@ -17,6 +19,9 @@ import java.util.*;
  */
 @Service
 public class ToolLifeService implements IToolLifeService{
+
+	//设置日期格式
+	private SimpleDateFormat ymdhms =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@Autowired
 	IGenericDAO dao;
@@ -85,7 +90,7 @@ public class ToolLifeService implements IToolLifeService{
 	 */
 	@Override
 	@Transactional
-	public String saveData(String map){
+	public String saveData(String map, HttpServletRequest request){
 		String return_="false";
 		try{
 			JSONArray add= new JSONArray(map).getJSONObject(0).getJSONArray("add");
@@ -103,7 +108,21 @@ public class ToolLifeService implements IToolLifeService{
 						" SET a.surplus_lifetime='"+data.getString("surplus_lifetime")+"'"+
 						" WHERE a.cuttool_no='"+data.getString("cuttool_no")+"'";
 					dao.sqlUpdate(sql);sql=null;
-				};data=null;
+
+//					//事务处理表更新
+//					sql="insert into c_material_affairs_handle(" +
+//							"transaction_manager_no,source_type,source," +
+//							"transaction_manager_type,transaction_manager_activity,create_person," +
+//							"create_time,transaction_manager_company,total_transaction_manager)" +
+//							"values(2000,'刀具寿命'," +
+//							"'"+data.getString("resource_code")+"'," +
+//							"'"+data.getString("cuttool_no")+"'," +
+//							"'"+data.getString("tool_number")+"'," +
+//							"'"+request.getSession().getAttribute("USER_NAME")+"'," +
+//							"'"+ymdhms.format(new Date())+"','毫秒','"+data.getString("surplus_lifetime")+"')";
+//					dao.sqlUpdate(sql);sql=null;
+				};
+				data=null;
 			};
 			for(int i=0;i<update.length();i++){
 				JSONObject data=update.getJSONObject(i);
@@ -118,6 +137,19 @@ public class ToolLifeService implements IToolLifeService{
 							" SET a.surplus_lifetime='"+data.getString("surplus_lifetime")+"'"+
 							" WHERE a.cuttool_no='"+data.getString("cuttool_no")+"'";
 					dao.sqlUpdate(sql);sql=null;
+
+//					//事务处理表更新
+//					sql="insert into c_material_affairs_handle(" +
+//							"transaction_manager_no,source_type,source," +
+//							"transaction_manager_type,transaction_manager_activity,create_person," +
+//							"create_time,transaction_manager_company,total_transaction_manager)" +
+//							"values(2000,'刀具寿命'," +
+//							"'"+data.getString("resource_code")+"'," +
+//							"'"+data.getString("cuttool_no")+"'," +
+//							"'"+data.getString("tool_number")+"'," +
+//							"'"+request.getSession().getAttribute("USER_NAME")+"'," +
+//							"'"+ymdhms.format(new Date())+"','毫秒','"+data.getString("surplus_lifetime")+"')";
+//					dao.sqlUpdate(sql);sql=null;
 				};data=null;
 			};
 			return_="true";
@@ -179,7 +211,7 @@ public class ToolLifeService implements IToolLifeService{
 	 */
 	@Override
 	@Transactional
-	public String uploadLifetime(String map){
+	public String uploadLifetime(String map, HttpServletRequest request){
 		String return_="-1";
 		Socket socket=null;
 		DataOutputStream out=null;
@@ -197,12 +229,26 @@ public class ToolLifeService implements IToolLifeService{
 			ip=null;
 			out = new DataOutputStream (socket.getOutputStream());
 			buf = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
-			out.write(servic.getBytes());//传输数据
+			out.write(servic.getBytes());servic=null;//传输数据
 			out.flush();
 			return_=buf.readLine();//成功返回1 否则-1
 			buf.close();
 			out.close();
 			socket.close();
+//			//事务处理表更新
+//			String sql="insert into c_material_affairs_handle(" +
+//					"transaction_manager_no,source_type,source," +
+//					"transaction_manager_type,transaction_manager_activity,create_person," +
+//					"create_time,transaction_manager_company,total_transaction_manager)" +
+//					"values(2001,'刀具寿命'," +
+//					"'"+obj.getString("resource_code")+"'," +
+//					"'"+obj.getString("cuttool_no")+"'," +
+//					"'"+obj.getString("tool_number")+"'," +
+//					"'"+request.getSession().getAttribute("USER_NAME")+"'," +
+//					"'"+ymdhms.format(new Date())+"','毫秒','"+obj.getString("surplus_lifetime")+"')";
+//			dao.sqlUpdate(sql);
+//			sql=null;
+			obj=null;
 		}catch (Exception e){
 			buf.close();
 			out.close();

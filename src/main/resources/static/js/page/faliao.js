@@ -539,7 +539,7 @@ define(['jquery', '../common', 'layer', 'page/common_search', 'bootstrap', 'date
                 if ($(purchaseTable).parent().children("tr").eq(i).attr("class") == 'add') {
                     //物料行
                     var map = {
-                        type:'4',
+                        type:'5',
                         faliaohao: $('#faliaohao').val(),
                         wuliao_name: $('#newTd1_' + rowIndexo).html(),     //物料
                         wuliao: wuliaoArr[$('#newTd1_' + rowIndexo).html()], //物料id
@@ -566,6 +566,7 @@ define(['jquery', '../common', 'layer', 'page/common_search', 'bootstrap', 'date
                 fadaodaoju : $('#fadaodaoju').val(),
                 lingliaoren : $('#lingliaoren').val(),
                 shiyongshebei : $('#shiyongshebei').val(),
+                shiyongshebei_id:$("#shiyongshebei_id").val(),
                 kufang : $('#kufang').val(),
                 kufang_val : $('#kufang_val').val(),
                 beizhu : $('#beizhu').val(),
@@ -944,11 +945,12 @@ define(['jquery', '../common', 'layer', 'page/common_search', 'bootstrap', 'date
                     popMenu: true,
                     searchValue: $('#shiyongshebei').val(),
                     searchTable: 'CMechanicalEquipment',
-                    searchCol: 'equipmentAssetsNo,equipmentName',
+                    searchCol: 'equipmentAssetsNo,equipmentName,mechanicalId',
                     colName: '机床编号,机床名称'
                 };
                 /*设备查询双击事件回调函数*/
                 COMMON_SEARCH.OPEN_PAGE.openPage(searchVal, function (result) {
+                    $('#shiyongshebei_id').val(result.mechanicalId);//设备ID
                     $('#shiyongshebei').val(result.equipmentName);
                 });
             }

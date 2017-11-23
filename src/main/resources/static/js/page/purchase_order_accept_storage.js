@@ -566,21 +566,13 @@ define(['jquery', 'common', 'layer', 'page/common_search'], function ($, COMMON,
                         isStereoLibrary: td.eq(22).text()//是否是立体库
                     });
 
-                    // } else {
-
-                    //   layer.tips(data.result, td.eq(3), {tipsMore: true});
-                    //   td.eq(0).find('input').prop('checked', false);
-
-                    //}
-
-                    //});
-
                     /**
                      * 保存采购退货信息
                      */
                 } else if (nodeName == 'purchaseReturn' && canCancleNumber > 0) {
 
                     saveAcceptNumber.push({
+                        type:'4',
                         nodeName: nodeName,//所选择节点名称
                         orderNo: td.eq(12).text(),//订单号
                         lineNo: td.eq(14).text(),//行号

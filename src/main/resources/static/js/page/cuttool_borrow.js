@@ -15,7 +15,8 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                 'type':'1',
                 'borrow_no':borrow_no,
                 'material_no': allTd.eq(1).text(),
-                'borrow_number': allTd.eq(5).text()
+                'borrow_number': allTd.eq(5).text(),
+                'cargo_space_no': allTd.eq(6).text()
             };allTd=null;
             rowValue.push(row);row=null;
         }allTr=null;
@@ -748,6 +749,7 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
 
             var uploadJson = JSON.stringify(uploadValue);
 
+            alert(uploadJson);
             COMMON.WS.restful('stockDetailList/availableNum', 'post', uploadJson, false, function (obj) {
 
                 // COMMON.WS.local("stockDetailList/availableNum", "get", uploadValue, false, function (obj) {
