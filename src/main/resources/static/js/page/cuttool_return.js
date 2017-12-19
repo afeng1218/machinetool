@@ -435,7 +435,9 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
                         searchVal.addLimit = [{colName: 'isReturn', colValue: '否'}];
                         /*库房查询双击事件回调函数*/
                         pageSearch.OPEN_PAGE.openPage(searchVal, function (result) {
-
+                            if(result==false){
+                                return null;
+                            };
                             returnMsg(result, '');
                         });
                     }

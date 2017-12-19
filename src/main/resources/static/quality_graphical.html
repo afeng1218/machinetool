@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="overflow-x:hidden;background-color:#ffffff;">
+<html style="overflow-x:hidden;overflow-y:hidden;background-color:#ffffff;">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
@@ -32,23 +32,29 @@
         <div class="col-md-12 form-inline">
             <div class="form-group">
                 <label>日期:</label>
-                <input type="text" style="width:120px;" id="newTime" class="form-control date">
+                <input type="text" style="width:165px;" id="newTime" class="form-control date">
             </div>
             <div class="form-group">
                 <label>-</label>
-                <input type="text" style="width:120px;" id="endTime" class="form-control date">
+                <input type="text" style="width:165px;" id="endTime" class="form-control date">
             </div>
             <div class="form-group">
                 <label>产品:</label>
-                <input type="text" style="width:150px;" id="" class="form-control date">
+                <input type="text" style="width:140px;" id="" class="form-control">
             </div>
             <div class="form-group">
                 <label>检测项目:</label>
-                <input type="text" style="width:150px;" id="" class="form-control date">
+                <div class="input-group" style="width:160px;">
+                    <input type="hidden" id="project_id">
+                    <input id="project_name" type="text" readonly="readonly" class="form-control"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="project_button" type="button">选择</button>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label>收集计划:</label>
-                <input type="text" style="width:150px;" id="" class="form-control date">
+                <input type="text" style="width:150px;" id="" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" id="selectBtn" style="width:100px;" class="btn btn-info">查找</button>
@@ -60,13 +66,13 @@
         <div class="col-md-12 padding-left-30">
             <div class="row orders-search">
                 <div class="col-md-10" id="base-status-bar">
-                    <input type="hidden" id="base-status-bar-value" value=""/>
+                    <input type="hidden" id="base-status-bar-value" value="控制图"/>
                     <div class="sesol-btn order select" data="1">控制图</div>
                     <div class="sesol-btn order" data="2">CPK分析</div>
                     <div class="sesol-btn order" data="3">样本运行图</div>
-                    <div class="sesol-btn order" data="4">均值运行图</div>
-                    <div class="sesol-btn order" data="5">CPK趋势图</div>
-                    <div class="sesol-btn order" data="6">合格率趋势图</div>
+                    <div class="sesol-btn order" data="3">均值运行图</div>
+                    <div class="sesol-btn order" data="3">CPK趋势图</div>
+                    <div class="sesol-btn order" data="3">合格率趋势图</div>
                 </div>
             </div>
         </div>
@@ -77,36 +83,208 @@
                 <div class="col-md-12 padding-left-30">
                     <div class="row orders-search">
                         <div class="col-md-10" id="base-status-bar_parent">
-                            <input type="hidden" id="base-status-bar-value_parent" value=""/>
-                            <div class="sesol-btn order select" data="1">平均值</div>
-                            <div class="sesol-btn order" data="2">标注差</div>
+                            <input type="hidden" id="base-status-bar-value_parent" value="平均值"/>
+                            <div class="sesol-btn order_parent select" data="1">平均值</div>
+                            <div class="sesol-btn order_parent" data="1">极差</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 平均值 -->
-            <div class="base_tab_parent" id="base_tab_parent1" style="padding:0;margin:0;">
-                <canvas id="canvas" width="1100" height="300"></canvas>
-            </div>
-            <!-- 标准差 -->
-            <div class="base_tab_parent" id="base_tab_parent2" style="padding:0;margin:0;">
+            <!-- 平均值 && 标准差-->
+            <div class="base_tab_parent" id="base_tab_parent1" style="margin:0;padding:0;">
+                <canvas id="canvasA" width="1100" height="251"></canvas>
             </div>
         </div>
-        <div class="row" style="margin:0;padding:0;">
-            table
+    </div>
+    <div class="base_tab" id="base_tab2" style="display:none;margin:0;padding:0;">
+        <div class="col-xs-6" style="padding:0;margin:0;">
+            <canvas id="canvasB" width="427" height="230"></canvas>
+        </div>
+        <div class="col-xs-6">
+            <div class="col-md-12">
+                <div class="col-xs-6" style="margin:0;padding:0;color:blue;">
+                    <div class="col-xs-6">
+                        <hr style="margin-top:10px;height:1px;border:none;border-top:1px solid blue;"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <span style="margin-left:-20px;">整体</span>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="margin:0;padding:0;color:red;">
+                    <div class="col-xs-6">
+                        <hr style="margin-top:10px;height:1px;border:none;border-top:1px solid red;"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <span style="margin-left:-20px;">组内</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 130px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom:5px;font-size:12px;">
+                            <span>统计值</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">样本数=<span class="spanVal">0</span></div>
+                            <div class="row">平均值=<span class="spanVal">0</span></div>
+                            <div class="row">最大值=<span class="spanVal">0</span></div>
+                            <div class="row">最小值=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 130px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom: 5px;font-size:12px;">
+                            <span>常量</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">子组大小=<span class="spanVal">0</span></div>
+                            <div class="row">规格上限=<span class="spanVal">0</span></div>
+                            <div class="row">目标值=<span class="spanVal">0</span></div>
+                            <div class="row">规格下限=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 150px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom: 5px;font-size:12px;">
+                                <span>计算值</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">标准差(组内)=<span class="spanVal">0</span></div>
+                            <div class="row">标注差(整体)=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 130px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom: 5px;font-size:12px;">
+                            <span>工序能力(组内)</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">CPK=<span class="spanVal">0</span></div>
+                            <div class="row">CP=<span class="spanVal">0</span></div>
+                            <div class="row">CPL=<span class="spanVal">0</span></div>
+                            <div class="row">CPU=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 130px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom: 5px;font-size:12px;">
+                            <span>工序能力(整体)</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">PPK=<span class="spanVal">0</span></div>
+                            <div class="row">PP=<span class="spanVal">0</span></div>
+                            <div class="row">PPL=<span class="spanVal">0</span></div>
+                            <div class="row">PPU=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-4"
+                     style="background-color:#F4F4F4;
+                 margin-top:10px;margin-left:10px;
+                 margin-bottom:0px;
+                 min-height:100px;
+                 width: 150px;float: left;
+                 padding: 0px 0px 0px
+                 8px;border: 1px solid #ccc;
+                 border-radius: 3px;font-size:12px;">
+                    <fieldset>
+                        <legend style="margin-bottom: 5px;font-size:12px;">
+                            <span>其他值</span>
+                        </legend>
+                        <div class="col-md-12">
+                            <div class="row">CA=<span class="spanVal">0</span></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="base_tab" id="base_tab2" style="display:none;">
+    <div class="base_tab" id="base_tab3" style="display:none;margin:0;padding:0;">
+        <canvas id="canvasC" width="1100" height="296"></canvas>
     </div>
-    <div class="base_tab" id="base_tab3" style="display:none;">
+    <div class="row" style="margin:0;padding:0;">
+        <div class="col-md-12">
+            <div style="overflow-x:scroll;padding:0;margin:0;width:100%;">
+                <div style="padding-right:17px;">
+                    <table class="table table-bordered" style="width:1560px;" id="projectTableHead">
+                        <tr>
+                            <th class="text-center" style="width:70px;">
+                                <a href="javascript:void(0);" title="添加行" class="glyphicon glyphicon-plus" id="addRow"></a>
+                                <a href="javascript:void(0);" title="保存" class="glyphicon glyphicon-floppy-save" id="saveData"
+                                   style="margin-left:10px;" ></a>
+                            </th>
+                            <th class="text-center" style="width:150px;">录入时间</th>
+                            <th class="text-center" style="width:90px;">样本1</th>
+                            <th class="text-center" style="width:90px;">样本2</th>
+                            <th class="text-center" style="width:90px;">样本3</th>
+                            <th class="text-center" style="width:90px;">样本4</th>
+                            <th class="text-center" style="width:90px;">样本5
+                                <a href="javascript:void(0);" class="glyphicon glyphicon-plus" id="addCm"></a>
+                            </th>
+                            <th class="text-center" style="width:90px;">状态</th>
+                            <th class="text-center" style="width:90px;">平均值</th>
+                            <th class="text-center" style="width:90px;">极差</th>
+                            <th class="text-center" style="width:90px;">标准差</th>
+                            <th class="text-center" style="width:90px;">最大值</th>
+                            <th class="text-center" style="width:90px;">最小值</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table-body" style="min-height:150px;width:1577px;">
+                    <table class="table table-bordered text-center table-hover" style="width:1560px;" id="projectTable">
+                        <tbody style="background:#FFFFFF"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="base_tab" id="base_tab4" style="display:none;">
-    </div>
-    <div class="base_tab" id="base_tab5" style="display:none;">
-    </div>
-    <div class="base_tab" id="base_tab6" style="display:none;">
-    </div>
-    <button type="button" id="loadBtn" style="width:100px;" class="btn btn-info">刷新</button>
 </div>
 <script data-main="js/main" src="js/require.js"></script>
 </body>

@@ -749,7 +749,6 @@ define(['jquery', 'common', 'layer', 'page/common_search', 'datetimepicker'], fu
 
             var uploadJson = JSON.stringify(uploadValue);
 
-            alert(uploadJson);
             COMMON.WS.restful('stockDetailList/availableNum', 'post', uploadJson, false, function (obj) {
 
                 // COMMON.WS.local("stockDetailList/availableNum", "get", uploadValue, false, function (obj) {

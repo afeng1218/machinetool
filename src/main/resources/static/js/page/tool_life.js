@@ -45,24 +45,23 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 for(var i=0;i<20;i++){
                     var tool_number='t'+(i+1),//刀号
                         cuttool_no='',//刀具编号
-                        class_='class="add" ',
                         initial_lifetime='',//初始寿命
                         life_alarm='';// 报警值
                     if(data.rowData!=undefined){
                         tool_number=data.rowData[i].tool_number==undefined?'t'+(i+1):data.rowData[i].tool_number;//刀号
                         cuttool_no=data.rowData[i].cuttool_no==undefined?'':data.rowData[i].cuttool_no;//刀具编号
-                        class_='class="load" ';
                         initial_lifetime=data.rowData[i].initial_lifetime==undefined?'':data.rowData[i].initial_lifetime;//初始寿命
                         life_alarm=data.rowData[i].life_alarm==undefined?0:data.rowData[i].life_alarm;// 报警值
                     };
-                    $("#toolTable tbody").append('<tr ' + class_ + (cuttool_no==""?"":'style="background-color:rgb(232,255,232);"') +'>' +
+                    $("#toolTable tbody").append('<tr class="load" '+(cuttool_no==""?"":'style="background-color:rgb(232,255,232);"') +'>' +
                         '<td style="padding:0;width:10%;line-height:30px;">'+tool_number+'</td>' +
                         '<td style="padding:0;width:10%;line-height:30px;" class="update">'+cuttool_no+'</td>' +
                         '<td style="padding:0;width:10%;line-height:30px;">'+initial_lifetime+'</td>' +
                         '<td style="padding:0;width:10%;line-height:30px;">'+(cuttool_no==""?"":life_alarm)+'</td>' +
                         '<td style="padding:0;width:10%;line-height:30px;">'+(cuttool_no==""?"":0)+'</td>' +
                         '<td style="padding:0;width:5%;line-height:30px;">' +
-                            '<a href="javascript:void(0);" class="glyphicon glyphicon-cloud-upload"></a>' +
+                            '<a href="javascript:void(0);" title="绑定刀具&更新残余寿命" class="glyphicon glyphicon-floppy-save"></a>'+
+                            '<a href="javascript:void(0);" style="margin-left:10px;" title="寿命重置&上传刀具寿命" class="glyphicon glyphicon-cloud-upload"></a>'+
                         '</td>' +
                     '</tr>');
                     tool_number=null;cuttool_no=null;
@@ -71,6 +70,7 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 data=null;
                 $("#toolTable tbody tr td.update").click(function(){af.open(this);});
                 $("#toolTable tbody tr td a.glyphicon-cloud-upload").click(function(){af.cloudUpload(this);});
+                $("#toolTable tbody tr td a.glyphicon-floppy-save").click(function(){af.saveData(this);});
                 return_();
             });
             return null;
@@ -94,7 +94,6 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                     if(data.map!=undefined){
                         var str=data.map.split("|");
                         for(var i=3,j=0;i<str.length;i++,j++){
-                            //if(tr.eq(j).find("td").eq(1).html()==''){continue;};
                             tr.eq(j).find("td").eq(4).html(str[i]);
                             tr.eq(j).css("background-color",af.updateBgColor(
                                 tr.eq(j).find("td").eq(3).html(),
@@ -148,6 +147,37 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
             openWindow=null;
             return null;
         },
+        saveData:function(e){
+            var index_=layer.open({type: 3});
+            var upload=new Array();
+            var update=new Array();
+            var tr=$(e).parent().parent();
+            var map={
+                production_line_id:$("#selectId").val(),//生产线ID
+                resource_code:$("#productionLineTable tbody tr.focus").attr("value"),
+                tool_number:tr.find("td:eq(0)").html(),
+                cuttool_no:tr.find("td:eq(1)").html(),
+                surplus_lifetime:(Number(tr.find("td:eq(2)").html())-Number(tr.find("td:eq(4)").html()))+""
+            };
+            if(tr.attr("class")=="update"){
+                update.push(map);
+            };
+            map=null;
+            upload.push({
+                update:update
+            });
+            update=null;
+            COMMON.WS.ajax("toolLife/saveData", "post", JSON.stringify(upload), true, function (data){
+                layer.close(index_);index_=null;
+                if(data){
+                    layer.msg("残余寿命更新成功！");
+                    $("#productionLineTable>tbody>tr:eq(0)").click();
+                }else{
+                    layer.msg("残余寿命更新失败！");
+                };
+            });
+            return null;
+        },
         event:function(){
             //生产线
             $("#selectId").change(function(){
@@ -155,45 +185,6 @@ define(['jquery', 'common', 'layer','page/common_search'], function ($, COMMON, 
                 $("#productionLineTable tbody tr").remove();
                 af.loadDate({production_line_id:$(this).val(),type:'tool'});
                 return null;
-            });
-            //保存
-            $("#saveData").click(function(){
-                var index_=layer.open({type: 3});
-                var production_line_id=$("#selectId").val();//生产线ID
-                var resource_code=$("#productionLineTable tbody tr.focus").attr("value");
-                var upload=new Array();
-                var add=new Array();
-                var update=new Array();
-                var tr=$("#toolTable tbody tr");
-                for(var i=0;i<tr.length;i++){
-                    var map={
-                        production_line_id:production_line_id,
-                        resource_code:resource_code,
-                        tool_number:tr.eq(i).find("td:eq(0)").html(),
-                        cuttool_no:tr.eq(i).find("td:eq(1)").html(),
-                        surplus_lifetime:(Number(tr.eq(i).find("td:eq(2)").html())-Number(tr.eq(i).find("td:eq(4)").html()))+""
-                    };
-                    if(tr.eq(i).attr("class")=="add"){
-                        add.push(map);
-                    };
-                    if(tr.eq(i).attr("class")=="update"){
-                        update.push(map);
-                    };
-                    map=null;
-                };
-                upload.push({
-                    add:add,
-                    update:update
-                });
-                COMMON.WS.ajax("toolLife/saveData", "post", JSON.stringify(upload), true, function (data){
-                    layer.close(index_);index_=null;
-                    if(data){
-                        layer.msg("残余寿命更新成功！");
-                        $("#productionLineTable>tbody>tr:eq(0)").click();
-                    }else{
-                        layer.msg("残余寿命更新失败！");
-                    };
-                });
             });
             return null;
         },

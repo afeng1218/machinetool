@@ -73,6 +73,15 @@ public class ToolLifeService implements IToolLifeService{
 				List list=dao.createSQL(sql);sql=null;
 				if(list!=null&&list.size()>0){//直接查询
 					obj.put("rowData",list);list=null;
+				}else{
+					for(int i=0,j=1;i<20;i++,j++){
+						sql="insert into c_tool_life(production_line_id,resource_code,tool_number,cuttool_no)values(" +
+								""+production_line_id+"," +
+								"'"+resource_code+"'," +
+								"'t"+(j)+"'," +
+								"'')";
+						dao.sqlUpdate(sql);sql=null;
+					};
 				};
 			};
 			return obj.toString();
@@ -93,37 +102,7 @@ public class ToolLifeService implements IToolLifeService{
 	public String saveData(String map, HttpServletRequest request){
 		String return_="false";
 		try{
-			JSONArray add= new JSONArray(map).getJSONObject(0).getJSONArray("add");
 			JSONArray update= new JSONArray(map).getJSONObject(0).getJSONArray("update");
-			for(int i=0;i<add.length();i++){
-				JSONObject data=add.getJSONObject(i);
-				String sql="insert into c_tool_life(production_line_id,resource_code,tool_number,cuttool_no)values(" +
-						""+data.getInt("production_line_id")+"," +
-						"'"+data.getString("resource_code")+"'," +
-						"'"+data.getString("tool_number")+"'," +
-						"'"+data.getString("cuttool_no")+"')";
-				dao.sqlUpdate(sql);sql=null;
-				if(!data.getString("cuttool_no").equals("")){//更新残余寿命
-					sql="UPDATE c_cuttool_basedata AS a" +
-						" SET a.surplus_lifetime='"+data.getString("surplus_lifetime")+"'"+
-						" WHERE a.cuttool_no='"+data.getString("cuttool_no")+"'";
-					dao.sqlUpdate(sql);sql=null;
-
-//					//事务处理表更新
-//					sql="insert into c_material_affairs_handle(" +
-//							"transaction_manager_no,source_type,source," +
-//							"transaction_manager_type,transaction_manager_activity,create_person," +
-//							"create_time,transaction_manager_company,total_transaction_manager)" +
-//							"values(2000,'刀具寿命'," +
-//							"'"+data.getString("resource_code")+"'," +
-//							"'"+data.getString("cuttool_no")+"'," +
-//							"'"+data.getString("tool_number")+"'," +
-//							"'"+request.getSession().getAttribute("USER_NAME")+"'," +
-//							"'"+ymdhms.format(new Date())+"','毫秒','"+data.getString("surplus_lifetime")+"')";
-//					dao.sqlUpdate(sql);sql=null;
-				};
-				data=null;
-			};
 			for(int i=0;i<update.length();i++){
 				JSONObject data=update.getJSONObject(i);
 				String sql="UPDATE c_tool_life AS a" +
@@ -137,19 +116,18 @@ public class ToolLifeService implements IToolLifeService{
 							" SET a.surplus_lifetime='"+data.getString("surplus_lifetime")+"'"+
 							" WHERE a.cuttool_no='"+data.getString("cuttool_no")+"'";
 					dao.sqlUpdate(sql);sql=null;
-
-//					//事务处理表更新
-//					sql="insert into c_material_affairs_handle(" +
-//							"transaction_manager_no,source_type,source," +
-//							"transaction_manager_type,transaction_manager_activity,create_person," +
-//							"create_time,transaction_manager_company,total_transaction_manager)" +
-//							"values(2000,'刀具寿命'," +
-//							"'"+data.getString("resource_code")+"'," +
-//							"'"+data.getString("cuttool_no")+"'," +
-//							"'"+data.getString("tool_number")+"'," +
-//							"'"+request.getSession().getAttribute("USER_NAME")+"'," +
-//							"'"+ymdhms.format(new Date())+"','毫秒','"+data.getString("surplus_lifetime")+"')";
-//					dao.sqlUpdate(sql);sql=null;
+					//事务处理表更新
+					sql="insert into c_material_affairs_handle(" +
+							"transaction_manager_no,source_type,source," +
+							"transaction_manager_type,transaction_manager_activity,create_person," +
+							"create_time,transaction_manager_company,total_transaction_manager)" +
+							"values("+data.getString("resource_code")+",'刀具寿命'," +
+							"'"+data.getString("resource_code")+"'," +
+							"'"+data.getString("cuttool_no")+"'," +
+							"'"+data.getString("tool_number")+"'," +
+							"'"+request.getSession().getAttribute("USER_NAME")+"'," +
+							"'"+ymdhms.format(new Date())+"','毫秒','"+data.getString("surplus_lifetime")+"')";
+					dao.sqlUpdate(sql);sql=null;
 				};data=null;
 			};
 			return_="true";
@@ -235,19 +213,6 @@ public class ToolLifeService implements IToolLifeService{
 			buf.close();
 			out.close();
 			socket.close();
-//			//事务处理表更新
-//			String sql="insert into c_material_affairs_handle(" +
-//					"transaction_manager_no,source_type,source," +
-//					"transaction_manager_type,transaction_manager_activity,create_person," +
-//					"create_time,transaction_manager_company,total_transaction_manager)" +
-//					"values(2001,'刀具寿命'," +
-//					"'"+obj.getString("resource_code")+"'," +
-//					"'"+obj.getString("cuttool_no")+"'," +
-//					"'"+obj.getString("tool_number")+"'," +
-//					"'"+request.getSession().getAttribute("USER_NAME")+"'," +
-//					"'"+ymdhms.format(new Date())+"','毫秒','"+obj.getString("surplus_lifetime")+"')";
-//			dao.sqlUpdate(sql);
-//			sql=null;
 			obj=null;
 		}catch (Exception e){
 			buf.close();

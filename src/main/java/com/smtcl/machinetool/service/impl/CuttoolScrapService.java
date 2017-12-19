@@ -324,12 +324,19 @@ public class CuttoolScrapService implements ICuttoolScrapService{
 			}
 
 			/**
-			 * changed by GuoFeng 2016/8/8
+			 * GuoFeng 2016/8/8
 			 */
 			/*附件寿命计算 如果是整体刀具*/
 			if (json.getBoolean("totalcuttoolborrow")){
-
-			}
+				String scrap_CNo=json.getString("scrap_CNo");
+				if(!scrap_CNo.equals("")){
+					System.out.println("scrap_CNo="+scrap_CNo);
+					String sql="UPDATE c_cuttool_basedata AS a" +
+							" SET a.surplus_lifetime='0'"+
+							" WHERE a.cuttool_no='"+scrap_CNo+"'";
+					dao.sqlUpdate(sql);sql=null;
+				};
+			};
 
 			result.append("result", "true");
 			return result.toString();
