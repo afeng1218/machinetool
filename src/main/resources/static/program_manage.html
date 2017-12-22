@@ -5,20 +5,144 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, user-scalable=yes">
     <title>程序管理</title>
+    <!-- htmlbuild:commonCss -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/general.css"/>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-treeview.min.css"/>
+    <!-- endbuild:commonCss -->
     <!--[if lt IE 9]>
     <script src="js/lib/html5shiv.min.js"></script>
     <script src="js/lib/respond.min.js"></script>
     <![endif]-->
-    <!-- htmlbuild:commonCss -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/general.css"/>
-    <!-- endbuild:commonCss -->
 </head>
-<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;">
-    <div class="frame-block bg-fff" style="margin:0;padding:0;min-height:10px;">
-
+<body style="overflow-x:hidden;overflow-y:hidden;background-color:#FFFFFF;font-size:12px;">
+    <div class="row" style="min-height:50px;margin: 5px 0 0 0;padding:0;border-bottom:1px solid lightgrey;">
+        <div class="col-md-4" style="margin:0;padding:0;">
+            <div class="col-md-4">
+                <button id="addBtn" style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-plus"></li>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button id="updateBtn" style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-edit"></li>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button id="deleteBtn" style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-trash"></li>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6" style="border-left:1px solid lightgrey;">
+            <div class="col-md-3">
+                <button id="addTable" style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-plus-sign"></li>
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-eye-open"></li>
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                    <li class="glyphicon glyphicon-resize-small"></li>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-2" style="border-left:1px solid lightgrey;">
+            <button style="border-radius: 10px;" class="col-md-12 button button-block button-rounded">
+                <li class="glyphicon glyphicon-retweet"></li>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="min-height:531px;margin-left:2px;margin-top:2px;padding:0;" id="mainPageContentCX">
+        <div class="col-md-3" style="min-width:330px;margin:0;padding:0;overflow:scroll;overflow-x:hidden;">
+            <div id="treeviewCX"></div>
+        </div>
+        <div class="col-md-8" style="padding:0;margin:0 0 0 15px;overflow:hidden;">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12" style="padding:0;margin:0;">
+                        <div style="margin-left:45%;margin-top:1px;">上位机</div>
+                        <div style="padding-right:17px;margin-top:2px;">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th class="text-center" style="width:6%;"></th>
+                                    <th class="text-center" style="width:29%;">程序名</th>
+                                    <th class="text-center" style="width:25%;">新建时间</th>
+                                    <th class="text-center" style="width:25%;">更新时间</th>
+                                    <th class="text-center" style="width:15%;">作者</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="table-body" style="height:220px;">
+                            <table class="table table-bordered text-center table-hover" id="tableSwjCx">
+                                <tbody style="background:#FFFFFF"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    程序预览：<span id="bjID"></span><span id="jgID"></span>
+                </div>
+                <div class="row">
+                    <textarea style="min-height:250px;resize:none;" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row" style="margin-left:10%;margin-top:100%;">
+                    <button id="addRight" class="button button-block button-rounded"
+                            style="border-radius: 10px;">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+                <div class="row margin-top-20" style="margin-left:10%;">
+                    <button id="addLeft" class="button button-block button-rounded"
+                            style="border-radius: 10px;">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12" style="padding:0;margin:0;">
+                        <div class="col-md-2" style="margin: 1px 0 0 0;padding:0;">NC端</div>
+                        <div class="col-md-10" style="margin:0 0 2px 0;padding:0;">
+                            <select style="width:90%;">
+                                <option></option>
+                                <option>A19391931</option>
+                                <option>A19921218</option>
+                            </select>
+                        </div>
+                        <div style="padding-right:17px;">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th class="text-center" style="width:35%;">程序名</th>
+                                    <th class="text-center" style="width:25%;">新建时间</th>
+                                    <th class="text-center" style="width:25%;">更新时间</th>
+                                    <th class="text-center" style="width:15%;">作者</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="table-body" style="height:220px;">
+                            <table class="table table-bordered text-center table-hover" id="tableNcCx">
+                                <tbody style="background:#FFFFFF"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <textarea style="min-height:250px;margin-top:19px;resize:none;" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+<!--加载requireJs和主入口-->
+<script data-main="js/main" src="js/require.js"></script>
 </html>
